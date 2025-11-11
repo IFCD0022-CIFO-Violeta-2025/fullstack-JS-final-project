@@ -5,17 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky",
+     "prepare": "husky",
     "lint": "npm --prefix frontend run lint && npm --prefix backend run lint",
     "format": "npm --prefix frontend run format && npm --prefix backend run format"
   },
   "lint-staged": {
-    "frontend/**/*.{js,jsx,ts,tsx}": [
-      "npm --prefix frontend run lint:fix"
-    ],
-    "backend/**/*.js": [
-      "npm --prefix backend run lint:fix"
-    ]
+    "frontend/**/*.{js,jsx,ts,tsx}": ["npm --prefix frontend run lint:fix"],
+    "backend/**/*.js": ["npm --prefix backend run lint:fix"]
   },
   "keywords": [],
   "author": "",

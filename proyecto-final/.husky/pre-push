@@ -1,8 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npx lint-staged || {
-  echo "Push aborted due to lint errors."
+echo "🧹 Running ESLint & Prettier checks before push..."
+
+npm run lint:fix || {
+  echo "Lint failed. Push aborted."
   exit 1
 }
 
