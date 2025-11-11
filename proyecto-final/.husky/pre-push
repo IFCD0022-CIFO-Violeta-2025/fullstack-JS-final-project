@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "Running linter before push..."
-npx lint-staged
+echo "HUSKY PRE-PUSH HOOK IS WORKING!"
+exit 1
