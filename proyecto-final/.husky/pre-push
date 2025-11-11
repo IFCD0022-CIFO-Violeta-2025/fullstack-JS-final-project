@@ -1,10 +1,12 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "🧹 Running ESLint & Prettier checks before push..."
+echo "Linting frontend..."
+npm --prefix frontend run lint:fix || exit 1
 
-npm run lint:fix || {
-  echo "Lint failed. Push aborted."
-  exit 1
-}
+echo "Linting backend..."
+npm --prefix backend run lint:fix || exit 1
+
+echo "✅ All checks passed!"
+
 
