@@ -1,12 +1,5 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-echo "Linting frontend..."
-npm --prefix frontend run lint:fix || exit 1
-
-echo "Linting backend..."
-npm --prefix backend run lint:fix || exit 1
-
-echo "✅ All checks passed!"
-
-
+echo "Running linter before push..."
+npx lint-staged
