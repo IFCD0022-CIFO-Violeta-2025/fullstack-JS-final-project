@@ -1,5 +1,5 @@
 function testFunction() {
-  console.log("nothing"
+  console.log("nothing")
 }
 
 testFunction()
