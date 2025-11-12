@@ -2,11 +2,11 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 echo "Running ESLint in frontend..."
-npm --prefix proyecto-final/frontend run lint -- --fix
+npm --prefix proyecto-final/frontend run lint -- --fix --max-warnings=0
 frontend_exit=$?
 
 echo "Running ESLint in backend..."
-npm --prefix proyecto-final/backend run lint -- --fix
+npm --prefix proyecto-final/backend run lint -- --fix --max-warnings=0
 backend_exit=$?
 
 if [ $frontend_exit -ne 0 ] || [ $backend_exit -ne 0 ]; then
