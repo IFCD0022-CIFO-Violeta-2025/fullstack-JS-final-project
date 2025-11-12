@@ -6,3 +6,6 @@
 - Grupo Front Core
 
 - Grupo DevOps / Doc's
+Hecho instalacion de lint and prettier
+Todavia hay proplema con instal·lar  Husky
+
