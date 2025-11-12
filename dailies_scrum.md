@@ -48,7 +48,7 @@
 #### HECHO:
 
  - creado el proyecto en GITHUB "final-project-dashboard"
- - instalado todos los paquetes para Frontend y Backend, como deslint, prettier, joi, express
+ - instalado todos los paquetes para Frontend y Backend, como deslint, prettier, joi, express, vite
  
 #### PREVISTO:
 
