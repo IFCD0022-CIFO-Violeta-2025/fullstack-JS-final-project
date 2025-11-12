@@ -1,11 +1,42 @@
 ## 12/11/25
-- Grupo Backend/MySQL
 
-- Grupo Front Feat
+•	Grupo Backend/MySQL
+HECHO: 
+EXEL de tablas BBDD
+controladores/routers
 
-- Grupo Front Core
+PREVISTO: 
+crear ER-diagramma en Workbench
+crear estructura de  BBDD 
+controladores/routers (posiblemente)
 
-- Grupo DevOps / Doc's (
-Hecho instalación de lint and prettier
-Todavia hay proplema con instal·lar  Husky)
+
+•	Grupo Front Core
+HECHO:
+Definir permoso de roles
+Flujos de usuarios
+Formularios basicos
+API de mapas
+PREVISTO: 
+ejemplo de  codigo de mapa de eventos
+reunion con grupo de BBDD para aclarar estructura de formularios
+reunion con grupo de Front Feat para aclarar estructura de formularios
+
+
+•	Grupo Front Feat
+HECHO:
+diseño inicial de paginas web
+rutas de paginas
+PREVISTO:
+2 eschemas de colores (oscuro y claro)
+ Preparar maquetes basicas de pagina WEB
+trabajar con REACT para realizar elementos visuales
+
+
+•	Grupo DevOps / Doc's
+HECHO:
+ instalacion  lint y prettier
+PREVISTO:
+Acabar de  instal·lar  Husky para prevenir commit el codigo malo
+
 
