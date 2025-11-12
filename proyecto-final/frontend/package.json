@@ -12,6 +12,7 @@
     "check-format": "prettier --check ."
   },
   "dependencies": {
+    "@fontsource/montserrat": "^5.2.8",
     "bootstrap": "^5.3.8",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
