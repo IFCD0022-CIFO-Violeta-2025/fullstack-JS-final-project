@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-echo "HUSKY PRE-PUSH HOOK IS WORKING!"
-exit 1

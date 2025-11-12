@@ -6,7 +6,7 @@
     "backend"
   ],
   "scripts": {
-    "prepare": "husky",
+    
     "lint:frontend": "cd frontend && npm run lint",
     "lint:backend": "cd backend && npm run lint"
   },
