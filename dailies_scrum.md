@@ -47,10 +47,12 @@
 
 #### HECHO:
 
- - instalacion  lint y prettier
+ - creado el proyecto en GITHUB "final-project-dashboard"
+ - instalado todos los paquetes para Frontend y Backend, como deslint, prettier, joi, express
  
 #### PREVISTO:
 
 - Acabar de  instalar  Husky para prevenir commit el codigo malo
+- instalar BOOTSTRAP
 
 
