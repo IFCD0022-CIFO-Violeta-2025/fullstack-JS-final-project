@@ -61,68 +61,62 @@
 
 
 
-## 12/11/25
+## 13/11/25
 
 ### Grupo Backend/MySQL
 
 #### HECHO: 
 
-- EXEL de tablas BBDD
+- crear ER-diagramma en Workbench
+- crear estructura de  BBDD 
 
 #### PREVISTO:
 
-- crear ER-diagramma en Workbench
-- crear estructura de  BBDD 
-- controladores/routers (posiblemente)
+- subir doc al git
+- axios (fetch) con peticiones del cliente
 
-fetch/axios
-subir doc al git
 
  ### Grupo Front Core
 
 
 #### HECHO:
 
-- Definir permoso de roles
-- Flujos de usuarios
-- Formularios basicos
-- API de mapas
-
-#### PREVISTO: 
-
 - ejemplo de  codigo de mapa de eventos
 - reunion con grupo de BBDD para aclarar estructura de formularios
 - reunion con grupo de Front Feat para aclarar estructura de formularios
 
-probar componentos
+#### PREVISTO: 
+
+- Probar de la funcionalidad de 3 formularios
 
 
 ### Grupo Front Feat
 
 #### HECHO:
 
-- diseño inicial de paginas web
-- rutas de paginas
-
-#### PREVISTO:
-
 - 2 eschemas de colores (oscuro y claro)
 - Preparar maquetes basicas de pagina WEB
 - trabajar con REACT para realizar elementos visuales
 
-rutas de paginas - arbol basico 
-botones + bootstrap
+#### PREVISTO:
+
+- crear rutas de paginas - arbol basico 
+crear componentes de botones (bootstrap)
+
+
 ### Grupo DevOps / Doc's
 
 #### HECHO:
 
- - creado el proyecto en GITHUB "final-project-dashboard"
- - instalado todos los paquetes para Frontend y Backend, como deslint, prettier, joi, express, vite
+- Acabamos de empezar a  instalar  Husky para prevenir commit el codigo malo
+- instalado BOOTSTRAP, NODE, EXPRESS, Sequeliza, mysql, joi, CORS, nodemailer, multer, bcryptjs, jsonwebtoken, dotenv (.env), React Rooter DOM, React google maps, axios, icons
  
 #### PREVISTO:
 
-- Acabar de  instalar  Husky para prevenir commit el codigo malo
-- instalar BOOTSTRAP
+- Acabar de  instalar Husky para prevenir commit el codigo malo
+- presentar la estructura del repositorio
+- crear la inscripción del producto
+- template de PR
 
 
 
