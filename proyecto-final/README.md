@@ -56,3 +56,44 @@ ci: añadir workflow para GitHub Actions
 - Usa el prefijo de **área/directorio** (`frontend`, `backend`) para contextualizar los cambios.
 
 Mantener estas normas ayuda a que todo el equipo entienda rápidamente los cambios y facilita automatizar releases si se usa versionado semántico.
+
+# Normas para Creación de Branches
+
+Para mantener un flujo de trabajo ordenado y predecible, seguimos estas reglas al crear ramas:
+
+---
+
+## 1. Estructura de nombres
+Usa un formato consistente para que sea fácil identificar el propósito de la rama:
+
+### Tipos comunes
+main 
+├── develop
+    ├── feature/backend-auth
+    ├── feature/backend-users-crud
+    ├── feature/backend-products
+    ├── feature/frontend-login
+    ├── feature/frontend-dashboard
+    ├── feature/frontend-product-list
+    ├── fix/bug-nombre-descriptivo
+    └── ...
+
+
+
+## 2. Reglas generales
+- NUNCA hacer commit directo a main o develop
+- Cada nueva funcionalidad o fix = 1 branch nueva desde develop
+- Nomenclatura obligatoria:
+- Features: feature/nombre-descriptivo
+- Fixes: fix/descripcion-del-bug
+- Docs: docs/que-se-documenta
+- Pull Request (PR) obligatorio para merge a develop
+- Mínimo 1 review aprobado de otro compañero antes de hacer merge
+- Al final de cada semana: merge de develop a main (supervisión)
+
+---
+
+## 3. Buenas prácticas
+- Haz pull antes de crear tu rama para evitar conflictos.  
+- Borra ramas locales y remotas que ya se hayan mergeado.  
+- Usa ramas temporales solo para pruebas locales; nunca hagas push de ramas experimentales directamente al repositorio principal.
