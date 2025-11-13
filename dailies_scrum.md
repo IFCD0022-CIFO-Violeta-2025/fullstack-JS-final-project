@@ -101,7 +101,7 @@
 #### PREVISTO:
 
 - crear rutas de paginas - arbol basico 
-crear componentes de botones (bootstrap)
+- crear componentes de botones (bootstrap)
 
 
 ### Grupo DevOps / Doc's
@@ -115,7 +115,7 @@ crear componentes de botones (bootstrap)
 
 - Acabar de  instalar Husky para prevenir commit el codigo malo
 - presentar la estructura del repositorio
-- crear la inscripción del producto
+- crear la descripción del producto
 - template de PR
 
 
