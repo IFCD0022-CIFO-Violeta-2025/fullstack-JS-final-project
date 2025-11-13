@@ -2,4 +2,4 @@ function testFunction() {
   console.log("nothing")
 }
 
-testFunction(
+testFunction()
