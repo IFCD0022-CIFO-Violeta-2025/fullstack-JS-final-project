@@ -13,7 +13,7 @@
 - controladores/routers (posiblemente)
 
 
- ### Grupo Front Core
+ ### Grupo Front Feat
 
 #### HECHO:
 
@@ -29,7 +29,7 @@
 - reunion con grupo de Front Feat para aclarar estructura de formularios
 
 
-### Grupo Front Feat
+### Grupo Front Core
 
 #### HECHO:
 
@@ -76,7 +76,7 @@
 - axios (fetch) con peticiones del cliente
 
 
- ### Grupo Front Core
+ ### Grupo Front Feat
 
 
 #### HECHO:
@@ -90,7 +90,7 @@
 - Probar de la funcionalidad de 3 formularios
 
 
-### Grupo Front Feat
+### Grupo Front Core
 
 #### HECHO:
 
