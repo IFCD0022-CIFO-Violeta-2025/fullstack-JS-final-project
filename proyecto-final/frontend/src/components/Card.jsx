@@ -112,7 +112,7 @@ const Card = ({
                     {/* Botones y etiquetas */}
                     <div className="mt-3">
                         <div className="d-flex gap-2 justify-content-center mb-4">
-                            <Boton onClick={() => window.open("/evento-detalle", "_blank")}>
+                            <Boton onClick={() => window.open("/event", "_blank")}>
                                 Ver más
                             </Boton>
                             <Boton>Inscribirse</Boton>
