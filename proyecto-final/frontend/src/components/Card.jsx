@@ -18,7 +18,7 @@ const Card = ({
         fechaPublicacion: "2025-11-01",
     },
 }) => {
-    const { theme, isDarkMode } = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
 
     let fechaTexto = "";
