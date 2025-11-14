@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 import Boton from "./Boton";
-import Etiquetas from "./Etiquetas";
+import Etiqueta from "./Etiqueta";
+import eventImg from "../assets/event.jpg";
+import userAvatar from "../assets/user.jpg";
 
 const Card = ({
     titulo = "Festival de Música Urbana",
@@ -12,7 +14,7 @@ const Card = ({
     categorias = ["Música", "Cultura", "Danza", "Teatro"],
     usuario = {
         nombre: "Nombre",
-        avatar: "/user.jpg", // ruta de la imagen del usuario
+        avatar: userAvatar, // ruta de la imagen del usuario
         fechaPublicacion: "2025-11-01",
     },
 }) => {
@@ -64,7 +66,7 @@ const Card = ({
                     }}
                 >
                     <img
-                        src="/event.jpg"
+                        src= {eventImg}
                         className="card-img-top"
                         alt="Imagen del evento"
                         style={{
@@ -116,7 +118,7 @@ const Card = ({
                             <Boton>Inscribirse</Boton>
                         </div>
 
-                        <Etiquetas categorias={categorias} />
+                        <Etiqueta categorias={categorias} />
                     </div>
 
                     {/* Usuario que publicó */}
