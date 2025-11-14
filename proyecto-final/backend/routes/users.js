@@ -3,8 +3,6 @@ import Joi from "joi";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
-import authMiddleware from "../middleware/auth.js";
-import checkRole from "../middleware/checkRole.js";
 import dotenv from "dotenv";
 
 dotenv.config();
