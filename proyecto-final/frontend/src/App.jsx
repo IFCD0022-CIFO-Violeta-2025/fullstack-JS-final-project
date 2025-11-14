@@ -22,15 +22,16 @@ function App() {
       <Navbar />
       <Sidebar />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/event/:id" element={<EventPage />} />
-        <Route path="/create" element={<CreateEventPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/faq" element={<FAQPage />} />
-      </Routes>
-
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/event/:id" element={<EventPage />} />
+          <Route path="/create" element={<CreateEventPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/faq" element={<FAQPage />} />
+        </Routes>
+      </div>
     </>
   )
 
