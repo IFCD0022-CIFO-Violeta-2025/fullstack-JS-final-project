@@ -53,14 +53,14 @@ const Navbar = () => {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <div className="d-flex gap-2 me-auto">
-                            <Boton onClick={() => navigate("/ruta1")}>Home</Boton>
-                            <Boton onClick={() => navigate("/ruta2")}>Ruta 2</Boton>
-                            <Boton onClick={() => navigate("/ruta3")}>FAQ</Boton>
-                            <Boton onClick={() => navigate("/ruta4")}>Ruta 4</Boton>
+                            <Boton onClick={() => navigate("/")}>Home</Boton>
+                            <Boton onClick={() => navigate("/profile")}>Perfil</Boton>
+                            <Boton onClick={() => navigate("/faq")}>FAQ</Boton>
+                            <Boton onClick={() => navigate("/create")}>Crear Evento</Boton>
                         </div>
 
                         <div className="d-flex gap-2">
-                            <Boton>Login</Boton>
+                            <Boton onClick={() => navigate("/login")}>Login</Boton>
                             <Boton onClick={toggleTheme}>
                                 {isDarkMode ? "Claro" : "Oscuro"}
                             </Boton>
