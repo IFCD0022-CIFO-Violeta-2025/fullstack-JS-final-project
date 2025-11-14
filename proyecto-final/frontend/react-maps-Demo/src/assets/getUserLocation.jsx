@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { LoadScript, GoogleMap, InfoWindow, Marker } from '@react-google-maps/api';
 
 const GetUserLocation = () => {
@@ -6,14 +6,6 @@ const GetUserLocation = () => {
     const [longitude, setLongitude] = useState(null);
     const [postalCode, setPostalCode] = useState('');
     const [error, setError] = useState('');
-
-    const onLoad = useCallback((map) => {
-        setMap(map);
-    }, []);
-
-    const onUnmount = useCallback(() => {
-        setMap(null);
-    }, []);
 
     const getCurrentLocation = () => {
         if (navigator.geolocation) {

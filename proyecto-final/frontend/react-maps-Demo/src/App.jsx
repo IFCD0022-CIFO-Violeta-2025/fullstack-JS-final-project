@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import Iframe from 'react-iframe';
 import './App.css'
 import PlanoEvento from './assets/planoEvento';
 import GetUserLocation from './assets/getUserLocation';
