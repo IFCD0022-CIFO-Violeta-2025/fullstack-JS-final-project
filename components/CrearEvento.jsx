@@ -90,7 +90,7 @@ export default function Login() {
                     <div class="mb-3 col col-sm-12 col-md-8 col-lg-6">
                         <label for="minimoAsistentes" class="form-label">Numero minimo de asistentes</label>
                         <input type="number" class="form-control" id="minimoAsistentes" name="minimoAsistentes"
-                            placeholder="1" required min="1"/>
+                            placeholder="1" required min="1" />
                     </div>
                 </div>
                 <div className="row">
