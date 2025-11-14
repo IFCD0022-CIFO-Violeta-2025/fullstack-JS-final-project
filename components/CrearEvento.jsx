@@ -86,6 +86,13 @@ export default function Login() {
                         <input type="date" className="form-control" id="fechaLimite" name="fechaLimite" required />
                     </div>
                 </div>
+                <div class="row">
+                    <div class="mb-3 col col-sm-12 col-md-8 col-lg-6">
+                        <label for="minimoAsistentes" class="form-label">Numero minimo de asistentes</label>
+                        <input type="number" class="form-control" id="minimoAsistentes" name="minimoAsistentes"
+                            placeholder="1" required min="1"/>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="mb-3 col col-sm-12 col-md-8 col-lg-6">
                         <label htmlFor="maximoAsistentes" className="form-label">Numero máximo de asistentes</label>
