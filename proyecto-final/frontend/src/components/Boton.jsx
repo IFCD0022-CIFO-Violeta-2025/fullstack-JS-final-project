@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 const Boton = ({ children, onClick = () => {}, type = "button" }) => {
   const { theme } = useContext(ThemeContext);

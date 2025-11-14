@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 import viteLogo from "/vite.svg";
 import Boton from "./Boton";
 import Sidebar from "./SideBar"
