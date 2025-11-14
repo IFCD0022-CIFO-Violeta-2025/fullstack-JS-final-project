@@ -9,4 +9,6 @@ build/
 
 # Env
 .env
-.env.local
+.end.local
+.env.dev
+.env.prod
