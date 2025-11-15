@@ -1,31 +1,42 @@
-import { useState } from "react"
-import reactLogo from "./assets/react.svg"
-import viteLogo from "/vite.svg"
-import "./App.css"
+import React, { useContext, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeContext } from "./contexts/ThemeContext";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/SideBar";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import EventPage from "./pages/EventPage";
+import CreateEventPage from "./pages/CreateEventPage";
+import ProfilePage from "./pages/ProfilePage";
+import FAQPage from "./pages/FAQPage";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { theme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = theme.bodyColor;
+  }, [theme.bodyColor]);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Navbar />
+      <Sidebar />
+
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          {/* <Route path="/event/:id" element={<EventPage />} /> */}
+          <Route path="/event" element={<EventPage />}/>
+          <Route path="/create" element={<CreateEventPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/faq" element={<FAQPage />} />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </>
   )
+
+
 }
 
-export default App
+export default App;
