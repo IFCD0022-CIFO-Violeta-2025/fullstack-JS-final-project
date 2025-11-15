@@ -5,7 +5,8 @@ import { ThemeContext } from "../contexts/ThemeContext"
 import ComentariosEvento from "../components/ComentariosEvento"
 import SocialIcon from "../components/SocialIcon"
 import UsuarioInfo from "../components/UsuarioInfo"
-import { eventoMock } from "../data/mockData" // 👉 importamos el mock
+import { eventoMock } from "../data/mockData"
+import AccionesEvento from "../components/AccionesEvento"
 
 function EventPage() {
   const { theme } = useContext(ThemeContext)
@@ -154,6 +155,14 @@ function EventPage() {
           >
             Aquí irá el mapa del evento
           </div>
+
+          {/* Acciones evento */}
+          <AccionesEvento
+            likes={evento.likes}
+            commentsCount={evento.commentsCount}
+            onShare={() => alert("Compartir evento")}
+            onSave={() => alert("Evento guardado")}
+          />
 
           {/* Comentarios */}
           <ComentariosEvento comentarios={evento.comentarios} />

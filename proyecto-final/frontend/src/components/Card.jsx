@@ -4,13 +4,24 @@ import Boton from "./Boton"
 import Etiqueta from "./Etiqueta"
 import UsuarioInfo from "./UsuarioInfo"
 import { eventoMock } from "../data/mockData" // 👉 importamos el mock
+import AccionesEvento from "./AccionesEvento"
 
 const Card = () => {
   const { theme } = useContext(ThemeContext)
 
   // 👉 usamos directamente los datos del mock
-  const { titulo, descripcion, ubicacion, fechas, horaInicio, categorias, usuario, img } =
-    eventoMock
+  const {
+    titulo,
+    descripcion,
+    ubicacion,
+    fechas,
+    horaInicio,
+    categorias,
+    usuario,
+    img,
+    likes,
+    commentsCount,
+  } = eventoMock
 
   let fechaTexto = ""
   if (fechas.length === 1) {
@@ -43,6 +54,9 @@ const Card = () => {
           boxShadow: "6px 6px 12px rgba(0, 0, 0, 0.15)",
         }}
       >
+        {/* Usuario que publicó */}
+        <UsuarioInfo usuario={usuario} />
+
         {/* Imagen arriba con borde inferior fino */}
         <div
           style={{
@@ -111,8 +125,13 @@ const Card = () => {
             style={{ borderTop: "1px solid #ddd", paddingTop: "0.5rem" }}
           ></div>
 
-          {/* Usuario que publicó */}
-          <UsuarioInfo usuario={usuario} />
+          {/* Acciones evento */}
+          <AccionesEvento
+            likes={likes}
+            commentsCount={commentsCount}
+            onShare={() => alert("Compartir evento")}
+            onSave={() => alert("Evento guardado")}
+          />
         </div>
       </div>
     </div>

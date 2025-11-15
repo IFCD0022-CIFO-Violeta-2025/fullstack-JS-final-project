@@ -22,4 +22,7 @@ export const eventoMock = {
     { usuario: "Diego", mensaje: "Venderán cerveza?" },
   ],
   img: eventImg,
+
+  likes: 120,
+  commentsCount: 45,
 }
