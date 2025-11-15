@@ -1,0 +1,90 @@
+Listado de rutas de carpetas para el volumen Windows
+
+fullstack-JS-final-project-fix-update-husky
+|   .gitattributes
+|   .gitignore
+|   estructura22.txt
+|   estructurafinal.ttxt
+|   explicacion_API.json
+|   package-lock.json
+|   package.json
+|   Planning.md
+|   
++---.husky
+|       pre-push
+|       
+\---proyecto-final
+    |   .gitignore
+    |   README.md
+    |   
+    +---backend
+    |   |   .env
+    |   |   .prettierignore
+    |   |   .prettierrc
+    |   |   api.js
+    |   |   eslint.config.js
+    |   |   estructura.txt
+    |   |   estructura22.txt
+    |   |   index.js
+    |   |   package-lock.json
+    |   |   package.json
+    |   |   prettier.config.js
+    |   |   
+    |   +---config
+    |   |       db.js
+    |   |       
+    |   +---models
+    |   |       User.js
+    |   |       
+    |   \---routes
+    |           server.js
+    |           users.js
+    |           
+
+
+
+🔹 Tecnologías usadas
+
+Node.js → entorno de ejecución del servidor.
+Express → framework para crear rutas y manejar peticiones HTTP.
+Sequelize → ORM para conectarte a MySQL, gestionar modelos (User) y sincronizar la base de datos.
+MySQL → base de datos (react_dom_orm), conectada a través de Sequelize.
+dotenv → para cargar variables de entorno (.env) como puerto, JWT, credenciales DB.
+Joi → para validar la información que envían los usuarios (nombre, email, password).
+bcryptjs → para encriptar y comparar contraseñas.
+jsonwebtoken (JWT) → para generar tokens en el login.
+cors → para permitir que el frontend haga peticiones desde otro origen.
+
+
+
+backend/
+  ├─ config/db.js      ← configuración Sequelize / MySQL
+  ├─ models/User.js    ← modelo de usuario
+  ├─ routes/users.js   ← rutas de registro y login
+  └─ index.js          ← arranque del servidor
+
+
+(users.js)
+API:
+POST
+http://localhost:4000/api/users/registro
+{
+  "nombre": "Gabriel",
+  "email": "gabriel@example.com",
+  "password": "1234"
+}
+
+
+POST
+http://localhost:4000/api/users/login
+{
+  "email": "gabriel@example.com",
+  "password": "1234"
+}       
+
+
+GET
+http://localhost:4000/api/users/exists/gabriel@example.com
+
+DELETE
+http://localhost:4000/api/users/4
