@@ -2,24 +2,15 @@ import React, { useContext } from "react"
 import { ThemeContext } from "../contexts/ThemeContext"
 import Boton from "./Boton"
 import Etiqueta from "./Etiqueta"
-import eventImg from "../assets/event.jpg"
-import userAvatar from "../assets/user.jpg"
 import UsuarioInfo from "./UsuarioInfo"
+import { eventoMock } from "../data/mockData" // 👉 importamos el mock
 
-const Card = ({
-  titulo = "Festival de Música Urbana",
-  descripcion = "Únete a nosotros para una noche llena de ritmo, talento local y buena vibra. Este texto es muy largo y debería cortarse con puntos suspensivos para que la tarjeta mantenga siempre el mismo tamaño sin importar la longitud del contenido.",
-  ubicacion = "Barcelona",
-  fechas = ["2025-11-25"],
-  hora = "20:00h",
-  categorias = ["Música", "Cultura", "Danza", "Teatro"],
-  usuario = {
-    nombre: "Nombre",
-    avatar: userAvatar, // ruta de la imagen del usuario
-    fechaPublicacion: "2025-11-01",
-  },
-}) => {
+const Card = () => {
   const { theme } = useContext(ThemeContext)
+
+  // 👉 usamos directamente los datos del mock
+  const { titulo, descripcion, ubicacion, fechas, horaInicio, categorias, usuario, img } =
+    eventoMock
 
   let fechaTexto = ""
   if (fechas.length === 1) {
@@ -61,7 +52,7 @@ const Card = ({
           }}
         >
           <img
-            src={eventImg}
+            src={img}
             className="card-img-top"
             alt="Imagen del evento"
             style={{
@@ -99,7 +90,7 @@ const Card = ({
                 <strong>Fecha:</strong> 🗓️ {fechaTexto}
               </div>
               <div className="mb-1">
-                <strong>Hora:</strong> ⏰ {hora}
+                <strong>Hora:</strong> ⏰ {horaInicio}
               </div>
             </div>
           </div>
@@ -114,33 +105,13 @@ const Card = ({
             <Etiqueta categorias={categorias} />
           </div>
 
-          {/* Usuario que publicó */}
+          {/* linea divisoria */}
           <div
             className="d-flex align-items-center mt-3"
             style={{ borderTop: "1px solid #ddd", paddingTop: "0.5rem" }}
-          >
-            <img
-              src={usuario.avatar}
-              alt={usuario.nombre}
-              style={{
-                width: "36px",
-                height: "36px",
-                borderRadius: "50%",
-                objectFit: "cover",
-                marginRight: "0.5rem",
-              }}
-            />
-            <div style={{ fontSize: "0.85rem", color: theme.textColor }}>
-              <div>{usuario.nombre}</div>
-              <div style={{ fontSize: "0.75rem" }}>
-                {new Date(usuario.fechaPublicacion).toLocaleDateString("es-ES", {
-                  day: "numeric",
-                  month: "short",
-                  year: "numeric",
-                })}
-              </div>
-            </div>
-          </div>
+          ></div>
+
+          {/* Usuario que publicó */}
           <UsuarioInfo usuario={usuario} />
         </div>
       </div>

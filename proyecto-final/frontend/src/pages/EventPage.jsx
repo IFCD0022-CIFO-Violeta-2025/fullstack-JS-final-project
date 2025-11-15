@@ -4,41 +4,14 @@ import Etiqueta from "../components/Etiqueta"
 import { ThemeContext } from "../contexts/ThemeContext"
 import ComentariosEvento from "../components/ComentariosEvento"
 import SocialIcon from "../components/SocialIcon"
-import eventImg from "../assets/event.jpg"
-import userAvatar from "../assets/user.jpg"
 import UsuarioInfo from "../components/UsuarioInfo"
+import { eventoMock } from "../data/mockData" // 👉 importamos el mock
 
 function EventPage() {
   const { theme } = useContext(ThemeContext)
 
-  // Datos del evento
-  const evento = {
-    titulo: "Festival de Música Urbana",
-    descripcion:
-      "Únete a nosotros para una noche llena de ritmo, talento local y buena vibra. Este evento durará varios días y queremos mostrar correctamente el rango de fechas. Habrá conciertos, talleres, exposiciones y actividades para toda la familia.",
-    organizador: "Juan Pérez",
-    contacto: "juan.perez@email.com",
-    ubicacion: "Barcelona",
-    fechas: ["2025-11-25", "2025-11-27"],
-    horaInicio: "20:00",
-    horaFin: "23:30",
-    hora: "20:00h",
-    asistentesMin: 50,
-    asistentesMax: 300,
-    inscritos: 120,
-    fechaLimiteReserva: "2025-11-23",
-    recordatorio2diasAntes: true,
-    categorias: ["Música", "Cultura", "Danza", "Teatro"],
-    usuario: {
-      nombre: "Juan Pérez",
-      avatar: userAvatar,
-      fechaPublicacion: "2025-11-01",
-    },
-    comentarios: [
-      { usuario: "Ana", mensaje: "¡Qué ganas de que llegue el evento!" },
-      { usuario: "Luis", mensaje: "¿Habrá entrada para menores?" },
-    ],
-  }
+  // 👉 usamos directamente el mock en lugar de definir evento aquí
+  const evento = eventoMock
 
   // Lógica para mostrar fechas
   const getFechaTexto = (fechas) => {
@@ -82,9 +55,10 @@ function EventPage() {
       >
         {/* Usuario y organizador */}
         <UsuarioInfo usuario={evento.usuario} />
+
         {/* Imagen del evento */}
         <img
-          src={eventImg}
+          src={evento.img} // 👉 ahora usamos la imagen del mock
           alt={evento.titulo}
           style={{ width: "100%", height: "400px", objectFit: "cover" }}
         />
