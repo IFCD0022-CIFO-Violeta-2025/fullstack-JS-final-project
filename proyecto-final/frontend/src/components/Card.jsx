@@ -91,17 +91,24 @@ const Card = () => {
             </p>
 
             <div className="mt-2 text-sm">
-              <div className="mb-1">
-                <strong>Lugar:</strong> 📍 {ubicacion}
+              <div className="mb-1 d-flex">
+                <strong className="me-1">Lugar:</strong>
+                <span>📍 {ubicacion}</span>
               </div>
-              <div className="mb-1">
-                <strong>Fecha:</strong> 🗓️ {fechaTexto}
+
+              <div className="mb-1 d-flex">
+                <strong className="me-1">Fecha:</strong>
+                <span>🗓️ {fechaTexto}</span>
               </div>
-              <div className="mb-1">
-                <strong>Hora:</strong> ⏰ {horaInicio}
+
+              <div className="mb-1 d-flex">
+                <strong className="me-1">Hora:</strong>
+                <span>⏰ {horaInicio}</span>
               </div>
-              <div className="mb-1">
-                <strong>Asistentes inscritos:</strong> {inscritos}
+
+              <div className="mb-1 d-flex">
+                <strong className="me-1">Asistentes inscritos:</strong>
+                <span>{inscritos}</span>
               </div>
             </div>
           </div>

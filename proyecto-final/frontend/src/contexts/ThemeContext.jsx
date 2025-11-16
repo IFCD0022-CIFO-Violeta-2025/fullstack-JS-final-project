@@ -54,6 +54,24 @@ const ThemeProvider = ({ children }) => {
         border: isDarkMode ? `1px solid ${COLORS.darkAccent}` : `1px solid ${COLORS.purpleDark}`,
       },
     },
+
+    borderColor: isDarkMode ? COLORS.black : COLORS.white,
+
+    botonNavbar: {
+      base: {
+        backgroundColor: "transparent",
+        color: COLORS.white,
+        border: "none",
+        padding: "0.5rem 1rem",
+        cursor: "pointer",
+        fontWeight: "500",
+        transition: "color 0.3s ease",
+        margin: "0 8px",
+      },
+      hover: {
+        color: COLORS.purpleLight,
+      },
+    },
   }
 
   return (

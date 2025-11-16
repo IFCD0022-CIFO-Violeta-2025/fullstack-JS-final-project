@@ -1,5 +1,12 @@
+import Titulo from "../components/Titulo"
+
 function CreateEventPage() {
-    return ( <div>Create Event Page</div> );
+  return (
+    <div>
+      {" "}
+      <Titulo title="Create Event Page" />
+    </div>
+  )
 }
 
-export default CreateEventPage;
+export default CreateEventPage
