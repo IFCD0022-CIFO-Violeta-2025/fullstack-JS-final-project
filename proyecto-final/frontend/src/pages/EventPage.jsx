@@ -59,7 +59,7 @@ function EventPage() {
 
         {/* Imagen del evento */}
         <img
-          src={evento.img} // 👉 ahora usamos la imagen del mock
+          src={evento.img} // usamos la imagen del mock
           alt={evento.titulo}
           style={{ width: "100%", height: "400px", objectFit: "cover" }}
         />
@@ -130,7 +130,7 @@ function EventPage() {
           {/* Botones de acción */}
           <div style={{ marginTop: "2rem", display: "flex", gap: "1rem" }}>
             <Boton>Inscribirse</Boton>
-            <Boton>Chat del evento</Boton>
+            <Boton>Chat</Boton>
           </div>
 
           {/* Etiquetas */}

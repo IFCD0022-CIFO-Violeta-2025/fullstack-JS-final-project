@@ -1,11 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from "react"
 
-const ThemeContext = createContext();
+const ThemeContext = createContext()
 
 const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
-  const toggleTheme = () => setIsDarkMode((prev) => !prev);
+  const toggleTheme = () => setIsDarkMode((prev) => !prev)
 
   // 🎨 Paleta de colores centralizada
   const COLORS = {
@@ -18,7 +18,7 @@ const ThemeProvider = ({ children }) => {
     lightSecondary: "#F0EAFE",
     purpleDark: "#6739E4",
     purpleLight: "#9569FF",
-  };
+  }
 
   const theme = {
     navbarColor: isDarkMode ? COLORS.darkAccent : COLORS.darkPrimary,
@@ -33,6 +33,8 @@ const ThemeProvider = ({ children }) => {
     textColor: isDarkMode ? COLORS.black : COLORS.white,
 
     etiquetaColor: isDarkMode ? COLORS.purpleDark : COLORS.purpleLight,
+
+    dejarComentario: isDarkMode ? COLORS.lightSecondary : COLORS.lightSecondary,
 
     boton: {
       base: {
@@ -49,18 +51,16 @@ const ThemeProvider = ({ children }) => {
       hover: {
         backgroundColor: COLORS.white,
         color: isDarkMode ? COLORS.darkAccent : COLORS.purpleDark,
-        border: isDarkMode
-          ? `1px solid ${COLORS.darkAccent}`
-          : `1px solid ${COLORS.purpleDark}`,
+        border: isDarkMode ? `1px solid ${COLORS.darkAccent}` : `1px solid ${COLORS.purpleDark}`,
       },
     },
-  };
+  }
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme, theme }}>
       {children}
     </ThemeContext.Provider>
-  );
-};
+  )
+}
 
-export { ThemeContext, ThemeProvider };
+export { ThemeContext, ThemeProvider }

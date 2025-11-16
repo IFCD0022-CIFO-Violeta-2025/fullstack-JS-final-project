@@ -3,7 +3,7 @@ import { ThemeContext } from "../contexts/ThemeContext"
 import Boton from "./Boton"
 import Etiqueta from "./Etiqueta"
 import UsuarioInfo from "./UsuarioInfo"
-import { eventoMock } from "../data/mockData" // 👉 importamos el mock
+import { eventoMock } from "../data/mockData"
 import AccionesEvento from "./AccionesEvento"
 
 const Card = () => {
@@ -16,6 +16,7 @@ const Card = () => {
     ubicacion,
     fechas,
     horaInicio,
+    inscritos,
     categorias,
     usuario,
     img,
@@ -48,8 +49,8 @@ const Card = () => {
         style={{
           backgroundColor: theme.cardColor,
           color: theme.textColor,
-          maxWidth: "360px",
-          minWidth: "280px",
+          maxWidth: "450px",
+          minWidth: "350px",
           width: "100%",
           boxShadow: "6px 6px 12px rgba(0, 0, 0, 0.15)",
         }}
@@ -58,16 +59,9 @@ const Card = () => {
         <UsuarioInfo usuario={usuario} />
 
         {/* Imagen arriba con borde inferior fino */}
-        <div
-          style={{
-            borderBottom: `2px solid ${theme.boton.base.backgroundColor}`,
-            borderRadius: "4px 4px 0 0",
-            overflow: "hidden",
-          }}
-        >
+        <div>
           <img
             src={img}
-            className="card-img-top"
             alt="Imagen del evento"
             style={{
               height: "200px",
@@ -105,6 +99,9 @@ const Card = () => {
               </div>
               <div className="mb-1">
                 <strong>Hora:</strong> ⏰ {horaInicio}
+              </div>
+              <div className="mb-1">
+                <strong>Asistentes inscritos:</strong> {inscritos}
               </div>
             </div>
           </div>

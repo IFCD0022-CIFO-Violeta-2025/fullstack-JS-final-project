@@ -10,6 +10,9 @@ export const eventoMock = {
   fechas: ["2025-11-25", "2025-11-27"],
   horaInicio: "20:00",
   horaFin: "23:30",
+  asistentesMin: 20,
+  asistentesMax: 200,
+  inscritos: 57,
   categorias: ["Música", "Cultura", "Danza", "Teatro"],
   usuario: {
     nombre: "Juan Pérez",
@@ -19,7 +22,7 @@ export const eventoMock = {
   comentarios: [
     { usuario: "Sandra", mensaje: "¡Qué ganas de que llegue el evento!" },
     { usuario: "Francisco", mensaje: "Me apunto!" },
-    { usuario: "Diego", mensaje: "Venderán cerveza?" },
+    { usuario: "Diego", mensaje: "Alguien sabe si venderán cerveza? es para un amigo..." },
   ],
   img: eventImg,
 

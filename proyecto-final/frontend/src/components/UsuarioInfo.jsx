@@ -1,4 +1,3 @@
-// src/components/UsuarioInfo.jsx
 import React, { useContext } from "react"
 import { ThemeContext } from "../contexts/ThemeContext"
 
