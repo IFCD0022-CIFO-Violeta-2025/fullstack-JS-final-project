@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { ThemeContext } from "../contexts/ThemeContext"
+import { AuthContext } from "../contexts/AuthContext"
 import viteLogo from "/vite.svg"
 import Boton from "./Boton"
 import Sidebar from "./SideBar"
@@ -8,6 +9,7 @@ import BotonNavbar from "./BotonNavbar"
 
 const Navbar = () => {
   const { toggleTheme, theme, isDarkMode } = useContext(ThemeContext)
+  const { user, login, logout } = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -76,14 +78,30 @@ const Navbar = () => {
             </div>
 
             <div className="d-flex gap-2">
-              <Boton onClick={() => navigate("/login")}>Login</Boton>
+              {/* 🔥 Si NO hay usuario, mostramos ambos botones */}
+              {!user && (
+                <>
+                  <Boton onClick={() => navigate("/login")}>Login</Boton>
+                  <Boton onClick={() => navigate("/login")}>Sign in</Boton>
+                </>
+              )}
+
+              {/* 🔥 Si hay usuario, mostramos su nombre + Logout */}
+              {user && (
+                <>
+                  <Boton>{user.name}</Boton>
+                  <Boton onClick={logout}>Logout</Boton>
+                </>
+              )}
+
+              {/* Botón para cambiar tema */}
               <Boton onClick={toggleTheme}>{isDarkMode ? "Claro" : "Oscuro"}</Boton>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Sidebar controlado por estado */}
+      {/* Sidebar */}
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
     </>
   )
