@@ -1,5 +1,11 @@
+import Titulo from "../components/Titulo"
+
 function ProfilePage() {
-    return ( <div>Profile Page</div> );
+  return (
+    <div>
+      <Titulo title="Profile Page" />
+    </div>
+  )
 }
 
-export default ProfilePage;
+export default ProfilePage
