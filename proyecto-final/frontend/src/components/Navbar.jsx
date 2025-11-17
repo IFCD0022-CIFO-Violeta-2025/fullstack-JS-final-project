@@ -6,6 +6,7 @@ import viteLogo from "/vite.svg"
 import Boton from "./Boton"
 import Sidebar from "./SideBar"
 import BotonNavbar from "./BotonNavbar"
+import UsuarioNavbar from "./UsuarioNavbar"
 
 const Navbar = () => {
   const { toggleTheme, theme, isDarkMode } = useContext(ThemeContext)
@@ -87,12 +88,8 @@ const Navbar = () => {
               )}
 
               {/* 🔥 Si hay usuario, mostramos su nombre + Logout */}
-              {user && (
-                <>
-                  <Boton>{user.name}</Boton>
-                  <Boton onClick={logout}>Logout</Boton>
-                </>
-              )}
+        {user && <UsuarioNavbar />}
+
 
               {/* Botón para cambiar tema */}
               <Boton onClick={toggleTheme}>{isDarkMode ? "Claro" : "Oscuro"}</Boton>

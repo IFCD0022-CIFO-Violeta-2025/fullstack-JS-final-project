@@ -5,23 +5,34 @@ import { AuthContext } from "../contexts/AuthContext"
 import { ThemeContext } from "../contexts/ThemeContext"
 
 function LoginPage() {
-  const { login } = useContext(AuthContext) // login del contexto
-  const { theme } = useContext(ThemeContext) // para usar colores
+  // 🔹 Obtenemos la función login del contexto de autenticación
+  const { login } = useContext(AuthContext)
+
+  // 🔹 Obtenemos el theme para aplicar colores y estilos
+  const { theme } = useContext(ThemeContext)
+
+  // 🔹 Para navegar al Home después de loguear
   const navigate = useNavigate()
 
+  // 🔹 Estado para inputs del formulario
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
+  // 🔹 Función que se ejecuta al enviar el formulario
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    // 🔹 Validamos que el usuario haya escrito algo
     if (!username) {
       alert("Introduce un nombre de usuario")
       return
     }
 
-    // Simulamos login
+    // 🔹 Simulamos login
+    // El valor de username no se mostrará en el Navbar; usamos mock para eso
     login(username)
+
+    // 🔹 Redirigimos al Home
     navigate("/")
   }
 
@@ -29,12 +40,13 @@ function LoginPage() {
     <div
       className="d-flex justify-content-center align-items-center"
       style={{
-        minHeight: "80vh",
+        minHeight: "80vh", // 🔹 altura mínima para centrar verticalmente
         backgroundColor: theme.bodyColor,
         color: theme.textColor,
         padding: "2rem",
       }}
     >
+      {/* 🔹 Card de login */}
       <div
         className="card shadow-sm"
         style={{
@@ -46,9 +58,12 @@ function LoginPage() {
         }}
       >
         <div className="card-body">
+          {/* 🔹 Título de la página */}
           <Titulo title="Login Page" />
 
+          {/* 🔹 Formulario de login */}
           <form onSubmit={handleSubmit}>
+            {/* 🔹 Input de usuario */}
             <div className="mb-3">
               <label htmlFor="username" className="form-label">
                 Usuario
@@ -68,6 +83,7 @@ function LoginPage() {
               />
             </div>
 
+            {/* 🔹 Input de contraseña */}
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
                 Contraseña
@@ -87,6 +103,7 @@ function LoginPage() {
               />
             </div>
 
+            {/* 🔹 Botón de submit */}
             <button
               type="submit"
               className="btn w-100"
