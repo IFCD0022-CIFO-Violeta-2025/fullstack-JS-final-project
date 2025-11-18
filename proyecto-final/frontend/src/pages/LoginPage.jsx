@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import Titulo from "../components/Titulo"
 import { AuthContext } from "../contexts/AuthContext"
 import { ThemeContext } from "../contexts/ThemeContext"
+import { postJSON } from "../utils/apiclient"
 
 function LoginPage() {
   // 🔹 Obtenemos la función login del contexto de autenticación
@@ -17,20 +18,47 @@ function LoginPage() {
   // 🔹 Estado para inputs del formulario
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [errors, setErrors] = useState({})
 
   // 🔹 Función que se ejecuta al enviar el formulario
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    // 🔹 Limpiamos los errores
+    // Para que no se muestren en la siguiente renderizació
+    // de la pantalla de login
+    setErrors({})
     // 🔹 Validamos que el usuario haya escrito algo
-    if (!username) {
-      alert("Introduce un nombre de usuario")
+    if ( !username ) {
+      setErrors({username: "El nombre de usuario es obligatorio"});
+      return
+    } 
+    if (username.length < 5) {
+      setErrors({username: "El nombre debe tener al menos 5 carácteres"});
+      return
+    }
+    if ( !password ) {
+      setErrors({password: "La contraseña es obligatoria"});
+      return
+    } 
+    if (password.length < 5) {
+      setErrors({password: "La contraseña debe tener al menos 5 carácteres"});
       return
     }
 
-    // 🔹 Simulamos login
-    // El valor de username no se mostrará en el Navbar; usamos mock para eso
-    login(username)
+    // 🔹Mandamos el POST para el login
+    const userLogin = async () => {
+        try {
+          const data = await postJSON('/login', { username, password });
+          if(data.success){ 
+            console.log(data)
+            login(data.username)
+          }
+        } catch (error) {
+          console.error('Error en la solicitud POST de login : ', error);
+        }
+      };
+      userLogin();
 
     // 🔹 Redirigimos al Home
     navigate("/")
@@ -81,6 +109,7 @@ function LoginPage() {
                   borderColor: theme.borderColor,
                 }}
               />
+              {errors.username && <p className="error">❌ {errors.username}</p>}
             </div>
 
             {/* 🔹 Input de contraseña */}
@@ -101,6 +130,7 @@ function LoginPage() {
                   borderColor: theme.borderColor,
                 }}
               />
+              {errors.password && <p className="error">❌ {errors.password}</p>}
             </div>
 
             {/* 🔹 Botón de submit */}

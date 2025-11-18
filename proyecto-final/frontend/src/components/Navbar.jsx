@@ -18,10 +18,10 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg fixed-top"
+        className="navbar navbar-dark navbar-expand-lg fixed-top"
         style={{
-          backgroundColor: theme.navbarColor,
-          borderBottom: theme.navbarBorder,
+          backgroundColor: theme.navbarBG,
+          borderBottom: theme.navbarBorder
         }}
       >
         <div className="container-fluid">
