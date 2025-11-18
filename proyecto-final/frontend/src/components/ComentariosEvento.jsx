@@ -148,7 +148,7 @@ const ComentariosEvento = ({ comentarios, onAgregarComentario }) => {
           rows="3"
           style={{
             backgroundColor: theme.dejarComentario,
-            color: theme.textColor,
+            color: theme.black,
             border: `1px solid ${theme.borderColor}`,
             marginBottom: "1rem",
             borderRadius: "6px",

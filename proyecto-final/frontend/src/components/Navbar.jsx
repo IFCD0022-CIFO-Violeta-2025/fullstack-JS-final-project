@@ -10,7 +10,7 @@ import UsuarioNavbar from "./UsuarioNavbar"
 
 const Navbar = () => {
   const { toggleTheme, theme, isDarkMode } = useContext(ThemeContext)
-  const { user, login, logout } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()
   const [sidebarOpen, setSidebarOpen] = useState(false)
