@@ -61,7 +61,7 @@ backend/
   ├─ config/db.js      ← configuración Sequelize / MySQL
   ├─ models/User.js    ← modelo de usuario
   ├─ routes/users.js   ← rutas de registro y login
-  └─ index.js          ← arranque del servidor
+  └─ api.js /index.js         ← arranque del servidor
 
 
 (users.js)

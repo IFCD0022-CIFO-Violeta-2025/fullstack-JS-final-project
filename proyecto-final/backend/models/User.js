@@ -5,29 +5,101 @@ import sequelize from "../config/db.js";
 const User = sequelize.define(
   "User",
   {
-    nombre: {
-      type: DataTypes.STRING,
+    idUser: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    username: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+      unique: true,
+    },
+    name: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
       unique: true,
     },
     password: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
-    role: {
-      type: DataTypes.ENUM("user", "admin"), // define los roles posibles como checkbox en mysql
+    avatar_url: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    aboutMe: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    address: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    birthday: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    documentType: {
+      type: DataTypes.STRING(10),
       allowNull: false,
-      defaultValue: "user", // por defecto usuario normal
+    },
+    documentNumber: {
+      type: DataTypes.STRING(15),
+      allowNull: false,
+    },
+    news_subscription: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    banned: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    bannedDate: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+    bannedUntilDate: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+    deleted: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    // Sequelize ya maneja createdAt y updatedAt automáticamente si timestamps: true
+    deleted_at: {
+      type: DataTypes.DATE,
+      allowNull: true,
     },
   },
   {
+    tableName: "Users", // nombre explícito de la tabla
     timestamps: true, // crea automáticamente createdAt y updatedAt
-    paranoid: true, //soft deleted para no eliminar 
+    paranoid: true, // soft delete, usa deleted_at
+    createdAt: "createdAt",
+    updatedAt: "updatedAt",
+    deletedAt: "deleted_at", // mapeo del soft delete
+    indexes: [
+      {
+        name: "idx_users_document",
+        fields: ["documentType", "documentNumber"],
+      },
+    ],
   }
 );
 
 export default User;
+
