@@ -8,6 +8,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
   // ordenar alfabeticamente
   const categorias = [
+    "Arte",
     "Aventura",
     "Bienestar",
     "Ciencia",

@@ -21,7 +21,7 @@ const Navbar = () => {
         className="navbar navbar-dark navbar-expand-lg fixed-top"
         style={{
           backgroundColor: theme.navbarBG,
-          borderBottom: theme.navbarBorder
+          borderBottom: theme.navbarBorder,
         }}
       >
         <div className="container-fluid">
@@ -88,8 +88,10 @@ const Navbar = () => {
               )}
 
               {/* 🔥 Si hay usuario, mostramos su nombre + Logout */}
-        {user && <UsuarioNavbar />}
+              {user && <UsuarioNavbar />}
 
+              {/* Botón para chat */}
+              <Boton onClick={() => navigate("/chat")}>Chat</Boton>
 
               {/* Botón para cambiar tema */}
               <Boton onClick={toggleTheme}>{isDarkMode ? "Claro" : "Oscuro"}</Boton>
