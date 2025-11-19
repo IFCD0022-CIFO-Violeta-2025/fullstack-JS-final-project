@@ -5,6 +5,7 @@ import { AuthContext } from "../contexts/AuthContext"
 import { eventoMock } from "../data/mockData"
 import Titulo from "../components/Titulo"
 import Boton from "../components/Boton"
+import MensajeBurbuja from "../components/MensajeBurbuja"
 
 const socket = io("http://localhost:3000")
 
@@ -18,7 +19,7 @@ export default function ChatPage() {
     avatar: eventoMock.usuario.avatar,
   }
 
-  // Mensajes iniciales con un mock de otro usuario
+  // Mensajes iniciales con mock
   const [messages, setMessages] = useState([
     {
       user: "Diego",
@@ -30,7 +31,6 @@ export default function ChatPage() {
 
   const [message, setMessage] = useState("")
 
-  // Escuchar mensajes entrantes
   useEffect(() => {
     socket.on("chat message", (msg) => {
       setMessages((prev) => [...prev, msg])
@@ -38,7 +38,6 @@ export default function ChatPage() {
     return () => socket.off("chat message")
   }, [])
 
-  // Scroll automático al final
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
@@ -53,80 +52,7 @@ export default function ChatPage() {
       avatar: usuarioActual.avatar,
     }
     socket.emit("chat message", newMsg)
-    setMessage("") // solo limpiar el input, no agregar al estado
-  }
-
-  // Componente para un mensaje individual
-  const Mensaje = ({ m }) => {
-    const isMe = m.user === usuarioActual.nombre
-    return (
-      <li className={`mb-2 d-flex ${isMe ? "justify-content-end" : "justify-content-start"}`}>
-        <div style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-          {/* Avatar a la izquierda si no es mensaje propio */}
-          {!isMe && (
-            <img
-              src={m.avatar}
-              alt={m.user}
-              style={{
-                width: "45px",
-                height: "45px",
-                margin: "0 6px",
-                borderRadius: "50%",
-                objectFit: "cover",
-              }}
-            />
-          )}
-
-          {/* Burbuja del mensaje con estilos fijos */}
-          <div
-            style={{
-              background: "red", // color fijo
-              borderRadius: "8px",
-              padding: "4px 10px",
-              position: "relative",
-              maxWidth: "calc(100% - 55px)", // respeta espacio para avatar
-              wordBreak: "break-word",
-            }}
-          >
-            {/* Triángulo */}
-            <div
-              style={{
-                position: "absolute",
-                top: "8px",
-                left: isMe ? "auto" : "-8px",
-                right: isMe ? "-8px" : "auto",
-                width: 0,
-                height: 0,
-                borderTop: "8px solid transparent",
-                borderBottom: "8px solid transparent",
-                borderLeft: isMe ? "8px solid red" : "none",
-                borderRight: isMe ? "none" : "8px solid red",
-              }}
-            />
-            <div style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{m.user}</div>
-            <div>{m.content}</div>
-            <div style={{ fontSize: "0.75rem", opacity: 0.7, marginTop: "2px" }}>
-              🕒 {m.timestamp}
-            </div>
-          </div>
-
-          {/* Avatar a la derecha si es mensaje propio */}
-          {isMe && (
-            <img
-              src={m.avatar}
-              alt={m.user}
-              style={{
-                width: "45px",
-                height: "45px",
-                margin: "0 6px",
-                borderRadius: "50%",
-                objectFit: "cover",
-              }}
-            />
-          )}
-        </div>
-      </li>
-    )
+    setMessage("")
   }
 
   return (
@@ -171,9 +97,10 @@ export default function ChatPage() {
             )}
 
             <ul className="list-unstyled flex-grow-1 mb-0">
-              {messages.map((m, i) => (
-                <Mensaje key={i} m={m} />
-              ))}
+              {messages.map((m, i) => {
+                const isMe = m.user === usuarioActual.nombre
+                return <MensajeBurbuja key={i} message={m} isMe={isMe} />
+              })}
               <div ref={chatEndRef} />
             </ul>
           </div>
