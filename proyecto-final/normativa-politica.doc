@@ -1,255 +1,139 @@
-PROYECTO ARMAND EVENTS
+ARMAND EVENTS
+NORMATIVA Y POLÍTICA DE PRIVACIDAD
 
-FINALIDAD DEL PROYECTO
 
-Proyecto Armand Events es una aplicación que tiene la finaldad de publicar eventos para que las personas afines puedan relacionarse a través de estos.
+NORMATIVA DEL USO DE LA WEB
 
-Páginas que incluye el proyecto:
--	Home todos los usuarios
--	Home los usuarios registrados
--	Login usuario 
--	FAQ
--	Creación de evento
--	Evento creado
--	Agenda
--	Perfil
--	Documento pdf con la normativa de la web, la política de privacidad y las cookies
--	Pantalla para chat
+Los usuarios de Armand Events deberán cumplir la siguiente normativa para la utilización de la web:
 
+Registro
 
-HOME
+-	Registrarse como usuario en la web con datos verídicos.
 
-VISIBILIDAD DE LA PÁGINA
+Creación de eventos
 
-La página principal está visible tanto para usuarios registrados como para los no registrados. Se hace así para que cualquier persona pueda ver en qué consiste la aplicación y así se anime a registrarse, ya que sólo las personas registradas podrán crear e inscribirse a los eventos.
+-	Cuando se haya creado un evento, este deberá estar autorizado por el administrador de la web, antes de ser publicado.
 
-1.	En la página de inicio de cualquier usuario se podrán ver:
+-	La persona que organice el evento tendrá que aportar su número de documento de identidad para que se responsabilice del evento que organiza y aportar una forma de contacto por si surgiera alguna incidencia.
 
-e-frame en el lateral izquierdo de todas las páginas
-	
--	El logotipo del proyecto
--	Buscador por palabras
--	Filtro por categoría de eventos
--	Filtro por calendario
+-	El organizador deberá aportar toda la información necesaria solicitada en el formulario para que el evento pueda llevarse a cabo.
 
-	parte central
--	Los eventos próximos con el nombre de la actividad, fecha, hora, duración, lugar.
--	Filtro por localización
--	Botones para ordenar por nombre de la actividad y la fecha
+-	El organizador deberá tener actualizada la información del evento, y moderar el chat del evento
 
-	navegador parte superior derecha
--	Enlace para FAQ
--	Enlace para la página del login.
--	Botón de inscripción a la actividad. Al usuario no registrado se le solicitará que se registre como usuario para poder apuntarse al evento
+-	Si por alguna razón no se pudiera hacer el evento, ya sea porque no hay asistentes suficientes, el organizador deberá comunicar, con suficiente antelación, a las personas inscritas la cancelación del evento.
 
-2.	Cuando se trata de un usuario registrado, la página principal cambiará y además de lo ya mencionado para el usuario no registrado, le aparecerán los enlaces para:
+-	Si el organizador no aporta información verídica sobre su contacto o el evento es inexistente, el organizador será expulsado de la página web y no podrá volver a registrarse.
 
-navegador parte superior derecha (aparece en todas las páginas usuario registrado
--	Crear evento
--	Agenda
--	Perfil
--	Logout
+El evento y el chat del evento
 
+-	La comunicación entre los asistentes del chat del evento y en el evento físico en sí, deberán comunicarse de forma adecuada y con respeto. 
 
-La página home tiene las siguientes funcionalidades:
+-	El organizador será el moderador del chat del evento, y si detecta a algún asistente con un comportamiento indebido, será expulsado del evento y de la página web, no pudiendo volver a registrarse.
 
-TIPO DE BÚSQUEDA
+El usuario
+-	El usuario que se haya inscrito en 3 eventos y no haya asistido, sin justificación, será penalizado y no podrá inscribirse a eventos por un período de 6 meses.
 
-Se pueden hacer distintos tipos de búsqueda para los eventos:
+Responsabilidad
+Armand Events no se hace responsable de la organización de ninguno de los eventos, ni de los problemas que pudieran surgir este. La única persona responsable es el organizador del evento.
 
--	Por palabras
+Denuncia de comportamiento indebido
 
-FILTROS
+-	Los usuarios pueden contactar con el administrador de la web para denunciar sobre algún comportamiento indebido a ieiieie@gmail.com.
 
-Se pueden hacer los siguientes filtros:
+POLÍTICA DE PRIVACIDAD
 
--	Por categoría
-	-	aventura
-	- bienestar
-	- ciencia
-	- cine
-	- cultura
-	- danza
-	- deporte
-	- espiritualidad
-	- frikis
-	- gastronomía
-	- infantiles
-	- manualidades
-	- música
-	- naturaleza
-	- populares
-	- teatro
-	- temáticos
-	- singles
-
--	Por calendario
-
--	Por localización
+La presente Política de Privacidad establece los términos en que  usa y protege la información que es proporcionada por sus usuarios al momento de utilizar su sitio web. 
 
-
-ORDENAR DATOS
-
-Los eventos se pueden ordenar por:
-
--	Fecha
--	Nombre de actividad
-
-
-LOGIN
-
-USUARIO REGISTRADO
-
-La página tiene los siguientes campos:
-
--	e-mail
--	contraseña
--	botón para acceder
--	botón por si el usuario olvidó su contraseña. El servidor le enviará un email con un enlace para que la restaure
-
-USUARIO NO REGISTRADO
-
--	e-mail
--	contraseña
--	botón para crear cuenta. El servidor le enviará un email con un enlace para que la restaure
-
-
-PERFIL
-
-La página del perfil tiene los siguientes campos
-
--	Agregar foto
--	Nombre usuario
--	About me. Lo que el usuario quiero contar
--	e-mail
--	contraseña
--	botón para cambiar contraseña
--	Nombre
--	Apellido 1
--	Apellido 2
--	Fecha nacimiento
--	Teléfono
--	Dirección
--	Preferencia de eventos por :
-	-	aventura
-	- bienestar
-	- ciencia
-	- cine
-	- cultura
-	- danza
-	- deporte
-	- espiritualidad
-	- frikis
-	- gastronomía
-	- infantiles
-	- manualidades
-	- música
-	- naturaleza
-	- populares
-	- teatro
-	- temáticos
-	- singles
-
--	Checkbox para suscribirse al newsletter
--	Botón para actualizar perfil
--	Botón para eliminar perfil
-
-
-CREACIÓN DE EVENTO
-
-La página de creación de evento tiene los siguientes campos:
-
--	Fecha de creación del evento
--	Contacto del organizador por si surge algún contratiempo
--	Nombre del organizador
--	Tipo de documento
--	Número de DNI del organizador para que se responsabilice por el evento
--	Nombre del evento
--	Descripción detallada del evento
--	Dirección del evento
--	Enlace google maps
--	Coordenadas: longitud y latitud google maps
--	Fecha inicio del evento
--	Fecha final del evento
--	Hora de inicio del evento
--	Hora final del evento
--	Número mínimo de asistentes que hacen falta para poder realizar el evento
--	Número máximo de asistentes
--	Fecha límite para hacer la reserva
--	Tags para categorizar los eventos. Al menos uno es obligatorio
--	Botón crear evento
--	Botón actualizar evento
--	Botón eliminar evento
-
-
-EL EVENTO
-
-La página dell evento ya creado tiene los siguientes campos:
-
--	Fecha de creación del evento
--	Nombre del organizador
--	Contacto organizador
--	Tags del evento
--	Nombre del evento
--	Descripción detallada del evento
--	Dirección del evento
--	Enlace google maps
--	Coordenadas: longitud y latitud google maps
--	Fecha inicio del evento
--	Fecha final del evento
--	Hora de inicio del evento
--	Hora final del evento
--	Número mínimo de asistentes que hacen falta para poder realizar el evento
--	Número máximo de asistentes
--	Número de asistentes inscritos
--	Fecha límite para hacer la reserva
--	Tags para categorizar los eventos. Al menos uno es obligatorio
--	Comentarios del evento
--	Botón para solicitar recordatorio dos días antes del evento
--	Botón de chat para hablar con los asistentes y organizador
-
-EL CHAT DEL EVENTO
-
-El chat tiene la finalidad que los asistentes al evento se puedan conocer antes de asistir al evento presencial, de esta forma cuando se vean en persona tendrán más familiaridad.
-
-El chat únicamente se activará en la página del evento ya creado.
-
-Habrá opción para escribir a todo el grupo y para escribir en privado a algún asistente o al organizador.
-
-El chat se desactivará una vez transcurrido el evento.
-
-Las personas que ya se habrán conocido en persona, si quieren tener más contacto, intercambiarán su información de contacto en el evento.
-
-
-AGENDA
-
-En la página de agenda aparecen los eventos a los que se ha inscrito el usuario y el botón para ingresar a ellas para poder chatear con el grupo del evento.
-
-
-FAQ (frequent answered questions):
-
-La página de FAQ tiene la siguiente información:
-
--	Todas las posibles preguntas que pueda tener un usuario. Con la flecha desplegable dónde podrá ver la respuesta
-
--	Enlace un documento pdf con la siguiente información:
--	Normativa para del uso de la web
--	Política de privacidad
--	Información (cookies técnicas)
-
--	Contacto del administrador de la web
-
--	Redes sociales
-	-.	Logo y enlace a Youtube
-	-	Logo y enlace a Instagram
-	-	Logo y enlace a Facebook
-
-
-DOCUMENTO PDF
-
-Este documento incluye:
-
--	Normativa de la web
--	Polìtica de privacidad
--	Información sobre las cookies
+Esta entidad está comprometida con la seguridad de los datos de sus usuarios. 
+
+Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificado, lo hacemos asegurando que sólo se empleará de acuerdo con los términos de este documento. Sin embargo, esta Política de Privacidad puede cambiar con el tiempo o ser actualizada por lo que le recomendamos y enfatizamos revisar continuamente esta página para asegurarse que está de acuerdo con dichos cambios.
+
+Información que es recogida
+
+Nuestro sitio web podrá recoger información personal por ejemplo: Nombre,  información de contacto, dirección de correo electrónica e información demográfica. 
+
+Uso de la información recogida
+
+Nuestro sitio web emplea la información con el fin de proporcionar el mejor servicio posible, particularmente para mantener un registro de usuarios, y eventos, y mejorar nuestro servicios.  
+
+Nos comprometemos a mantener su información segura. 
+
+COOKIES
+
+Nuestro sitio web sólo utiliza cookies técnicas. Esto permite que el sitio recuerde información del inicio de sesión, preferencias, idioma preferido y configuración de privacidad.
+
+¿Cómo funcionan las cookies técnicas?
+
+Las cookies técnicas operan en el trasfondo de tus interacciones online, llevando a cabo diversas funciones esenciales para mejorar tu experiencia de navegación y garantizar el funcionamiento adecuado de los sitios web que visitas. Veamos cómo funcionan:
+
+-	Recopilación y almacenamiento de datos. Las cookies técnicas recopilan datos básicos sobre tu actividad online, como tu historial de navegación, preferencias de idioma y configuraciones de sitio. Estos datos se almacenan en forma de pequeños archivos de texto en tu dispositivo, permitiendo que el sitio web acceda a ellos para personalizar tu experiencia y facilitar ciertas funciones.
+
+
+-	Interacción con el sitio web. Cuando visitas un sitio web, las cookies técnicas facilitan la comunicación entre tu navegador y el servidor del sitio. Esto permite que el sitio web reconozca tu dispositivo y recuerde cierta información, como tu inicio de sesión, carrito de compras o preferencias de visualización.
+
+
+-	Mantenimiento de la sesión y personalización. Una de las funciones principales de las cookies técnicas es mantener tu sesión activa mientras navegas por un sitio web. Esto significa que no tienes que iniciar sesión repetidamente en cada página que visitas. Además, estas cookies pueden personalizar tu experiencia mostrándote contenido relevante según tus acciones y preferencias anteriores.
+
+
+-	Seguridad y protección de datos. Aunque las cookies técnicas no recopilan información personal identificable, juegan un papel importante en la seguridad y protección de tus datos online. Al facilitar el mantenimiento de la sesión y la comunicación segura entre tu navegador y el servidor del sitio, ayudan a prevenir el acceso no autorizado a tu información y a garantizar una experiencia de navegación segura y protegida.
+
+Tipos de cookies técnicas:
+
+Las cookies técnicas vienen en diferentes formas y cumplen una variedad de funciones importantes para garantizar una experiencia de navegación fluida y segura. Veamos en detalle cada clase.
+
+Sesión
+Las cookies de sesión son temporales y se eliminan automáticamente cuando cierras tu navegador. Son fundamentales para mantener tu sesión activa mientras navegas por un sitio web, lo que te permite acceder a diferentes páginas sin tener que iniciar sesión repetidamente.
+
+Persistentes
+A diferencia de las cookies de sesión, las cookies persistentes permanecen en tu dispositivo durante un período de tiempo más prolongado, incluso después de cerrar tu navegador. Estas cookies pueden almacenar información como tus preferencias de usuario y configuraciones de sitio web para proporcionar una experiencia de navegación más personalizada.
+
+Seguridad
+Las cookies de seguridad desempeñan un papel crucial en la protección de tu información personal y la seguridad de tus sesiones online. Ayudan a detectar actividades sospechosas, como intentos de acceso no autorizado, y toman medidas para proteger tus datos de posibles amenazas.
+
+Funcionalidad
+Las cookies de funcionalidad se utilizan para mejorar la funcionalidad y el rendimiento de un sitio web al recordar tus preferencias de usuario y personalizar tu experiencia de navegación. Pueden recordar tu idioma preferido o la región en la que te encuentras para ofrecerte contenido relevante.
+
+Navegación
+Las cookies de navegación rastrean tu comportamiento de navegación en un sitio web y registran qué páginas visitas y cómo interactúas con ellas. Estos datos se utilizan para mejorar la usabilidad del sitio y optimizar su diseño y contenido para una mejor experiencia del usuario.
+
+Caché
+Las cookies de caché almacenan datos temporales en tu dispositivo para acelerar la carga de páginas web y mejorar el rendimiento del sitio. Pueden almacenar elementos como imágenes, archivos de estilo y scripts, reduciendo así el tiempo de carga de las páginas que visitas con frecuencia.
+
+¿Cómo podemos borrar las cookies?
+
+Borrar las cookies técnicas es un proceso sencillo que puedes realizar en la configuración de tu navegador. 
+
+Siguiendo estos pasos, podrás eliminar las cookies técnicas de tu navegador y mantener tu privacidad online. Recuerda que al hacerlo, es posible que se cierren las sesiones en los sitios web en los que estés conectado. Aquí se puede ver cómo hacerlo en los navegadores más populares:
+
+Google Chrome
+Google Chrome es uno de los navegadores más populares y ampliamente utilizados en todo el mundo. Para eliminar las cookies técnicas en Google Chrome, sigue estos sencillos pasos:
+1.	Haz clic en el icono de tres puntos en la esquina superior derecha de la ventana del navegador.
+2.	Selecciona «Configuración» en el menú desplegable.
+3.	Desplázate hacia abajo y haz clic en «Avanzado» para ver más opciones.
+4.	En la sección «Privacidad y seguridad», selecciona «Configuración de contenido».
+5.	Luego, haz clic en «Cookies».
+6.	Puedes ver y eliminar las cookies técnicas individuales haciendo clic en «Ver todas las cookies y datos del sitio», o eliminar todas las cookies haciendo clic en «Eliminar todos».
+
+Mozilla Firefox
+Mozilla Firefox es conocido por su enfoque en la privacidad y la seguridad online. Aquí te mostramos cómo eliminar las cookies técnicas en Mozilla Firefox:
+1.	Haz clic en el icono de tres líneas en la esquina superior derecha de la ventana del navegador.
+2.	Selecciona «Opciones» en el menú.
+3.	Ve a la sección «Privacidad y seguridad».
+4.	En «Cookies y datos del sitio web», haz clic en «Administrar datos…» para ver las cookies almacenadas.
+5.	Puedes eliminar las cookies técnicas individuales o todas a la vez.
+
+Microsoft Edge
+Microsoft Edge, el navegador desarrollado por Microsoft, ofrece una serie de herramientas para proteger tu privacidad. A continuación, puedes ver cómo eliminar las cookies técnicas en este navegador:
+1.	Haz clic en el icono de tres puntos en la esquina superior derecha de la ventana del navegador.
+2.	Selecciona «Configuración» en el menú desplegable.
+3.	En la barra lateral, elige «Privacidad, búsqueda y servicios».
+4.	En la sección «Borrar datos de navegación», haz clic en «Elegir qué borrar».
+5.	Marca la casilla junto a «Cookies y otros datos del sitio web» y haz clic en «Borrar ahora».
+ 
+Como conclusión, podríamos decir que las cookies técnicas son componentes esenciales de la experiencia de navegación online, pero es importante comprender cómo gestionarlas para preservar nuestra privacidad. Al eliminar o gestionar adecuadamente estas cookies, podemos mantener un mayor control sobre nuestros datos personales y mejorar nuestra seguridad online.
+
+Control de su información personal
+
+En cualquier momento usted puede restringir la recopilación o el uso de la información personal que es proporcionada a nuestro sitio web.  Cada vez que se le solicite rellenar un formulario, como el de alta de usuario, puede marcar o desmarcar la opción de recibir información por correo electrónico.  En caso de que haya marcado la opción de recibir nuestro boletín o publicidad usted puede cancelarla en cualquier momento.
+Esta compañía no venderá, cederá ni distribuirá la información personal que es recopilada sin su consentimiento, salvo que sea requerido por un juez con una orden judicial.
 
