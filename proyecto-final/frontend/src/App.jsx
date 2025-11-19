@@ -9,6 +9,7 @@ import EventPage from "./pages/EventPage"
 import CreateEventPage from "./pages/CreateEventPage"
 import ProfilePage from "./pages/ProfilePage"
 import FAQPage from "./pages/FAQPage"
+import ChatPage from "./pages/ChatPage"
 
 function App() {
   const { theme } = useContext(ThemeContext)
@@ -32,6 +33,7 @@ function App() {
             <Route path="/create" element={<CreateEventPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/chat" element={<ChatPage />} />
           </Routes>
         </div>
       </div>
