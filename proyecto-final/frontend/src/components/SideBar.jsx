@@ -35,6 +35,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       <div
         className="d-none d-lg-flex flex-column flex-shrink-0 px-5 pt-4 vh-100 sidebar position-fixed"
         style={{
+          top: 60, 
           width: "300px",
           backgroundColor: theme.sidebarColor,
           color: theme.textColor,

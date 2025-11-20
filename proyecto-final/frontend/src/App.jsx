@@ -10,6 +10,7 @@ import CreateEventPage from "./pages/CreateEventPage"
 import ProfilePage from "./pages/ProfilePage"
 import FAQPage from "./pages/FAQPage"
 import ChatPage from "./pages/ChatPage"
+import Footer from "./components/Footer"
 
 function App() {
   const { theme } = useContext(ThemeContext)
@@ -23,20 +24,23 @@ function App() {
       <Navbar />
       <Sidebar />
 
-      <div className="main-content">
-        <div className="main-content__inner">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            {/* <Route path="/event/:id" element={<EventPage />} /> */}
-            <Route path="/event" element={<EventPage />} />
-            <Route path="/create" element={<CreateEventPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/faq" element={<FAQPage />} />
-            <Route path="/chat" element={<ChatPage />} />
-          </Routes>
+      <div className="layout-wrapper">
+        <div className="main-content">
+          <div className="main-content__inner">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              {/* <Route path="/event/:id" element={<EventPage />} /> */}
+              <Route path="/event" element={<EventPage />} />
+              <Route path="/create" element={<CreateEventPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/faq" element={<FAQPage />} />
+              <Route path="/chat" element={<ChatPage />} />
+            </Routes>
+          </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

@@ -78,7 +78,6 @@ body {
   scrollbar-color: #6739e4 transparent; /* color del thumb y del track */
 }
 
-
 /* Flechas de acordeón según tema */
 .faq-button.light::after {
   filter: invert(1); /* flecha negra */
@@ -86,4 +85,41 @@ body {
 
 .faq-button.dark::after {
   filter: invert(0); /* flecha blanca */
+}
+
+/* FOOTER alineado con el sidebar */
+.footer {
+  margin-left: 300px; /*  evita que se meta debajo del sidebar */
+  padding: 20px;
+  width: calc(100vw - 300px); /*  igual que main-content */
+}
+
+.footer__inner {
+  max-width: 1400px; /* igual que main-content__inner */
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Móvil: sidebar desaparece → footer full width */
+@media (max-width: 991.98px) {
+  .footer {
+    margin-left: 0;
+    width: 100vw;
+  }
+}
+
+/* layout-wrapper para empujar footer */
+
+.layout-wrapper {
+  min-height: 100vh; /* La página siempre ocupa toda la pantalla */
+  display: flex;
+  flex-direction: column; /* Colocar contenido arriba y footer abajo */
+}
+
+.layout-content {
+  flex: 1; /* Este espacio crece para empujar el footer al fondo */
 }

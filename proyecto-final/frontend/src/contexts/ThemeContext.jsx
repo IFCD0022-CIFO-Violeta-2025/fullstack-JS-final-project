@@ -21,6 +21,7 @@ const ThemeProvider = ({ children }) => {
   }
 
   const theme = {
+    white: COLORS.white,
     navbarBG: isDarkMode ? COLORS.darkAccent : COLORS.darkPrimary,
     navbarBorder: isDarkMode ? "none" : `1px solid ${COLORS.darkSecondary}`,
     sidebarBorder: isDarkMode ? "none" : `1px solid ${COLORS.darkSecondary}`,
