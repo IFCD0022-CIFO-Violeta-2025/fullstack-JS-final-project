@@ -35,14 +35,14 @@ body {
 }
 
 .etiquetas-container a {
-  font-size: clamp(0.6rem, 1.2vw, 0.85rem);
+  font-size: clamp(0.6rem, 1.2vw, 0.85rem); /* se adapta suavemente */
   padding: 0.25rem 0.5rem;
   white-space: nowrap;
   line-height: 1;
 }
 
 .etiquetas-container a {
-  font-size: clamp(0.6rem, 1.2vw, 0.85rem); /* se adapta suavemente */
+  font-size: clamp(0.6rem, 1.2vw, 0.85rem); 
   padding: 0.3rem 0.6rem;
   white-space: nowrap;
   transition:

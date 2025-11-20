@@ -14,7 +14,7 @@ const MiniCalendario = () => {
         justifyContent: "center",
         color: "white",
         fontSize: "14px",
-        flexShrink: 0, // 👉 evita que se encoja
+        flexShrink: 0, // evita que se encoja
       }}
     >
       Mini Calendario

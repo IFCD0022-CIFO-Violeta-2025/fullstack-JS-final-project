@@ -50,7 +50,7 @@ const Sidebar = ({ isOpen, onClose }) => {
           className="d-flex flex-column flex-grow-1"
           style={{
             paddingRight: "1rem",
-            minHeight: 0, // 👉 imprescindible para que el hijo con overflow pueda scrollear
+            minHeight: 0, // imprescindible para que el hijo con overflow pueda scrollear
           }}
         >
           {/* Lista scrollable de botones */}
@@ -58,9 +58,9 @@ const Sidebar = ({ isOpen, onClose }) => {
             className="d-flex flex-column gap-2 sidebar-scroll"
             style={{
               overflowY: "auto",
-              flexGrow: 1, // 👉 ocupa todo el espacio disponible entre el título y el calendario
+              flexGrow: 1, //  ocupa todo el espacio disponible entre el título y el calendario
               paddingBottom: "0.5rem",
-              minHeight: 0, // 👉 asegura que el overflow funcione dentro de flex
+              minHeight: 0, //  asegura que el overflow funcione dentro de flex
             }}
           >
             {categorias.map((categoria) => (
@@ -95,8 +95,8 @@ const Sidebar = ({ isOpen, onClose }) => {
           <div
             className="d-flex flex-column p-3"
             style={{
-              height: "calc(100% - 60px)", // 👉 resto de la pantalla bajo la barra superior
-              minHeight: 0, // 👉 necesario para que el hijo con overflow scrollee
+              height: "calc(100% - 60px)", //  resto de la pantalla bajo la barra superior
+              minHeight: 0, // necesario para que el hijo con overflow scrollee
             }}
           >
             {/* Lista scrollable de botones */}

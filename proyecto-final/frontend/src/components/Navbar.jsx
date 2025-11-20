@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import  { useContext, useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { ThemeContext } from "../contexts/ThemeContext"
 import { AuthContext } from "../contexts/AuthContext"
@@ -79,7 +79,7 @@ const Navbar = () => {
             </div>
 
             <div className="d-flex gap-2">
-              {/* 🔥 Si NO hay usuario, mostramos ambos botones */}
+              {/* Si NO hay usuario, mostramos ambos botones */}
               {!user && (
                 <>
                   <Boton onClick={() => navigate("/login")}>Login</Boton>
@@ -87,7 +87,7 @@ const Navbar = () => {
                 </>
               )}
 
-              {/* 🔥 Si hay usuario, mostramos su nombre + Logout */}
+              {/* Si hay usuario, mostramos su nombre + Logout */}
               {user && <UsuarioNavbar />}
 
               {/* Botón para chat */}

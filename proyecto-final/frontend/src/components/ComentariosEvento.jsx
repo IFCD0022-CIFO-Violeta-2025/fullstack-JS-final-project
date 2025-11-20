@@ -5,7 +5,7 @@ import Boton from "./Boton"
 const ComentariosEvento = ({ comentarios, onAgregarComentario }) => {
   const { theme } = useContext(ThemeContext)
   const [nuevoComentario, setNuevoComentario] = useState("")
-  const [likes, setLikes] = useState({}) // 👉 almacenamos likes por índice
+  const [likes, setLikes] = useState({}) // almacenamos likes por índice
 
   const manejarEnvio = () => {
     if (nuevoComentario.trim() === "") return
@@ -47,7 +47,7 @@ const ComentariosEvento = ({ comentarios, onAgregarComentario }) => {
           border: `1px solid ${theme.borderColor}`,
         }}
       >
-        {/* --- Título --- */}
+        {/* Título */}
         <div
           className="card-header"
           style={{
@@ -63,7 +63,7 @@ const ComentariosEvento = ({ comentarios, onAgregarComentario }) => {
           💬 Comentarios
         </div>
 
-        {/* --- Lista --- */}
+        {/* Lista */}
         {comentarios.length === 0 ? (
           <div className="card-body" style={{ fontStyle: "italic", opacity: 0.8 }}>
             No hay comentarios aún.
@@ -119,7 +119,7 @@ const ComentariosEvento = ({ comentarios, onAgregarComentario }) => {
         )}
       </div>
 
-      {/* --- Formulario para comentar --- */}
+      {/* Formulario para comentar */}
       <div
         className="p-3 mt-3"
         style={{
