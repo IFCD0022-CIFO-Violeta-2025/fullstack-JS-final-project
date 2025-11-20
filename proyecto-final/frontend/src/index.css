@@ -90,7 +90,7 @@ body {
 /* FOOTER alineado con el sidebar */
 .footer {
   margin-left: 300px; /*  evita que se meta debajo del sidebar */
-  padding: 20px;
+  padding: 10px;
   width: calc(100vw - 300px); /*  igual que main-content */
 }
 
@@ -100,7 +100,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  padding: 0.5rem;
+/*   padding: 0.5rem; */
   font-size: 0.9rem;
 }
 
