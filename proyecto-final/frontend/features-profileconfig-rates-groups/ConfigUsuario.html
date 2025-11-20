@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de la cuenta</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <style>
+        #profilePreview {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        #profilePreview:hover {
+            transform: scale(1.05);
+        }
+        #profilePic {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <h1 class="mb-4">Configuración de la cuenta</h1>
+    <hr>
+
+    <div class="mb-4 text-center">
+        <img src="https://via.placeholder.com/100" id="profilePreview" alt="Preview de PFP">
+        <input type="file" id="profilePic" accept="image/*">
+    </div>
+
+    <form id="form1">
+
+        <div class="mb-3">
+            <label for="nickname" class="form-label">Apodo</label>
+            <input type="text" class="form-control" id="nickname" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">Teléfono</label>
+            <input type="tel" class="form-control" id="phone">
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password">
+        </div>
+
+        <!-- Nombre + Apellidos -->
+        <div class="d-flex mb-3">
+            <div class="d-flex flex-column mr-2">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="d-flex flex-column mr-2">
+                <label for="lastname" class="form-label">Primer apellido</label>
+                <input type="text" class="form-control" id="lastname">
+            </div>
+            <div class="d-flex flex-column">
+                <label for="lastname2" class="form-label">Segundo apellido</label>
+                <input type="text" class="form-control" id="lastname2">
+            </div>
+        </div>
+
+        <!-- DNI -->
+        <div class="mb-3">
+            <label for="dni" class="form-label">DNI</label>
+            <input type="text" class="form-control" id="dni">
+        </div>
+
+        <!-- About me -->
+        <div class="mb-3">
+            <label for="about" class="form-label">About me</label>
+            <textarea class="form-control" id="about" rows="3" placeholder="Cuéntanos algo sobre ti..."></textarea>
+        </div>
+
+        <!-- Código postal + Nacimiento -->
+        <div class="d-flex mb-3">
+            <div class="d-flex flex-column mr-2">
+                <label for="postalCode" class="form-label">Código postal</label>
+                <input type="text" class="form-control" id="postalCode">
+            </div>
+            <div class="d-flex flex-column">
+                <label for="birthDate" class="form-label">Fecha de nacimiento</label>
+                <input type="date" class="form-control" id="birthDate">
+            </div>
+        </div>
+
+        <!-- Intereses -->
+        <div class="mb-3">
+            <label class="form-label">Intereses</label>
+            <div class="dropdown" id="interesesDropdown">
+                <button class="btn btn-primary dropdown-toggle w-100 text-left" type="button" onclick="toggleInteresesDropdown()">Modificar intereses</button>
+                <div class="dropdown-menu w-100 p-3" id="dropdownMenuIntereses" style="display: none;">
+                    <div class="form-check mb-2">
+                        <input type="checkbox" name="options[]" id="check1" class="form-check-input" value="Musica">
+                        <label for="check1" class="form-check-label">Musica</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input type="checkbox" name="options[]" id="check2" class="form-check-input" value="Deporte">
+                        <label for="check2" class="form-check-label">Deporte</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input type="checkbox" name="options[]" id="check3" class="form-check-input" value="Etc">
+                        <label for="check3" class="form-check-label">Etc...</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="mb-3">
+            <label class="form-label">Newsletter</label>
+            <div class="dropdown" id="newsLetterDropdown">
+                <button class="btn btn-info dropdown-toggle w-100 text-left" type="button" onclick="toggleNewsletterDropdown()">Modificar preferencias de newsletter</button>
+                <div class="dropdown-menu w-100 p-3" id="dropdownMenuNewsletter" style="display: none;">
+                    <div class="form-check mb-2">
+                        <input type="radio" name="newsletter" id="newsletter1" class="form-check-input" value="none">
+                        <label for="newsletter1" class="form-check-label">No recibir Newsletter</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input type="radio" name="newsletter" id="newsletter2" class="form-check-input" value="daily">
+                        <label for="newsletter2" class="form-check-label">Diaria</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input type="radio" name="newsletter" id="newsletter3" class="form-check-input" value="weekly">
+                        <label for="newsletter3" class="form-check-label">Semanal</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input type="radio" name="newsletter" id="newsletter4" class="form-check-input" value="monthly">
+                        <label for="newsletter4" class="form-check-label">Mensual</label>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="d-flex mb-5">
+            <button type="submit" class="btn btn-success">Aplicar cambios</button>
+            <button type="button" class="btn btn-danger ml-auto">Eliminar cuenta</button>
+        </div>
+    </form>
+</div>
+
+<!-- Modal para cambiar foto -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabel">Cambiar foto de perfil</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">¿Deseas cambiar tu foto de perfil?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="confirmChange">Sí, cambiar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+<script>
+
+    // ------------------ MOCK DATABASE ------------------
+    let usersDB = JSON.parse(localStorage.getItem("usersDB")) || [];
+
+    document.getElementById("form1").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const user = {
+            id: Date.now(),
+            nickname: document.getElementById("nickname").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            password: document.getElementById("password").value,
+            name: document.getElementById("name").value,
+            lastname: document.getElementById("lastname").value,
+            lastname2: document.getElementById("lastname2").value,
+            dni: document.getElementById("dni").value,
+            about: document.getElementById("about").value,
+            postalCode: document.getElementById("postalCode").value,
+            birthDate: document.getElementById("birthDate").value,
+            interests: Array.from(document.querySelectorAll("#dropdownMenuIntereses input[type=checkbox]:checked")).map(cb => cb.value),
+            newsletter: document.querySelector("#dropdownMenuNewsletter input[type=radio]:checked")?.value || "none"
+        };
+
+        usersDB.push(user);
+        localStorage.setItem("usersDB", JSON.stringify(usersDB));
+
+        window.open("data.html", "_blank");
+    });
+
+    // Dropdowns
+    function toggleInteresesDropdown() {
+        const menu = document.getElementById('dropdownMenuIntereses');
+        menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+    function toggleNewsletterDropdown() {
+        const menu = document.getElementById('dropdownMenuNewsletter');
+        menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    document.addEventListener('click', function(event) {
+        if (!document.getElementById('interesesDropdown').contains(event.target)) {
+            document.getElementById('dropdownMenuIntereses').style.display = 'none';
+        }
+        if (!document.getElementById('newsLetterDropdown').contains(event.target)) {
+            document.getElementById('dropdownMenuNewsletter').style.display = 'none';
+        }
+    });
+
+    document.getElementById('dropdownMenuIntereses').addEventListener('click', e => e.stopPropagation());
+    document.getElementById('dropdownMenuNewsletter').addEventListener('click', e => e.stopPropagation());
+
+    // Modal cambio de foto
+    const profilePreview = document.getElementById('profilePreview');
+    const profilePic = document.getElementById('profilePic');
+    const confirmModal = $('#confirmModal');
+    const confirmChange = document.getElementById('confirmChange');
+
+    profilePreview.addEventListener('click', () => {
+        confirmModal.modal('show');
+    });
+
+    confirmChange.addEventListener('click', () => {
+        profilePic.click();
+        confirmModal.modal('hide');
+    });
+
+    profilePic.addEventListener('change', function(event) {
+        const [file] = event.target.files;
+        if (file) {
+            profilePreview.src = URL.createObjectURL(file);
+        }
+    });
+</script>
+
+</body>
+</html>

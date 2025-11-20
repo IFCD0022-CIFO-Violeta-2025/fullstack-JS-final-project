@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones de eventos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h1 class="mb-4">Calificaciones registradas</h1>
+    <div id="ratingsContainer"></div>
+    <hr>
+    <button class="btn btn-danger" onclick="localStorage.removeItem('eventRatingsDB'); location.reload();">
+        Borrar todas las calificaciones
+    </button>
+</div>
+
+<script>
+    const eventRatingsDB = JSON.parse(localStorage.getItem('eventRatingsDB')) || [];
+    const container = document.getElementById('ratingsContainer');
+
+    if (eventRatingsDB.length === 0) {
+        container.innerHTML = "<p>No hay calificaciones registradas.</p>";
+    } else {
+        eventRatingsDB.forEach(rating => {
+            const card = document.createElement("div");
+            card.className = "card mb-3";
+            card.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">${rating.rating}</h5>
+                    <p class="card-text">${rating.comment}</p>
+                    <small class="text-muted">ID: ${rating.id}</small>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+</script>
+</body>
+</html>
