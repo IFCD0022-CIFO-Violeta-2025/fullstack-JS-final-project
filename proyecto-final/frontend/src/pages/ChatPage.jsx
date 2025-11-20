@@ -65,7 +65,7 @@ export default function ChatPage() {
           style={{
             backgroundColor: theme.cardColor,
             color: theme.textColor,
-            border: `1px solid ${theme.borderColor}`,
+            border: `2px solid ${theme.borderColor}`,
             borderRadius: "8px",
             boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
             overflow: "hidden",
@@ -107,7 +107,7 @@ export default function ChatPage() {
 
           <div
             className="card-footer d-flex gap-2 align-items-center"
-            style={{ backgroundColor: theme.cardColor }}
+            style={{ backgroundColor: theme.cardColor, borderColor: theme.textColor,  borderTop: `2px solid`, }}
           >
             <textarea
               className="form-control"

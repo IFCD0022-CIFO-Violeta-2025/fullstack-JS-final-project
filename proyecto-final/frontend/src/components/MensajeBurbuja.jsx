@@ -6,7 +6,9 @@ export default function MensajeBurbuja({ message, isMe }) {
 
   return (
     <li className={`mb-2 d-flex ${isMe ? "justify-content-end" : "justify-content-start"}`}>
-      <div style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
+      <div style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", color: "white" }}>
+        {" "}
+        {/* cambiar colo con ThemeContext! */}
         {/* Avatar a la izquierda si no es mensaje propio */}
         {!isMe && (
           <img
@@ -21,7 +23,6 @@ export default function MensajeBurbuja({ message, isMe }) {
             }}
           />
         )}
-
         {/* Burbuja del mensaje */}
         <div
           style={{
@@ -55,7 +56,6 @@ export default function MensajeBurbuja({ message, isMe }) {
             🕒 {message.timestamp}
           </div>
         </div>
-
         {/* Avatar a la derecha si es mensaje propio */}
         {isMe && (
           <img
