@@ -1,0 +1,145 @@
+import React, { useContext } from "react"
+import { ThemeContext } from "../contexts/ThemeContext"
+import Boton from "./Boton"
+import Etiqueta from "./Etiqueta"
+import UsuarioInfo from "./UsuarioInfo"
+import { eventoMock } from "../data/mockData"
+import AccionesEvento from "./AccionesEvento"
+
+const Card = () => {
+  const { theme } = useContext(ThemeContext)
+
+  // 👉 usamos directamente los datos del mock
+  const {
+    titulo,
+    descripcion,
+    ubicacion,
+    fechas,
+    horaInicio,
+    inscritos,
+    categorias,
+    usuario,
+    img,
+    likes,
+    commentsCount,
+  } = eventoMock
+
+  let fechaTexto = ""
+  if (fechas.length === 1) {
+    const f = new Date(fechas[0])
+    fechaTexto = `${f.getDate()} de ${f.toLocaleDateString("es-ES", {
+      month: "long",
+    })}`
+  } else {
+    const fechasOrdenadas = fechas.map((f) => new Date(f)).sort((a, b) => a - b)
+    const fInicio = fechasOrdenadas[0]
+    const fFin = fechasOrdenadas[fechasOrdenadas.length - 1]
+
+    fechaTexto = `Del ${fInicio.getDate()} de ${fInicio.toLocaleDateString("es-ES", {
+      month: "long",
+    })} al ${fFin.getDate()} de ${fFin.toLocaleDateString("es-ES", {
+      month: "long",
+    })}`
+  }
+
+  return (
+    <div className="mx-2 mb-5">
+      <div
+        className="card h-100 mx-auto"
+        style={{
+          backgroundColor: theme.cardColor,
+          color: theme.textColor,
+          maxWidth: "450px",
+          minWidth: "350px",
+          width: "100%",
+          boxShadow: "6px 6px 12px rgba(0, 0, 0, 0.15)",
+        }}
+      >
+        {/* Usuario que publicó */}
+        <UsuarioInfo usuario={usuario} />
+
+        {/* Imagen arriba con borde inferior fino */}
+        <div>
+          <img
+            src={img}
+            alt="Imagen del evento"
+            style={{
+              height: "200px",
+              objectFit: "cover",
+              width: "100%",
+              display: "block",
+            }}
+          />
+        </div>
+
+        {/* Contenido */}
+        <div className="card-body d-flex flex-column h-100">
+          <div className="flex-grow-1">
+            <h5 className="card-title">{titulo}</h5>
+
+            <p
+              className="card-text"
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {descripcion}
+            </p>
+
+            <div className="mt-2 text-sm">
+              <div className="mb-1 d-flex">
+                <strong className="me-1">Lugar:</strong>
+                <span>📍 {ubicacion}</span>
+              </div>
+
+              <div className="mb-1 d-flex">
+                <strong className="me-1">Fecha:</strong>
+                <span>🗓️ {fechaTexto}</span>
+              </div>
+
+              <div className="mb-1 d-flex">
+                <strong className="me-1">Hora:</strong>
+                <span>⏰ {horaInicio}</span>
+              </div>
+
+              <div className="mb-1 d-flex">
+                <strong className="me-1">Asistentes inscritos:</strong>
+                <span>{inscritos}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Botones y etiquetas */}
+          <div className="mt-3">
+            <div className="d-flex gap-2 justify-content-center mb-4">
+              <Boton onClick={() => window.open("/event", "_blank")}>Ver más</Boton>
+              <Boton>Inscribirse</Boton>
+            </div>
+
+            <Etiqueta categorias={categorias} />
+          </div>
+
+          {/* linea divisoria */}
+          <div
+            className="d-flex align-items-center mt-3"
+            style={{ borderTop: "1px solid #ddd", paddingTop: "0.5rem" }}
+          ></div>
+
+          {/* Acciones evento */}
+          <AccionesEvento
+            likes={likes}
+            commentsCount={commentsCount}
+            onShare={() => alert("Compartir evento")}
+            onSave={() => alert("Evento guardado")}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Card
