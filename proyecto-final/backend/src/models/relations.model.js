@@ -46,7 +46,7 @@
 
 import config from '../config/config.js'
 
-import { Sequelize, DataTypes, where } from 'sequelize'
+import { Sequelize, DataTypes } from 'sequelize'
 const sequelize = new Sequelize(/*database*/config.db_name, /*username*/config.db_user, /*password*/config.db_password, {
     host: config.db_host,
     dialect: 'mysql'
@@ -77,9 +77,17 @@ export async function getAll(filters = {}) {
         //TODO: CONFIGURAR FILTROS NECESARIOS
         //const relations = await Relation.findAll(filters);
 
+        let relations;
+
         if (!filters)
         {
-            const relations = await Relations.findAll();
+            relations = await Relations.findAll({where: {deleted: false}});
+        }
+        else {
+            if (filters.NoFilters == true)
+            {
+                relations = await Relations.findAll();
+            }
         }
 
         return relations;
@@ -98,7 +106,7 @@ export async function getAll(filters = {}) {
 export async function create(relationsDATA) {
     try {
         //const [result] = await connex.query("INSERT INTO relations (`idEntidad1`, `idEntidad2`, `relationName`, `relationType`, `deleted`, `createdAt`, `updatedAt`, `deletedAt`, `deleted_at`) VALUES (?)", relationsDATA);
-        const created = await Relations.create({
+        const result = await Relations.create({
             idEntidad1: relationsDATA.idEntidad1, 
             idEntidad2: relationsDATA.idEntidad2, 
             relationName: relationsDATA.relationName, 
@@ -197,10 +205,12 @@ export async function softDelete(id) {
         { 
             where: { id: id } }
         )
-        .then(result => 
+        //.then(result => 
+        .then(() => 
             { return true }
         )
-        .catch(err =>
+        //.catch(err =>
+        .catch(() =>
             { return false }
         )
     } catch (error) {
@@ -216,7 +226,7 @@ export async function softDelete(id) {
 export async function existsID(id) {
     try {
 
-        result = await Relations.findByPk(id)
+        const result = await Relations.findByPk(id)
         if (result) {
             return true;
         }
