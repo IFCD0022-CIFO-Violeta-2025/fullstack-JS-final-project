@@ -11,10 +11,17 @@ const authMiddleware = (req, res, next) => {
   if (!token) return res.status(401).json({ error: "Acceso denegado, token faltante" });
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const jwtSecret = process.env.JWT_SECRET || process.env.AWT_SECRET;
+    if (!jwtSecret) {
+      console.error('JWT secret not configured (process.env.JWT_SECRET or process.env.AWT_SECRET)');
+      return res.status(500).json({ error: 'Server misconfiguration: JWT secret missing' });
+    }
+
+    const decoded = jwt.verify(token, jwtSecret);
     req.user = decoded; // agregamos info del usuario al request
     next(); // seguimos al siguiente middleware o ruta
-  } catch {
+  } catch (err) {
+    console.error('JWT verification error:', err.message);
     return res.status(403).json({ error: "Token inválido o expirado" });
   }
 };

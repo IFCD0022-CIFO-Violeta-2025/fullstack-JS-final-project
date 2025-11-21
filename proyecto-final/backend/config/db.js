@@ -15,4 +15,6 @@ const sequelize = new Sequelize(
   }
 );
 
+console.log("Database connected:", process.env.DB_NAME);
+
 export default sequelize;

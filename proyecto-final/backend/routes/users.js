@@ -10,63 +10,100 @@ dotenv.config();
 const router = express.Router();
 
 const schema = Joi.object({
-  nombre: Joi.string().min(3).required(),
+  username: Joi.string().min(5).required(),
   email: Joi.string().email().required(),
-  password: Joi.string().min(4).required(),
+  password: Joi.string().min(5).required(),
 });
 
 // Registro
-router.post("/registro", async (req, res) => {
+router.post("/register", async (req, res) => {
+  console.log(req.body)
   try {
     const { error } = schema.validate(req.body);
-    if (error) return res.status(400).json({ error: error.details[0].message });
+    if (error)
+      return res.status(400).json({
+        error: error.details[0].message,
+        code: "VALIDATION_ERROR",
+        details: error.details,
+      });
 
-    const existe = await User.findOne({ where: { email: req.body.email } });
-    if (existe) return res.status(400).json({ error: "El usuario ya existe" });
+    const existeEmail = await User.findOne({ where: { email: req.body.email } });
+    if (existeEmail)
+      return res.status(409).json({ error: "Email ya registrado", code: "EMAIL_TAKEN" });
+
+    const existe = await User.findOne({ where: { username: req.body.username } });
+    if (existe)
+      return res.status(409).json({ error: "Username ya registrado", code: "USERNAME_TAKEN" });
 
     const hashed = await bcrypt.hash(req.body.password, 10);
 
     const usuario = await User.create({
-      nombre: req.body.nombre,
+      username: req.body.username,
       email: req.body.email,
       password: hashed,
       role: req.body.role || "user", // por defecto 'user'
     });
-
-    res.json({
-      id: usuario.id,
-      nombre: usuario.nombre,
+    res.status(201).json({
+      id: usuario.idUser || usuario.id,
+      username: usuario.username,
       email: usuario.email,
       createdAt: usuario.createdAt,
       updatedAt: usuario.updatedAt,
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error(err);
+    res.status(500).json({ error: err.message, code: "SERVER_ERROR" });
   }
 });
 
 // Login
 router.post("/login", async (req, res) => {
+  console.log('Llega a Login')
   try {
+    const userEmail = req.body.username.includes('@') ? req.body.username : null
+    const userUsername = !userEmail ? req.body.username : null
+
+    if (!userEmail && !userUsername) {
+      return res.status(400).json({ error: "Se requiere email o username", code: "VALIDATION_ERROR" });
+    }
+
+    if (userEmail) {
+      req.body.email = userEmail
+    } else {
+      const usuarioByUsername = await User.findOne({ where: { username: userUsername } });
+      if (!usuarioByUsername) {
+        return res.status(404).json({ error: "Usuario no encontrado", code: "USER_NOT_FOUND" });
+      } else {
+        req.body.email = usuarioByUsername.email
+      }
+    }
+    
     const usuario = await User.findOne({ where: { email: req.body.email } });
-    if (!usuario) return res.status(404).json({ error: "Usuario no encontrado" });
+    if (!usuario)
+      return res.status(404).json({ error: "Usuario no encontrado", code: "USER_NOT_FOUND" });
 
     const valido = await bcrypt.compare(req.body.password, usuario.password);
-    if (!valido) return res.status(401).json({ error: "Contraseña incorrecta" });
+    if (!valido)
+      return res.status(401).json({ error: "Contraseña incorrecta", code: "INVALID_CREDENTIALS" });
+
+    const jwtSecret = process.env.JWT_SECRET || process.env.AWT_SECRET;
+    if (!jwtSecret) {
+      console.error('JWT secret not configured (process.env.JWT_SECRET or process.env.AWT_SECRET)');
+      return res.status(500).json({ error: 'Server misconfiguration: JWT secret missing', code: 'SERVER_CONFIG' });
+    }
 
     const token = jwt.sign(
       { id: usuario.id, nombre: usuario.nombre, role: usuario.role  },
-      process.env.JWT_SECRET,
+      jwtSecret,
       { expiresIn: "1h" }
     );
 
-    res.json({ mensaje: "Login exitoso", token });
+    res.json({ mensaje: "Login exitoso",username: userUsername, token });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error(err);
+    res.status(500).json({ error: err.message, code: "SERVER_ERROR" });
   }
 });
-
-
 
 // GET para comprobar si un usuario existe por email
 router.get("/exists/:email", async (req, res) => {
@@ -85,9 +122,6 @@ router.get("/exists/:email", async (req, res) => {
   }
 });
 
-
-
-
 // DELETE /api/users/:id
 // router.delete("/:id", authMiddleware, checkRole(["admin"]), async (req, res) => { EN PRODUCCCION
 router.delete("/:id", async (req, res) => {
@@ -102,11 +136,5 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
-
-
-
-
-
 
 export default router;

@@ -17,11 +17,11 @@ const User = sequelize.define(
     },
     name: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
     },
     lastName: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING(255),
@@ -50,39 +50,37 @@ const User = sequelize.define(
     },
     documentType: {
       type: DataTypes.STRING(10),
-      allowNull: false,
+      allowNull: true,
     },
     documentNumber: {
       type: DataTypes.STRING(15),
-      allowNull: false,
+      allowNull: true,
     },
     news_subscription: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
       defaultValue: false,
     },
     banned: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
       defaultValue: false,
     },
     bannedDate: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+      defaultValue: null,
     },
     bannedUntilDate: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+      defaultValue: null,
     },
     deleted: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
       defaultValue: false,
     },
     // Sequelize ya maneja createdAt y updatedAt automáticamente si timestamps: true
     deleted_at: {
       type: DataTypes.DATE,
       allowNull: true,
+      defaultValue: null,
     },
   },
   {
