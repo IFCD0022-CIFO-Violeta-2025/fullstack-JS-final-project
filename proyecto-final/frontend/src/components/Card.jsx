@@ -1,45 +1,25 @@
 import React, { useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { ThemeContext } from "../contexts/ThemeContext"
 import Boton from "./Boton"
 import Etiqueta from "./Etiqueta"
 import UsuarioInfo from "./UsuarioInfo"
-import { eventoMock } from "../data/mockData"
 import AccionesEvento from "./AccionesEvento"
 
-const Card = () => {
+const Card = ({ evento }) => {
+  const navigate = useNavigate()
   const { theme } = useContext(ThemeContext)
 
-  // 👉 usamos directamente los datos del mock
-  const {
-    titulo,
-    descripcion,
-    ubicacion,
-    fechas,
-    horaInicio,
-    inscritos,
-    categorias,
-    usuario,
-    img,
-    likes,
-    commentsCount,
-  } = eventoMock
-
+  // Calcular fecha texto
   let fechaTexto = ""
-  if (fechas.length === 1) {
-    const f = new Date(fechas[0])
-    fechaTexto = `${f.getDate()} de ${f.toLocaleDateString("es-ES", {
-      month: "long",
-    })}`
+  if (evento.fechas.length === 1) {
+    const f = new Date(evento.fechas[0])
+    fechaTexto = `${f.getDate()} de ${f.toLocaleDateString("es-ES", { month: "long" })}`
   } else {
-    const fechasOrdenadas = fechas.map((f) => new Date(f)).sort((a, b) => a - b)
+    const fechasOrdenadas = evento.fechas.map((f) => new Date(f)).sort((a, b) => a - b)
     const fInicio = fechasOrdenadas[0]
     const fFin = fechasOrdenadas[fechasOrdenadas.length - 1]
-
-    fechaTexto = `Del ${fInicio.getDate()} de ${fInicio.toLocaleDateString("es-ES", {
-      month: "long",
-    })} al ${fFin.getDate()} de ${fFin.toLocaleDateString("es-ES", {
-      month: "long",
-    })}`
+    fechaTexto = `Del ${fInicio.getDate()} de ${fInicio.toLocaleDateString("es-ES", { month: "long" })} al ${fFin.getDate()} de ${fFin.toLocaleDateString("es-ES", { month: "long" })}`
   }
 
   return (
@@ -55,28 +35,19 @@ const Card = () => {
           boxShadow: "6px 6px 12px rgba(0, 0, 0, 0.15)",
         }}
       >
-        {/* Usuario que publicó */}
-        <UsuarioInfo usuario={usuario} />
+        <UsuarioInfo usuario={evento.usuario} />
 
-        {/* Imagen arriba con borde inferior fino */}
         <div>
           <img
-            src={img}
-            alt="Imagen del evento"
-            style={{
-              height: "200px",
-              objectFit: "cover",
-              width: "100%",
-              display: "block",
-            }}
+            src={evento.img}
+            alt={evento.titulo}
+            style={{ height: "200px", objectFit: "cover", width: "100%", display: "block" }}
           />
         </div>
 
-        {/* Contenido */}
         <div className="card-body d-flex flex-column h-100">
           <div className="flex-grow-1">
-            <h5 className="card-title">{titulo}</h5>
-
+            <h5 className="card-title">{evento.titulo}</h5>
             <p
               className="card-text"
               style={{
@@ -87,13 +58,13 @@ const Card = () => {
                 textOverflow: "ellipsis",
               }}
             >
-              {descripcion}
+              {evento.descripcion}
             </p>
 
             <div className="mt-2 text-sm">
               <div className="mb-1 d-flex">
                 <strong className="me-1">Lugar:</strong>
-                <span>📍 {ubicacion}</span>
+                <span>📍 {evento.ubicacion}</span>
               </div>
 
               <div className="mb-1 d-flex">
@@ -103,36 +74,33 @@ const Card = () => {
 
               <div className="mb-1 d-flex">
                 <strong className="me-1">Hora:</strong>
-                <span>⏰ {horaInicio}</span>
+                <span>⏰ {evento.horaInicio}</span>
               </div>
 
               <div className="mb-1 d-flex">
                 <strong className="me-1">Asistentes inscritos:</strong>
-                <span>{inscritos}</span>
+                <span>{evento.inscritos}</span>
               </div>
             </div>
           </div>
 
-          {/* Botones y etiquetas */}
           <div className="mt-3">
             <div className="d-flex gap-2 justify-content-center mb-4">
-              <Boton onClick={() => window.open("/event", "_blank")}>Ver más</Boton>
+              <Boton onClick={() => navigate(`/event/${evento.id}`)}>Ver más</Boton>
               <Boton>Inscribirse</Boton>
             </div>
 
-            <Etiqueta categorias={categorias} />
+            <Etiqueta categorias={evento.categorias} />
           </div>
 
-          {/* linea divisoria */}
           <div
             className="d-flex align-items-center mt-3"
             style={{ borderTop: "1px solid #ddd", paddingTop: "0.5rem" }}
           ></div>
 
-          {/* Acciones evento */}
           <AccionesEvento
-            likes={likes}
-            commentsCount={commentsCount}
+            likes={evento.likes}
+            commentsCount={evento.commentsCount}
             onShare={() => alert("Compartir evento")}
             onSave={() => alert("Evento guardado")}
           />
