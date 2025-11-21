@@ -1,0 +1,79 @@
+/* Reset básico y box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  /*   margin: 0;
+  padding-top: 70px; */
+  font-family: "Montserrat", sans-serif;
+}
+
+.main-content {
+  margin-top: 60px; /* altura del navbar */
+  margin-left: 300px; /* ancho del sidebar fijo */
+  padding: 20px;
+  width: calc(100vw - 300px); /* ocupa todo el espacio libre */
+}
+
+/* Wrapper interno centrado (ancho máximo del feed) */
+.main-content__inner {
+  max-width: 1400px;
+  margin: 0 auto; /* centra el feed dentro del espacio libre */
+}
+
+@media (max-width: 991.98px) {
+  .main-content {
+    margin-left: 0;
+    width: 100vw;
+  }
+  .main-content__inner {
+    max-width: 100%;
+  }
+}
+
+.etiquetas-container a {
+  font-size: clamp(0.6rem, 1.2vw, 0.85rem);
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.etiquetas-container a {
+  font-size: clamp(0.6rem, 1.2vw, 0.85rem); /* se adapta suavemente */
+  padding: 0.3rem 0.6rem;
+  white-space: nowrap;
+  transition:
+    font-size 0.3s ease,
+    padding 0.3s ease;
+  margin-right: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Scrollbar en navegadores basados en WebKit (Chrome, Edge, Safari) */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent; /* fondo del track */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #6739e4; /* color del scroll */
+  border-radius: 4px; /* esquinas redondeadas */
+  border: 2px solid transparent; /* espacio alrededor */
+}
+
+/* Hover sobre el thumb */
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #9569ff;
+}
+
+/* Firefox */
+.sidebar {
+  scrollbar-width: thin; /* fino */
+  scrollbar-color: #6739e4 transparent; /* color del thumb y del track */
+}
