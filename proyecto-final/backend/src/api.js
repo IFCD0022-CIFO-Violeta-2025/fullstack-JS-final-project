@@ -1,13 +1,22 @@
 import express from 'express'
-import config from "./config/config";
-import relationRoutes from "./routes/relations.routes";
-import notFound from "./middlewares/error.middleware";
+import config from "./config/config.js";
+//import notFound from "./middlewares/error.middleware.js";
+import notFound from "./middlewares/error.middleware.js"
 
 const api = express();
 // middleware config  
 api.use(express.json());
-api.use("/api/v1", relationRoutes);
+
+//ANTIGUA LLAMADA
+//api.use("/api/v1", relationRoutes);
+
+//NUEVA LLAMADA
+import routes from "./routes/index.js";
+api.use("/api/v1", routes);
+
 api.use(notFound);
+
+
 
 api.listen(config.api_port, () => {
     console.log(`===========================================`)

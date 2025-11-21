@@ -14,15 +14,32 @@ import Profiles from "./profiles.model.js";
 import FAQs from "./faqs.model.js";
 import Posts from "./posts.model.js";
 
+//Configuración externa
+import config from '../config/config.js'
+
+// // ================================
+// // Conexión Sequelize
+// // ================================
+// export const sequelize = new Sequelize(
+//     "db_eventos",
+//     "root",
+//     "",
+//     {
+//         host: "localhost",
+//         dialect: "mysql",
+//         logging: false,
+//     }
+// );
+
 // ================================
-// Conexión Sequelize
+// Conexión Sequelize parametrizado
 // ================================
 export const sequelize = new Sequelize(
-    "db_eventos",
-    "root",
-    "",
+    config.db_name,
+    config.db_user,
+    config.db_password,
     {
-        host: "localhost",
+        host: config.db_host,
         dialect: "mysql",
         logging: false,
     }
@@ -32,7 +49,7 @@ export const sequelize = new Sequelize(
 // Inicialización de modelos
 // ================================
 //const models = {
-export const models = {
+export const db = {
     Users: Users(sequelize),
     Events: Events(sequelize),
     Comments: Comments(sequelize),
@@ -45,9 +62,12 @@ export const models = {
     Permissions: Permissions(sequelize),
     Profiles: Profiles(sequelize),
     FAQs: FAQs(sequelize),
-    Posts: Posts(sequelize)
+    Posts: Posts(sequelize),
+    //Settings: Settings(sequelize)
 };
 
 // ================================
 // Exportar
 // ================================
+
+export default db

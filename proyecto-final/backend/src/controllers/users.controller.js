@@ -42,7 +42,19 @@ export const updateUser = async (req, res) => {
   }
 };
 
-export const deleteUser = async (req, res) => {
+// Hard delete del User
+export const hardDeleteUser = async (req, res) => {
+  try {
+    const row = await Users.findByPk(req.params.id);
+    if (!row) return res.status(404).json({ error: "User not found" });
+    await row.destroy();
+    res.json({ message: "User removed (hard delete)" });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+};
+
+
+//Soft Delete
+export const softDeleteUser = async (req, res) => {
   try {
     const data = await Users.findByPk(req.params.id);
     if (!data) return res.status(404).json({ error: "User not found" });

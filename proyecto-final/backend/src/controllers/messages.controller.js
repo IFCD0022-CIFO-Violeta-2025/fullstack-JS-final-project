@@ -30,7 +30,8 @@ export const updateMessage = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-export const deleteMessage = async (req, res) => {
+//Hard Delete
+export const hardDeleteMessage = async (req, res) => {
   try {
     const row = await Messages.findByPk(req.params.id);
     if (!row) return res.status(404).json({ error: "Message not found" });

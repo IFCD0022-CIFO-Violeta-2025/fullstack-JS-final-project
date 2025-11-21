@@ -30,7 +30,18 @@ export const updatePost = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-export const deletePost = async (req, res) => {
+// Hard delete del Post
+export const hardDeletePost = async (req, res) => {
+  try {
+    const row = await Posts.findByPk(req.params.id);
+    if (!row) return res.status(404).json({ error: "Post not found" });
+    await row.destroy();
+    res.json({ message: "Post removed (hard delete)" });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+};
+
+//Soft Delete
+export const softDeletePost = async (req, res) => {
   try {
     const row = await Posts.findByPk(req.params.id);
     if (!row) return res.status(404).json({ error: "Post not found" });
