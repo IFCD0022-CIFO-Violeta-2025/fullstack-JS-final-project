@@ -40,7 +40,7 @@ function RegisterPage() {
         modal.show();
         return () => {
             el.removeEventListener('hidden.bs.modal', onHidden);
-            try { modal.hide(); } catch (e) { /* ignore */ }
+            try { modal.hide(); } catch (e) { console.error(e); }
         };
     }, [positiveRegistration]);
 

@@ -1,26 +1,12 @@
 import Card from "../components/Card"
 import Titulo from "../components/Titulo"
 
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { AuthContext } from "../contexts/AuthContext"
-import { getJSON } from "../utils/apiclient"
+// import { getJSON } from "../utils/apiclient"
 
 function HomePage() {
   const { user } = useContext(AuthContext)
-  const [privateItems, setPrivateItems] = useState(null)
-  const [loadingPrivate, setLoadingPrivate] = useState(false)
-  const [privateError, setPrivateError] = useState(null)
-
-  useEffect(() => {
-    if (!user) return
-    // fetch protected content when user is logged
-    setLoadingPrivate(true)
-    setPrivateError(null)
-    getJSON('api/protected/items')
-      .then((data) => setPrivateItems(data))
-      .catch((err) => setPrivateError(err.message || 'Error'))
-      .finally(() => setLoadingPrivate(false))
-  }, [user])
 
   return (
     <>
