@@ -10,7 +10,9 @@ npm i
 # Informacion de mySQL servidor (PC de Armand)
 hostname: 10.199.25.100
 port: 3306
-username: root
+username: admin
+password: admin
+
 
 
 # Normas para Mensajes de Commit
