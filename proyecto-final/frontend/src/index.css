@@ -77,3 +77,13 @@ body {
   scrollbar-width: thin; /* fino */
   scrollbar-color: #6739e4 transparent; /* color del thumb y del track */
 }
+
+
+/* Flechas de acordeón según tema */
+.faq-button.light::after {
+  filter: invert(1); /* flecha negra */
+}
+
+.faq-button.dark::after {
+  filter: invert(0); /* flecha blanca */
+}

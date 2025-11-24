@@ -5,10 +5,12 @@ import Boton from "./Boton"
 import Etiqueta from "./Etiqueta"
 import UsuarioInfo from "./UsuarioInfo"
 import AccionesEvento from "./AccionesEvento"
+import { useNavigate } from "react-router-dom" // <-- agregado
 
 const Card = ({ evento }) => {
   const navigate = useNavigate()
   const { theme } = useContext(ThemeContext)
+  const navigate = useNavigate() // <-- agregado
 
   // Calcular fecha texto
   let fechaTexto = ""
