@@ -7,7 +7,7 @@ import Boton from "./Boton"
 // Mock DB inicial
 const mockComentariosDB = [
   {
-    usuario: "Ana",
+    usuario: "Sandra",
     mensaje: "¡Me encanta este evento!",
     hora: new Date().toLocaleString("es-ES", {
       hour: "2-digit",
@@ -18,7 +18,7 @@ const mockComentariosDB = [
     likes: [], // ahora es array de usuarios que dieron like
   },
   {
-    usuario: "Luis",
+    usuario: "Francisco",
     mensaje: "¡Muy interesante!",
     hora: new Date().toLocaleString("es-ES", {
       hour: "2-digit",
@@ -290,8 +290,18 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
           className="form-control"
           value={nuevoComentario}
           onChange={(e) => {
-            if (e.target.value.length <= 400) {
-              setNuevoComentario(e.target.value)
+            let valor = e.target.value
+            if (valor.length <= 400) {
+              const primeraLetraI = valor.search(/[a-zA-Z]/)
+
+              if (primeraLetraI !== -1) {
+                valor =
+                  valor.slice(0, primeraLetraI) +
+                  valor.charAt(primeraLetraI).toUpperCase() +
+                  valor.slice(primeraLetraI + 1)
+              }
+              setNuevoComentario(valor)
+              /*  setNuevoComentario(valor.charAt(0).toUpperCase() + valor.slice(1)) */
             }
           }}
           placeholder="Escribe tu comentario aquí..."
@@ -319,7 +329,7 @@ export default ComentariosEvento
 -V arreglar el campo de texto que no se abra hasta el infinito
 -V botones abajo
 -V limitar numero de letras en comentario
-- la primera letra en comentarios que sea mayuscula
+-V la primera letra en comentarios que sea mayuscula
 - ordenar comentarios por fecha
 - colores y componetizar
 - admin en false
