@@ -140,3 +140,5 @@ export default function ChatPage() {
     </>
   )
 }
+
+// por alguna razón que no encuentro solución al enviar un mensaje en el chat hace un salto de scroll
