@@ -5,11 +5,10 @@ import Etiqueta from "./Etiqueta"
 import UsuarioInfo from "./UsuarioInfo"
 import { eventoMock } from "../data/mockData"
 import AccionesEvento from "./AccionesEvento"
-import { useNavigate } from "react-router-dom" // <-- agregado
 
 const Card = () => {
   const { theme } = useContext(ThemeContext)
-  const navigate = useNavigate() // <-- agregado
+
 
   // 👉 usamos directamente los datos del mock
   const {
