@@ -67,6 +67,12 @@ const Navbar = () => {
               >
                 Perfil
               </BotonNavbar>
+                   <BotonNavbar
+                onClick={() => navigate("/my-events")}
+                active={location.pathname === "/my-events"}
+              >
+                Agenda
+              </BotonNavbar>
               <BotonNavbar onClick={() => navigate("/faq")} active={location.pathname === "/faq"}>
                 FAQ
               </BotonNavbar>

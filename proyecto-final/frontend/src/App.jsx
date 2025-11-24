@@ -11,6 +11,7 @@ import ProfilePage from "./pages/ProfilePage"
 import FAQPage from "./pages/FAQPage"
 import ChatPage from "./pages/ChatPage"
 import Footer from "./components/Footer"
+import MyEvents from "./pages/MyEvents"
 
 function App() {
   const { theme } = useContext(ThemeContext)
@@ -32,6 +33,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               {/* <Route path="/event/:id" element={<EventPage />} /> */}
               <Route path="/event" element={<EventPage />} />
+              <Route path="/my-events" element={<MyEvents />} />
               <Route path="/create" element={<CreateEventPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/faq" element={<FAQPage />} />
