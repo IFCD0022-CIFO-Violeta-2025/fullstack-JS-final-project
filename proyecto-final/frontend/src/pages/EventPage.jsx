@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Boton from "../components/Boton"
 import Etiqueta from "../components/Etiqueta"
 import { ThemeContext } from "../contexts/ThemeContext"
@@ -8,6 +8,7 @@ import UsuarioInfo from "../components/UsuarioInfo"
 import { eventoMock } from "../data/mockData"
 import AccionesEvento from "../components/AccionesEvento"
 import Titulo from "../components/Titulo"
+import ChatPage from "./ChatPage"
 
 function EventPage() {
   const { theme } = useContext(ThemeContext)
@@ -31,16 +32,16 @@ function EventPage() {
     }
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
       <Titulo title="EVENTOS" />
       <div
+        className="container eventPage"
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          minHeight: "100vh",
-          padding: "0 2rem 2rem 2rem",
           backgroundColor: theme.bodyColor,
         }}
       >
@@ -176,6 +177,7 @@ function EventPage() {
             <ComentariosEvento comentarios={evento.comentarios} />
           </div>
         </div>
+        <ChatPage />
       </div>
     </>
   )

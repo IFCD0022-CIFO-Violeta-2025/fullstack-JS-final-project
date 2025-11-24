@@ -24,15 +24,6 @@ body {
   margin: 0 auto; /* centra el feed dentro del espacio libre */
 }
 
-@media (max-width: 991.98px) {
-  .main-content {
-    margin-left: 0;
-    width: 100vw;
-  }
-  .main-content__inner {
-    max-width: 100%;
-  }
-}
 
 .etiquetas-container a {
   font-size: clamp(0.6rem, 1.2vw, 0.85rem); /* se adapta suavemente */
@@ -42,7 +33,7 @@ body {
 }
 
 .etiquetas-container a {
-  font-size: clamp(0.6rem, 1.2vw, 0.85rem); 
+  font-size: clamp(0.6rem, 1.2vw, 0.85rem);
   padding: 0.3rem 0.6rem;
   white-space: nowrap;
   transition:
@@ -100,16 +91,8 @@ body {
   display: flex;
   justify-content: center;
   gap: 2rem;
-/*   padding: 0.5rem; */
+  /*   padding: 0.5rem; */
   font-size: 0.9rem;
-}
-
-/* Móvil: sidebar desaparece → footer full width */
-@media (max-width: 991.98px) {
-  .footer {
-    margin-left: 0;
-    width: 100vw;
-  }
 }
 
 /* layout-wrapper para empujar footer */
@@ -122,4 +105,30 @@ body {
 
 .layout-content {
   flex: 1; /* Este espacio crece para empujar el footer al fondo */
+}
+
+.eventPage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 991.98px) {
+  .main-content {
+    margin-left: 0;
+    width: 100vw;
+  }
+  .main-content__inner {
+    max-width: 100%;
+  }
+
+.eventPage{
+  grid-template-columns: repeat(1, 1fr);
+}
+
+  /* movil: sidebar desaparece, footer full width */
+  .footer {
+    margin-left: 0;
+    width: 100vw;
+  }
 }

@@ -39,7 +39,7 @@ function App() {
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/history" element={<WebHistoryPage />} />
               <Route path="/faq" element={<FAQPage />} />
-              <Route path="/chat" element={<ChatPage />} />
+              {/* <Route path="/chat" element={<ChatPage />} /> */}
             </Routes>
           </div>
         </div>

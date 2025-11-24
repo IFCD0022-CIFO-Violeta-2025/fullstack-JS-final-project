@@ -57,9 +57,9 @@ export default function ChatPage() {
 
   return (
     <>
-      <Titulo title="Chat del Evento" />
+      {/*    <Titulo title="Chat del Evento" /> */}
 
-      <div className="mx-auto mt-4" style={{ maxWidth: "600px", width: "100%" }}>
+      <div className="mx-auto" style={{ maxWidth: "600px", width: "100%" }}>
         <div
           className="card"
           style={{
@@ -81,7 +81,7 @@ export default function ChatPage() {
               borderBottom: `2px solid ${theme.borderColor}`,
             }}
           >
-            💬 Chat
+            💬 Chat del Evento
           </div>
 
           <div
@@ -107,7 +107,11 @@ export default function ChatPage() {
 
           <div
             className="card-footer d-flex gap-2 align-items-center"
-            style={{ backgroundColor: theme.cardColor, borderColor: theme.textColor,  borderTop: `2px solid`, }}
+            style={{
+              backgroundColor: theme.cardColor,
+              borderColor: theme.textColor,
+              borderTop: `2px solid`,
+            }}
           >
             <textarea
               className="form-control"

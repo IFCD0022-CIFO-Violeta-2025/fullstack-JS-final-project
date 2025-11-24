@@ -7,7 +7,7 @@ const ThemeProvider = ({ children }) => {
 
   const toggleTheme = () => setIsDarkMode((prev) => !prev)
 
-  // 🎨 Paleta de colores centralizada
+  // Paleta de colores centralizada
   const COLORS = {
     white: "#FFFFFF",
     black: "#000000",

@@ -117,11 +117,11 @@ const Card = () => {
 
           {/* Botones y etiquetas */}
           <div className="mt-3">
-            <div className="d-flex gap-2 justify-content-center mb-4">
+            <div className="d-flex gap-2 justify-content-start mb-4">
               {/* Cambio importante: usamos navigate en lugar de window.open */}
-              <Boton onClick={() => navigate("/event")}>Ver más</Boton>
+             {/*  <Boton onClick={() => navigate("/event")}>Ver más</Boton> */}
 
-              <Boton>Inscribirse</Boton>
+              <Boton onClick={() => navigate("/event")}>Inscribirse</Boton>
             </div>
 
             <Etiqueta categorias={categorias} />

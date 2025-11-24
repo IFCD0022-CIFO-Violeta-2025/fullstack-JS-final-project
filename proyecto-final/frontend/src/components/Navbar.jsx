@@ -103,7 +103,7 @@ const Navbar = () => {
               {user && <UsuarioNavbar />}
 
               {/* Botón para chat */}
-              <Boton onClick={() => navigate("/chat")}>Chat</Boton>
+              {/* <Boton onClick={() => navigate("/chat")}>Chat</Boton> */}
 
               {/* Botón para cambiar tema */}
               <Boton onClick={toggleTheme}>{isDarkMode ? "Claro" : "Oscuro"}</Boton>
