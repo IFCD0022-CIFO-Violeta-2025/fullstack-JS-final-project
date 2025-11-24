@@ -97,7 +97,7 @@ function RegisterPage() {
         // 🔹Mandamos el POST para el login
         const userRegister = async () => {
             try {
-                                const fetchDataUser = await postJSON('api/users/register', { username, password, email });
+                                const fetchDataUser = await postJSON('api/v1/users/register', { username, password, email });
                                 setDataUser(fetchDataUser)
                                 // If API returns token and user, log the user in automatically
                                 const jwt = fetchDataUser?.token || fetchDataUser?.jwt || null

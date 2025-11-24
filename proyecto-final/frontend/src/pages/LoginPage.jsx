@@ -49,7 +49,7 @@ function LoginPage() {
     // 🔹Mandamos el POST para el login
     const userLogin = async () => {
       try {
-        const data = await postJSON('api/users/login', { username, password });
+        const data = await postJSON('api/v1/users/login', { username, password });
         // respuesta esperada: { token, user } o { token, username }
         const jwt = data.token || data.jwt || null
         const userObj = data.user || (data.username ? { name: data.username } : null)

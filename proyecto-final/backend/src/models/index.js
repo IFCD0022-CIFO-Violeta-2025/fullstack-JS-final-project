@@ -17,20 +17,6 @@ import Posts from "./posts.model.js";
 //Configuración externa
 import config from '../config/config.js'
 
-// // ================================
-// // Conexión Sequelize
-// // ================================
-// export const sequelize = new Sequelize(
-//     "db_eventos",
-//     "root",
-//     "",
-//     {
-//         host: "localhost",
-//         dialect: "mysql",
-//         logging: false,
-//     }
-// );
-
 // ================================
 // Conexión Sequelize parametrizado
 // ================================
@@ -42,6 +28,7 @@ export const sequelize = new Sequelize(
         host: config.db_host,
         dialect: "mysql",
         logging: false,
+        port: config.db_port
     }
 );
 
@@ -65,9 +52,5 @@ export const db = {
     Posts: Posts(sequelize),
     //Settings: Settings(sequelize)
 };
-
-// ================================
-// Exportar
-// ================================
 
 export default db
