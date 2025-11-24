@@ -12,6 +12,7 @@ import FAQPage from "./pages/FAQPage"
 import ChatPage from "./pages/ChatPage"
 import Footer from "./components/Footer"
 import MyEvents from "./pages/MyEvents"
+import WebHistoryPage from "./pages/WebHistoryPage"
 
 function App() {
   const { theme } = useContext(ThemeContext)
@@ -36,6 +37,7 @@ function App() {
               <Route path="/my-events" element={<MyEvents />} />
               <Route path="/create" element={<CreateEventPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/history" element={<WebHistoryPage />} />
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/chat" element={<ChatPage />} />
             </Routes>

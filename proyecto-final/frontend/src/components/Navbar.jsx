@@ -1,4 +1,4 @@
-import  { useContext, useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { ThemeContext } from "../contexts/ThemeContext"
 import { AuthContext } from "../contexts/AuthContext"
@@ -67,11 +67,17 @@ const Navbar = () => {
               >
                 Perfil
               </BotonNavbar>
-                   <BotonNavbar
+              <BotonNavbar
                 onClick={() => navigate("/my-events")}
                 active={location.pathname === "/my-events"}
               >
                 Agenda
+              </BotonNavbar>
+              <BotonNavbar
+                onClick={() => navigate("/history")}
+                active={location.pathname === "/history"}
+              >
+                Historia
               </BotonNavbar>
               <BotonNavbar onClick={() => navigate("/faq")} active={location.pathname === "/faq"}>
                 FAQ
