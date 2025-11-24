@@ -11,9 +11,6 @@ import ProfilePage from "./pages/ProfilePage"
 import FAQPage from "./pages/FAQPage"
 import ChatPage from "./pages/ChatPage"
 
-import { EventProvider } from "./contexts/EventContext"
-
-
 function App() {
   const { theme } = useContext(ThemeContext)
 
@@ -22,23 +19,25 @@ function App() {
   }, [theme.bodyColor])
 
   return (
-    <EventProvider>
+    <>
       <Navbar />
       <Sidebar />
 
       <div className="main-content">
         <div className="main-content__inner">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/event/:id" element={<EventPage />} /> {/* <-- id */}
-          <Route path="/create" element={<CreateEventPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/faq" element={<FAQPage />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            {/* <Route path="/event/:id" element={<EventPage />} /> */}
+            <Route path="/event" element={<EventPage />} />
+            <Route path="/create" element={<CreateEventPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="/chat" element={<ChatPage />} />
+          </Routes>
         </div>
       </div>
-    </EventProvider>
+    </>
   )
 }
 

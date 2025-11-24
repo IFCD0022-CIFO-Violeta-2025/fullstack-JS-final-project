@@ -1,30 +1,25 @@
 import React, { useContext, useState } from "react"
-import { useParams } from "react-router-dom"
-import { ThemeContext } from "../contexts/ThemeContext"
-import { EventContext } from "../contexts/EventContext"
 import Boton from "../components/Boton"
 import Etiqueta from "../components/Etiqueta"
-import UsuarioInfo from "../components/UsuarioInfo"
+import { ThemeContext } from "../contexts/ThemeContext"
 import ComentariosEvento from "../components/ComentariosEvento"
-import AccionesEvento from "../components/AccionesEvento"
 import SocialIcon from "../components/SocialIcon"
+import UsuarioInfo from "../components/UsuarioInfo"
+import { eventoMock } from "../data/mockData"
+import AccionesEvento from "../components/AccionesEvento"
 import Titulo from "../components/Titulo"
 
 function EventPage() {
   const { theme } = useContext(ThemeContext)
-  const { eventos } = useContext(EventContext)
-const { id } = useParams()
-const evento = eventos.find((e) => e.id === Number(id))
 
+  // 👉 usamos directamente el mock en lugar de definir evento aquí
+  const evento = eventoMock
 
-  // Buscar el evento por id
-  const [recordar, setRecordar] = useState(evento?.recordatorio2diasAntes || false)
+  // 👉 Estado para el checkbox
+  const [recordar, setRecordar] = useState(evento.recordatorio2diasAntes)
 
-  if (!evento) return <p>Evento no encontrado</p>
-
-  // Función para formatear fechas
+  // Lógica para mostrar fechas
   const getFechaTexto = (fechas) => {
-    if (!fechas) return ""
     if (fechas.length === 1) {
       const f = new Date(fechas[0])
       return `${f.getDate()} de ${f.toLocaleDateString("es-ES", { month: "long" })}`
@@ -32,15 +27,13 @@ const evento = eventos.find((e) => e.id === Number(id))
       const fechasOrdenadas = fechas.map((f) => new Date(f)).sort((a, b) => a - b)
       const fInicio = fechasOrdenadas[0]
       const fFin = fechasOrdenadas[fechasOrdenadas.length - 1]
-      return `Del ${fInicio.getDate()} de ${fInicio.toLocaleDateString("es-ES", {
-        month: "long",
-      })} al ${fFin.getDate()} de ${fFin.toLocaleDateString("es-ES", { month: "long" })}`
+      return `Del ${fInicio.getDate()} de ${fInicio.toLocaleDateString("es-ES", { month: "long" })} al ${fFin.getDate()} de ${fFin.toLocaleDateString("es-ES", { month: "long" })}`
     }
   }
 
   return (
     <>
-      <Titulo title="EVENTO" />
+      <Titulo title="EVENTOS" />
       <div
         style={{
           display: "flex",
@@ -65,20 +58,24 @@ const evento = eventos.find((e) => e.id === Number(id))
             overflow: "hidden",
           }}
         >
+          {/* Usuario y organizador */}
           <UsuarioInfo usuario={evento.usuario} />
 
+          {/* Imagen del evento */}
           <img
-            src={evento.img}
+            src={evento.img} // usamos la imagen del mock
             alt={evento.titulo}
             style={{ width: "100%", height: "400px", objectFit: "cover" }}
           />
 
+          {/* Contenido del evento */}
           <div className="p-4">
             <h1>{evento.titulo}</h1>
             <p style={{ fontSize: "1.1rem", lineHeight: "1.6", marginTop: "2rem" }}>
               {evento.descripcion}
             </p>
 
+            {/* Información del organizador y contacto */}
             <div style={{ marginTop: "2rem" }}>
               <p>
                 <strong>Organizador:</strong> {evento.organizador}
@@ -88,6 +85,7 @@ const evento = eventos.find((e) => e.id === Number(id))
               </p>
             </div>
 
+            {/* Lugar, fechas y horarios */}
             <div style={{ marginTop: "1rem" }}>
               <p>
                 <strong>Lugar:</strong> 📍 {evento.ubicacion}
@@ -103,6 +101,7 @@ const evento = eventos.find((e) => e.id === Number(id))
               </p>
             </div>
 
+            {/* Capacidad del evento */}
             <div style={{ marginTop: "1rem" }}>
               <p>
                 <strong>Número mínimo de asistentes:</strong> {evento.asistentesMin}
@@ -111,10 +110,11 @@ const evento = eventos.find((e) => e.id === Number(id))
                 <strong>Número máximo de asistentes:</strong> {evento.asistentesMax}
               </p>
               <p>
-                <strong>Asistentes inscritos:</strong> {evento.inscritos || 0}
+                <strong>Asistentes inscritos:</strong> {evento.inscritos}
               </p>
             </div>
 
+            {/* Fecha límite y recordatorio */}
             <div style={{ marginTop: "1rem" }}>
               <p>
                 <strong>Fecha límite de reserva:</strong>{" "}
@@ -130,21 +130,25 @@ const evento = eventos.find((e) => e.id === Number(id))
               </div>
             </div>
 
+            {/* Redes Sociales */}
             <div className="d-flex gap-3 mt-4">
               <SocialIcon>+</SocialIcon>
               <SocialIcon>+</SocialIcon>
               <SocialIcon>+</SocialIcon>
             </div>
 
+            {/* Botones de acción */}
             <div style={{ marginTop: "2rem", display: "flex", gap: "1rem" }}>
               <Boton>Inscribirse</Boton>
               <Boton>Chat</Boton>
             </div>
 
+            {/* Etiquetas */}
             <div style={{ marginTop: "3rem" }}>
               <Etiqueta categorias={evento.categorias} />
             </div>
 
+            {/* Mapa */}
             <div
               style={{
                 marginTop: "2rem",
@@ -162,6 +166,7 @@ const evento = eventos.find((e) => e.id === Number(id))
               Aquí irá el mapa del evento
             </div>
 
+            {/* Acciones evento */}
             <AccionesEvento
               likes={evento.likes}
               commentsCount={evento.commentsCount}
@@ -169,6 +174,7 @@ const evento = eventos.find((e) => e.id === Number(id))
               onSave={() => alert("Evento guardado")}
             />
 
+            {/* Comentarios */}
             <ComentariosEvento comentarios={evento.comentarios} />
           </div>
         </div>
