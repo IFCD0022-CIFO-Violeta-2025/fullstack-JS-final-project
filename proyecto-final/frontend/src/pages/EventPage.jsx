@@ -47,7 +47,9 @@ const evento = eventos.find((e) => e.id === Number(id))
           flexDirection: "column",
           alignItems: "center",
           minHeight: "100vh",
-          padding: "2rem",
+          /* ✅ Eliminado el padding superior: ahora la separación la controla solo <Titulo> */
+          /* Mantengo padding lateral y inferior para que la página siga teniendo espacio */
+          padding: "0 2rem 2rem 2rem",
           backgroundColor: theme.bodyColor,
         }}
       >

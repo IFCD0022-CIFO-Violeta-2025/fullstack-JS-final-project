@@ -1,13 +1,16 @@
 import React, { useContext, useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { ThemeContext } from "../contexts/ThemeContext"
+import { AuthContext } from "../contexts/AuthContext"
 import viteLogo from "/vite.svg"
 import Boton from "./Boton"
 import Sidebar from "./SideBar"
 import BotonNavbar from "./BotonNavbar"
+import UsuarioNavbar from "./UsuarioNavbar"
 
 const Navbar = () => {
   const { toggleTheme, theme, isDarkMode } = useContext(ThemeContext)
+  const { user } = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -15,10 +18,10 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg fixed-top"
+        className="navbar navbar-dark navbar-expand-lg fixed-top"
         style={{
-          backgroundColor: theme.navbarColor,
-          borderBottom: theme.navbarBorder,
+          backgroundColor: theme.navbarBG,
+          borderBottom: theme.navbarBorder
         }}
       >
         <div className="container-fluid">
@@ -76,14 +79,26 @@ const Navbar = () => {
             </div>
 
             <div className="d-flex gap-2">
-              <Boton onClick={() => navigate("/login")}>Login</Boton>
+              {/* 🔥 Si NO hay usuario, mostramos ambos botones */}
+              {!user && (
+                <>
+                  <Boton onClick={() => navigate("/login")}>Login</Boton>
+                  <Boton onClick={() => navigate("/login")}>Sign in</Boton>
+                </>
+              )}
+
+              {/* 🔥 Si hay usuario, mostramos su nombre + Logout */}
+        {user && <UsuarioNavbar />}
+
+
+              {/* Botón para cambiar tema */}
               <Boton onClick={toggleTheme}>{isDarkMode ? "Claro" : "Oscuro"}</Boton>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Sidebar controlado por estado */}
+      {/* Sidebar */}
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
     </>
   )

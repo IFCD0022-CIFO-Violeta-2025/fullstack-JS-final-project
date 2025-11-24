@@ -7,6 +7,14 @@ git clone https://github.com/IFCD0022-CIFO-Violeta-2025/fullstack-JS-final-proje
 cd ...\fullstack-JS-final-project
 npm i
 
+# Informacion de mySQL servidor (PC de Armand)
+hostname: 10.199.25.100
+port: 3306
+username: admin
+password: admin
+
+
+
 # Normas para Mensajes de Commit
 
 Para mantener un historial claro y consistente, seguimos el estándar **Conventional Commits**.
