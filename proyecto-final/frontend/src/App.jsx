@@ -15,6 +15,7 @@ import Footer from "./components/Footer"
 import MyEvents from "./pages/MyEvents"
 import WebHistoryPage from "./pages/WebHistoryPage"
 import RequireAuth from "./components/RequireAuth"
+import { AboutPage } from "./pages/AboutPage"
 
 function App() {
   const { theme } = useContext(ThemeContext)
@@ -39,6 +40,7 @@ function App() {
 
               <Route path="/history" element={<WebHistoryPage />} />
               <Route path="/faq" element={<FAQPage />} />
+              <Route path="/about" element={<AboutPage />} />
               {/* <Route path="/chat" element={<ChatPage />} /> */}
 
               {/* Protected routes: require auth to access */}

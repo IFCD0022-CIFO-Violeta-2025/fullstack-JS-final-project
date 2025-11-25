@@ -97,6 +97,9 @@ const Navbar = () => {
                   >
                     Crear Evento
                   </BotonNavbar>
+                <BotonNavbar onClick={() => navigate("/about")} active={location.pathname === "/about"}>
+                Sobre nosotros
+              </BotonNavbar>
                 </>
               )}
             </div>
