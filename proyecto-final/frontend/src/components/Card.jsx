@@ -5,11 +5,11 @@ import Etiqueta from "./Etiqueta"
 import UsuarioInfo from "./UsuarioInfo"
 import { eventoMock } from "../data/mockData"
 import AccionesEvento from "./AccionesEvento"
-import { useNavigate } from "react-router-dom" 
+import { useNavigate } from "react-router-dom"
 
 const Card = () => {
   const { theme } = useContext(ThemeContext)
-  const navigate = useNavigate() 
+  const navigate = useNavigate()
 
   // usamos directamente los datos del mock
   const {
@@ -119,7 +119,7 @@ const Card = () => {
           <div className="mt-3">
             <div className="d-flex gap-2 justify-content-start mb-4">
               {/* Cambio importante: usamos navigate en lugar de window.open */}
-             {/*  <Boton onClick={() => navigate("/event")}>Ver más</Boton> */}
+              {/*  <Boton onClick={() => navigate("/event")}>Ver más</Boton> */}
 
               <Boton onClick={() => navigate("/event")}>Inscribirse</Boton>
             </div>
