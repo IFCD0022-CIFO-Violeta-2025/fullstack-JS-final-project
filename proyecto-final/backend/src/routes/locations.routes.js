@@ -4,7 +4,8 @@ import {
   getLocationById,
   createLocation,
   updateLocation,
-  deleteLocation
+  softDeleteLocation,
+  hardDeleteLocation
 } from "../controllers/locations.controller.js";
 
 const router = Router();
@@ -13,6 +14,7 @@ router.get("/", getAllLocations);
 router.get("/:id", getLocationById);
 router.post("/", createLocation);
 router.put("/:id", updateLocation);
-router.delete("/:id", deleteLocation);
+router.delete("/:id", softDeleteLocation);
+router.delete("/hardDelete/:id", hardDeleteLocation);
 
 export default router;

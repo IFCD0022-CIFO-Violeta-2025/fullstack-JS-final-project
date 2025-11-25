@@ -48,20 +48,28 @@ function LoginPage() {
 
     // 🔹Mandamos el POST para el login
     const userLogin = async () => {
-        try {
-          const data = await postJSON('/login', { username, password });
-          if(data.success){ 
-            console.log(data)
-            login(data.username)
-          }
-        } catch (error) {
-          console.error('Error en la solicitud POST de login : ', error);
+      try {
+        const data = await postJSON('api/v1/users/login', { username, password });
+        // respuesta esperada: { token, user } o { token, username }
+        const jwt = data.token || data.jwt || null
+        const userObj = data.user || (data.username ? { name: data.username } : null)
+        if (jwt && userObj) {
+          login(userObj, jwt)
+          navigate('/')
+        } else if (data.success && data.username) {
+          // fallback para API sin token (dev mode)
+          login({ name: data.username })
+          navigate('/')
+        } else {
+          // no login
+          setErrors({ general: 'Credenciales inválidas' })
         }
-      };
-      userLogin();
-
-    // 🔹 Redirigimos al Home
-    navigate("/")
+      } catch (error) {
+        console.error('Error en la solicitud POST de login : ', error);
+        setErrors({ general: error.message || 'Error de conexión' })
+      }
+    }
+    userLogin()
   }
 
   return (

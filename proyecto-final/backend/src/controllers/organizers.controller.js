@@ -30,7 +30,8 @@ export const updateOrganizer = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-export const deleteOrganizer = async (req, res) => {
+//Hard Delete
+export const hardDeleteOrganizer = async (req, res) => {
   try {
     const org = await Organizers.findByPk(req.params.id);
     if (!org) return res.status(404).json({ error: "Organizer not found" });

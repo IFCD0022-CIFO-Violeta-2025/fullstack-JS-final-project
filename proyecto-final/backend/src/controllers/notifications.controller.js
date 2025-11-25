@@ -30,7 +30,7 @@ export const updateNotification = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-export const deleteNotification = async (req, res) => {
+export const hardDeleteNotification = async (req, res) => {
   try {
     const n = await Notifications.findByPk(req.params.id);
     if (!n) return res.status(404).json({ error: "Notification not found" });

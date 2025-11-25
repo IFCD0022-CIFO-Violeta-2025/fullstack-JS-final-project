@@ -12,6 +12,7 @@ const Card = () => {
   const navigate = useNavigate()
 
   // usamos directamente los datos del mock
+
   const {
     titulo,
     descripcion,
@@ -57,10 +58,10 @@ const Card = () => {
           boxShadow: "6px 6px 12px rgba(0, 0, 0, 0.15)",
         }}
       >
-        {/* Usuario que publicó */}
+        {/* usuario que publicó */}
         <UsuarioInfo usuario={usuario} />
 
-        {/* Imagen arriba con borde inferior fino */}
+        {/* imagen arriba con borde inferior fino */}
         <div>
           <img
             src={img}
@@ -74,7 +75,7 @@ const Card = () => {
           />
         </div>
 
-        {/* Contenido */}
+        {/* contenido */}
         <div className="card-body d-flex flex-column h-100">
           <div className="flex-grow-1">
             <h5 className="card-title">{titulo}</h5>
@@ -115,7 +116,7 @@ const Card = () => {
             </div>
           </div>
 
-          {/* Botones y etiquetas */}
+          {/* botones y etiquetas */}
           <div className="mt-3">
             <div className="d-flex gap-2 justify-content-start mb-4">
               {/* Cambio importante: usamos navigate en lugar de window.open */}
@@ -133,7 +134,7 @@ const Card = () => {
             style={{ borderTop: "1px solid #ddd", paddingTop: "0.5rem" }}
           ></div>
 
-          {/* Acciones evento */}
+          {/* acciones evento */}
           <AccionesEvento
             likes={likes}
             commentsCount={commentsCount}

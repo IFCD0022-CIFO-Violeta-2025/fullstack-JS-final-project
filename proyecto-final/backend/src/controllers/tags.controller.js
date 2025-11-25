@@ -31,7 +31,8 @@ export const updateTag = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-export const deleteTag = async (req, res) => {
+//Hard Delete
+export const hardDeleteTag = async (req, res) => {
   try {
     const row = await Tags.findByPk(req.params.id);
     if (!row) return res.status(404).json({ error: "Tag not found" });

@@ -40,7 +40,7 @@ const Navbar = () => {
             />
           </a>
 
-          {/* Botón para abrir Sidebar en móvil */}
+          {/* botón para abrir Sidebar en móvil */}
           <div className="d-lg-none">
             <Boton onClick={() => setSidebarOpen(true)}>Sidebar</Boton>
           </div>
@@ -62,53 +62,57 @@ const Navbar = () => {
               <BotonNavbar onClick={() => navigate("/")} active={location.pathname === "/"}>
                 Home
               </BotonNavbar>
-              <BotonNavbar
-                onClick={() => navigate("/profile")}
-                active={location.pathname === "/profile"}
-              >
-                Perfil
-              </BotonNavbar>
-              <BotonNavbar
-                onClick={() => navigate("/my-events")}
-                active={location.pathname === "/my-events"}
-              >
-                Agenda
-              </BotonNavbar>
+
               <BotonNavbar
                 onClick={() => navigate("/history")}
                 active={location.pathname === "/history"}
               >
                 Historia
               </BotonNavbar>
+
               <BotonNavbar onClick={() => navigate("/faq")} active={location.pathname === "/faq"}>
                 FAQ
               </BotonNavbar>
-              <BotonNavbar
-                onClick={() => navigate("/create")}
-                active={location.pathname === "/create"}
-              >
-                Crear Evento
-              </BotonNavbar>
-            </div>
 
-            <div className="d-flex gap-2">
-              {/* Si NO hay usuario, mostramos ambos botones */}
-              {!user && (
+              {/* si hay usuario, mostramos los botones del menú */}
+              {user && (
                 <>
-                  <Boton onClick={() => navigate("/login")}>Login</Boton>
-                  <Boton onClick={() => navigate("/login")}>Sign in</Boton>
+                  <BotonNavbar
+                    onClick={() => navigate("/profile")}
+                    active={location.pathname === "/profile"}
+                  >
+                    Perfil
+                  </BotonNavbar>
+
+                  <BotonNavbar
+                    onClick={() => navigate("/my-events")}
+                    active={location.pathname === "/my-events"}
+                  >
+                    Agenda
+                  </BotonNavbar>
+
+                  <BotonNavbar
+                    onClick={() => navigate("/create")}
+                    active={location.pathname === "/create"}
+                  >
+                    Crear Evento
+                  </BotonNavbar>
                 </>
               )}
-
-              {/* Si hay usuario, mostramos su nombre + Logout */}
-              {user && <UsuarioNavbar />}
-
-              {/* Botón para chat */}
-              {/* <Boton onClick={() => navigate("/chat")}>Chat</Boton> */}
-
-              {/* Botón para cambiar tema */}
-              <Boton onClick={toggleTheme}>{isDarkMode ? "Claro" : "Oscuro"}</Boton>
             </div>
+          </div>
+
+          <div className="d-flex gap-2">
+            {!user && (
+              <>
+                <Boton onClick={() => navigate("/login")}>Login</Boton>
+                <Boton onClick={() => navigate("/register")}>Sign in</Boton>
+              </>
+            )}
+
+            {user && <UsuarioNavbar />}
+
+            <Boton onClick={toggleTheme}>{isDarkMode ? "Claro" : "Oscuro"}</Boton>
           </div>
         </div>
       </nav>

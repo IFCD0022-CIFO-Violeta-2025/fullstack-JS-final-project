@@ -32,7 +32,19 @@ export const updateEvent = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-export const deleteEvent = async (req, res) => {
+// Hard delete del comentario
+export const hardDeleteEvent = async (req, res) => {
+  try {
+    const row = await Events.findByPk(req.params.id);
+    if (!row) return res.status(404).json({ error: "FAQ not found" });
+    await row.destroy();
+    res.json({ message: "Event removed (hard delete)" });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+};
+
+
+//Soft Delete
+export const softDeleteEvent = async (req, res) => {
   try {
     const data = await Events.findByPk(req.params.id);
     if (!data) return res.status(404).json({ error: "Event not found" });

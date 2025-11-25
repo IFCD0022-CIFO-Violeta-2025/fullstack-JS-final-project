@@ -23,7 +23,11 @@ export default (sequelize) => {
     },
     {
       tableName: "Events",
-      timestamps: false,
+      timestamps: true,
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
+      paranoid: true, // Usa deletedAt para borrado "suave"
+      deletedAt: 'deleted_at'
     }
   );
 

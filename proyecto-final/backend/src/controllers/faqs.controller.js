@@ -30,7 +30,8 @@ export const updateFAQ = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-export const deleteFAQ = async (req, res) => {
+//Hard Delete
+export const hardDeleteFAQ = async (req, res) => {
   try {
     const row = await FAQs.findByPk(req.params.id);
     if (!row) return res.status(404).json({ error: "FAQ not found" });
