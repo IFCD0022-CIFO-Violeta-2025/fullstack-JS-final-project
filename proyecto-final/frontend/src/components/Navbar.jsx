@@ -2,7 +2,8 @@ import { useContext, useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { ThemeContext } from "../contexts/ThemeContext"
 import { AuthContext } from "../contexts/AuthContext"
-import logo from "/logo.png"
+/* import logo from "/logo.png" */
+import logo from "/logo.svg"
 import Boton from "./Boton"
 import Sidebar from "./SideBar"
 import BotonNavbar from "./BotonNavbar"
@@ -33,8 +34,8 @@ const Navbar = () => {
             <img
               src={logo}
               alt="logo Armand Events"
-              width="40"
-              height="40"
+              width="50"
+              height="50"
               className="d-inline-block align-text-top me-2"
             />
           </a>
