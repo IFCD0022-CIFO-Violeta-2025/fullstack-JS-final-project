@@ -7,7 +7,7 @@ const ThemeProvider = ({ children }) => {
 
   const toggleTheme = () => setIsDarkMode((prev) => !prev)
 
-  // 🎨 Paleta de colores centralizada
+  // Paleta de colores centralizada
   const COLORS = {
     white: "#FFFFFF",
     black: "#000000",
@@ -21,6 +21,7 @@ const ThemeProvider = ({ children }) => {
   }
 
   const theme = {
+    white: COLORS.white,
     navbarBG: isDarkMode ? COLORS.darkAccent : COLORS.darkPrimary,
     navbarBorder: isDarkMode ? "none" : `1px solid ${COLORS.darkSecondary}`,
     sidebarBorder: isDarkMode ? "none" : `1px solid ${COLORS.darkSecondary}`,

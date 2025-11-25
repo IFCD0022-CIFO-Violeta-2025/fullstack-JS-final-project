@@ -10,7 +10,7 @@ function UsuarioNavbar() {
 
   if (!user) return null // No mostramos nada si no hay usuario
 
-  // 🔹 Tomamos los datos mockeados para el usuario
+  // Tomamos los datos mockeados para el usuario
   const usuario = {
     nombre: user.name || eventoMock.usuario.nombre,
     avatar: eventoMock.usuario.avatar,

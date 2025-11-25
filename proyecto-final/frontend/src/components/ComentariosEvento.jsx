@@ -7,7 +7,7 @@ import Boton from "./Boton"
 // Mock DB inicial
 const mockComentariosDB = [
   {
-    usuario: "Ana",
+    usuario: "Sandra",
     mensaje: "¡Me encanta este evento!",
     hora: new Date().toLocaleString("es-ES", {
       hour: "2-digit",
@@ -18,7 +18,7 @@ const mockComentariosDB = [
     likes: [], // ahora es array de usuarios que dieron like
   },
   {
-    usuario: "Luis",
+    usuario: "Francisco",
     mensaje: "¡Muy interesante!",
     hora: new Date().toLocaleString("es-ES", {
       hour: "2-digit",
@@ -119,10 +119,10 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
           borderRadius: "8px",
           boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
           overflow: "hidden",
-          border: `1px solid ${theme.borderColor}`,
+          border: `2px solid ${theme.borderColor}`,
         }}
       >
-        {/* --- Título --- */}
+        {/*  Título  */}
         <div
           className="card-header"
           style={{
@@ -138,7 +138,7 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
           💬 Comentarios
         </div>
 
-        {/* --- Lista de comentarios --- */}
+        {/*  Lista de comentarios  */}
         {comentarios.length === 0 ? (
           <div className="card-body" style={{ fontStyle: "italic", opacity: 0.8 }}>
             No hay comentarios aún.
@@ -158,17 +158,10 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
                   padding: "0.75rem 1rem",
                 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                  }}
-                >
+                <div>
                   <div>
                     <strong style={{ color: theme.etiquetaColor }}>{c.usuario}:</strong>{" "}
-
-                    {/* --- Edición --- */}
+                    {/*  Edición  */}
                     {editIndex === index ? (
                       <>
                         <textarea
@@ -199,25 +192,27 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
                         </button>
                       </>
                     ) : (
-                      // --- Mensaje mostrado con auto-wrap ---
+                      // Mensaje mostrado con auto-wrap
                       <div
                         style={{
-                          marginLeft: "8px",
-                          whiteSpace: "pre-wrap", // ✅ mantiene saltos de línea
-                          wordBreak: "break-word", // ✅ rompe palabras largas
+                          background: "#9569FF",
+                          color: theme.white,
+                          borderRadius: "6px",
+                          padding: "6px",
+                          whiteSpace: "pre-wrap",
+                          wordBreak: "break-word", // rompe palabras largas
                         }}
                       >
                         {c.mensaje}
                       </div>
                     )}
-
                     <div style={{ fontSize: "0.8rem", opacity: 0.7, marginTop: "4px" }}>
                       🕒 {c.hora || "hora desconocida"}
                     </div>
                   </div>
 
-                  {/* --- Botones de like, borrar y editar --- */}
-                  <div style={{ display: "flex", gap: "4px" }}>
+                  {/* Botones de like, borrar y editar */}
+                  <div style={{ display: "flex", gap: "4px", marginTop: "6px" }}>
                     <button
                       onClick={() => manejarLike(index)}
                       style={{
@@ -270,14 +265,14 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
         )}
       </div>
 
-      {/* --- Formulario para nuevo comentario --- */}
+      {/* Formulario para nuevo comentario */}
       <div
         className="p-3 mt-3"
         style={{
           backgroundColor: theme.cardColor,
           borderRadius: "8px",
           boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
-          border: `1px solid ${theme.borderColor}`,
+          border: `2px solid ${theme.borderColor}`,
         }}
       >
         <label
@@ -294,15 +289,30 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
         <textarea
           className="form-control"
           value={nuevoComentario}
-          onChange={(e) => setNuevoComentario(e.target.value)}
+          onChange={(e) => {
+            let valor = e.target.value
+            if (valor.length <= 400) {
+              const primeraLetraI = valor.search(/[a-zA-Z]/)
+
+              if (primeraLetraI !== -1) {
+                valor =
+                  valor.slice(0, primeraLetraI) +
+                  valor.charAt(primeraLetraI).toUpperCase() +
+                  valor.slice(primeraLetraI + 1)
+              }
+              setNuevoComentario(valor)
+              /*  setNuevoComentario(valor.charAt(0).toUpperCase() + valor.slice(1)) */
+            }
+          }}
           placeholder="Escribe tu comentario aquí..."
           rows="3"
           style={{
             backgroundColor: theme.dejarComentario,
             color: theme.black,
-            border: `1px solid ${theme.borderColor}`,
+            border: `2px solid ${theme.borderColor}`,
             marginBottom: "1rem",
             borderRadius: "6px",
+            resize: "none",
           }}
         />
 
@@ -313,3 +323,14 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
 }
 
 export default ComentariosEvento
+
+/* 
+-V al escribir en modo oscuro no se ven las letras
+-V arreglar el campo de texto que no se abra hasta el infinito
+-V botones abajo
+-V limitar numero de letras en comentario
+-V la primera letra en comentarios que sea mayuscula
+- ordenar comentarios por fecha
+- colores y componetizar
+- admin en false
+*/

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Boton from "../components/Boton"
 import Etiqueta from "../components/Etiqueta"
 import { ThemeContext } from "../contexts/ThemeContext"
@@ -8,14 +8,15 @@ import UsuarioInfo from "../components/UsuarioInfo"
 import { eventoMock } from "../data/mockData"
 import AccionesEvento from "../components/AccionesEvento"
 import Titulo from "../components/Titulo"
+import ChatPage from "./ChatPage"
 
 function EventPage() {
   const { theme } = useContext(ThemeContext)
 
-  // 👉 usamos directamente el mock en lugar de definir evento aquí
+  // Usamos directamente el mock en lugar de definir evento aquí
   const evento = eventoMock
 
-  // 👉 Estado para el checkbox
+  // Estado para el checkbox
   const [recordar, setRecordar] = useState(evento.recordatorio2diasAntes)
 
   // Lógica para mostrar fechas
@@ -31,18 +32,16 @@ function EventPage() {
     }
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
       <Titulo title="EVENTOS" />
       <div
+        className="container eventPage"
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          minHeight: "100vh",
-          /* ✅ Eliminado el padding superior: ahora la separación la controla solo <Titulo> */
-          /* Mantengo padding lateral y inferior para que la página siga teniendo espacio */
-          padding: "0 2rem 2rem 2rem",
           backgroundColor: theme.bodyColor,
         }}
       >
@@ -178,6 +177,7 @@ function EventPage() {
             <ComentariosEvento comentarios={evento.comentarios} />
           </div>
         </div>
+        <ChatPage />
       </div>
     </>
   )

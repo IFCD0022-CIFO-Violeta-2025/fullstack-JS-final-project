@@ -10,7 +10,10 @@ import EventPage from "./pages/EventPage"
 import CreateEventPage from "./pages/CreateEventPage"
 import ProfilePage from "./pages/ProfilePage"
 import FAQPage from "./pages/FAQPage"
-import ChatPage from "./pages/ChatPage"
+/* import ChatPage from "./pages/ChatPage" */
+import Footer from "./components/Footer"
+import MyEvents from "./pages/MyEvents"
+import WebHistoryPage from "./pages/WebHistoryPage"
 import RequireAuth from "./components/RequireAuth"
 
 function App() {
@@ -25,25 +28,31 @@ function App() {
       <Navbar />
       <Sidebar />
 
-      <div className="main-content">
-        <div className="main-content__inner">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/Register" element={<RegisterPage />} />
-            <Route path="/event" element={<EventPage />} />
+      <div className="layout-wrapper">
+        <div className="main-content">
+          <div className="main-content__inner">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              {/* <Route path="/event/:id" element={<EventPage />} /> */}
+              <Route path="/my-events" element={<MyEvents />} />
 
-            {/* Protected routes: require auth to access */}
-            <Route element={<RequireAuth />}>
-              <Route path="/create" element={<CreateEventPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/chat" element={<ChatPage />} />
-            </Route>
+              <Route path="/history" element={<WebHistoryPage />} />
+              <Route path="/faq" element={<FAQPage />} />
+              {/* <Route path="/chat" element={<ChatPage />} /> */}
 
-            <Route path="/faq" element={<FAQPage />} />
-          </Routes>
+              {/* Protected routes: require auth to access */}
+              <Route element={<RequireAuth />}>
+                <Route path="/create" element={<CreateEventPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/event" element={<EventPage />} />
+                {/*      <Route path="/chat" element={<ChatPage />} /> */}
+              </Route>
+            </Routes>
+          </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
