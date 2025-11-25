@@ -31,7 +31,19 @@ export const updateLocation = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-export const deleteLocation = async (req, res) => {
+
+// Hard delete de la Location
+export const hardDeleteLocation = async (req, res) => {
+  try {
+    const row = await Locations.findByPk(req.params.id);
+    if (!row) return res.status(404).json({ error: "FAQ not found" });
+    await row.destroy();
+    res.json({ message: "Location removed (hard delete)" });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+};
+
+//Soft Delete
+export const softDeleteLocation = async (req, res) => {
   try {
     const row = await Locations.findByPk(req.params.id);
     if (!row) return res.status(404).json({ error: "Location not found" });

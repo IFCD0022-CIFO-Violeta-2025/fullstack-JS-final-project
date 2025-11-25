@@ -61,20 +61,26 @@ const Navbar = () => {
               <BotonNavbar onClick={() => navigate("/")} active={location.pathname === "/"}>
                 Home
               </BotonNavbar>
+              {/* 🔥 Si hay usuario, mostramos el botón de eventos */}
+              {user && (
               <BotonNavbar
                 onClick={() => navigate("/profile")}
                 active={location.pathname === "/profile"}
               >
                 Perfil
               </BotonNavbar>
-              <BotonNavbar onClick={() => navigate("/faq")} active={location.pathname === "/faq"}>
-                FAQ
-              </BotonNavbar>
-              <BotonNavbar
+              )}
+              {/* 🔥 Si hay usuario, mostramos el botón de crear evento */}
+              {user && (
+                <BotonNavbar
                 onClick={() => navigate("/create")}
                 active={location.pathname === "/create"}
               >
                 Crear Evento
+              </BotonNavbar>
+              )}
+              <BotonNavbar onClick={() => navigate("/faq")} active={location.pathname === "/faq"}>
+                FAQ
               </BotonNavbar>
             </div>
 
@@ -83,14 +89,12 @@ const Navbar = () => {
               {!user && (
                 <>
                   <Boton onClick={() => navigate("/login")}>Login</Boton>
-                  <Boton onClick={() => navigate("/login")}>Sign in</Boton>
+                  <Boton onClick={() => navigate("/register")}>Sign in</Boton>
                 </>
               )}
 
               {/* 🔥 Si hay usuario, mostramos su nombre + Logout */}
         {user && <UsuarioNavbar />}
-
-
               {/* Botón para cambiar tema */}
               <Boton onClick={toggleTheme}>{isDarkMode ? "Claro" : "Oscuro"}</Boton>
             </div>

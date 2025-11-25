@@ -35,8 +35,3 @@ router.use("/profiles", profilesRoutes);
 router.use("/faqs", faqsRoutes);
 
 export default router;
-
-
-// en api.js hacer
-//import routes from "./routes/index.js";
-//api.use("/api/v1", routes);

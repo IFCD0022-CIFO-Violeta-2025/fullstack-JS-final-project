@@ -30,7 +30,8 @@ export const updatePermission = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-export const deletePermission = async (req, res) => {
+//HardDelete
+export const hardDeletePermission = async (req, res) => {
   try {
     const row = await Permissions.findByPk(req.params.id);
     if (!row) return res.status(404).json({ error: "Permission not found" });

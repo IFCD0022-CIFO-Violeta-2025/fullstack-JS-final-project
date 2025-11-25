@@ -30,7 +30,8 @@ export const updateProfile = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-export const deleteProfile = async (req, res) => {
+//Hard Delete
+export const hardDeleteProfile = async (req, res) => {
   try {
     const row = await Profiles.findByPk(req.params.id);
     if (!row) return res.status(404).json({ error: "Profile not found" });

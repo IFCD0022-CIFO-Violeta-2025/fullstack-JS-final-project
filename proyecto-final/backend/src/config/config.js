@@ -11,4 +11,4 @@ const config = {
     db_port: process.env.DB_PORT
 }
 
-module.exports = config;
+export default config;
