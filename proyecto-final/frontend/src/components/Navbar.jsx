@@ -8,6 +8,8 @@ import Boton from "./Boton"
 import Sidebar from "./SideBar"
 import BotonNavbar from "./BotonNavbar"
 import UsuarioNavbar from "./UsuarioNavbar"
+import { FaRegMoon } from "react-icons/fa"
+import { MdSunny } from "react-icons/md"
 
 const Navbar = () => {
   const { toggleTheme, theme, isDarkMode } = useContext(ThemeContext)
@@ -60,7 +62,11 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <div className="d-flex gap-2 me-auto">
               <BotonNavbar onClick={() => navigate("/")} active={location.pathname === "/"}>
-                Home
+                Inicio
+              </BotonNavbar>
+
+              <BotonNavbar onClick={() => navigate("/faq")} active={location.pathname === "/faq"}>
+                FAQ
               </BotonNavbar>
 
               <BotonNavbar
@@ -68,10 +74,6 @@ const Navbar = () => {
                 active={location.pathname === "/history"}
               >
                 Historia
-              </BotonNavbar>
-
-              <BotonNavbar onClick={() => navigate("/faq")} active={location.pathname === "/faq"}>
-                FAQ
               </BotonNavbar>
 
               {/* si hay usuario, mostramos los botones del menú */}
@@ -105,14 +107,14 @@ const Navbar = () => {
           <div className="d-flex gap-2">
             {!user && (
               <>
-                <Boton onClick={() => navigate("/login")}>Login</Boton>
-                <Boton onClick={() => navigate("/register")}>Sign in</Boton>
+                <Boton onClick={() => navigate("/login")}>Iniciar</Boton>
+                <Boton onClick={() => navigate("/register")}>Registro</Boton>
               </>
             )}
 
             {user && <UsuarioNavbar />}
 
-            <Boton onClick={toggleTheme}>{isDarkMode ? "Claro" : "Oscuro"}</Boton>
+            <Boton onClick={toggleTheme}>{isDarkMode ? <MdSunny /> : <FaRegMoon />}</Boton>
           </div>
         </div>
       </nav>
