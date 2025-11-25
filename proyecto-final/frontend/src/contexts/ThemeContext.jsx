@@ -18,6 +18,7 @@ const ThemeProvider = ({ children }) => {
     lightSecondary: "#F0EAFE",
     purpleDark: "#6739E4",
     purpleLight: "#9569FF",
+    orange: "#eb8500ff"
   }
 
   const theme = {
@@ -33,7 +34,7 @@ const ThemeProvider = ({ children }) => {
     titleColor: isDarkMode ? COLORS.black : COLORS.white,
     textColor: isDarkMode ? COLORS.black : COLORS.white,
 
-    etiquetaColor: isDarkMode ? COLORS.purpleDark : COLORS.purpleLight,
+    etiquetaColor: isDarkMode ? COLORS.orange : COLORS.orange,
 
     dejarComentario: isDarkMode ? COLORS.lightSecondary : COLORS.lightSecondary,
 
@@ -50,9 +51,8 @@ const ThemeProvider = ({ children }) => {
         margin: "0 8px",
       },
       hover: {
-        backgroundColor: COLORS.white,
-        color: isDarkMode ? COLORS.darkAccent : COLORS.purpleDark,
-        border: isDarkMode ? `1px solid ${COLORS.darkAccent}` : `1px solid ${COLORS.purpleDark}`,
+        backgroundColor: COLORS.orange,
+        color: COLORS.white,
       },
     },
 
@@ -70,7 +70,7 @@ const ThemeProvider = ({ children }) => {
         margin: "0 8px",
       },
       hover: {
-        color: COLORS.purpleLight,
+        color: COLORS.orange,
       },
     },
   }

@@ -36,7 +36,7 @@ const Navbar = () => {
               alt="logo Armand Events"
               width="50"
               height="50"
-              className="d-inline-block align-text-top me-2"
+              className="d-inline-block align-text-top me-2 logo"
             />
           </a>
 

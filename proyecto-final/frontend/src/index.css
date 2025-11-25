@@ -21,6 +21,10 @@ body {
   margin: 0 auto; /* centra el feed dentro del espacio libre */
 }
 
+.logo:hover {
+  filter: brightness(0) saturate(100%) invert(41%) sepia(90%) saturate(399%) hue-rotate(335deg) brightness(92%) contrast(92%);
+}
+
 .etiquetas-container a {
   font-size: clamp(0.6rem, 1.2vw, 0.85rem); /* se adapta suavemente */
   padding: 0.25rem 0.5rem;
