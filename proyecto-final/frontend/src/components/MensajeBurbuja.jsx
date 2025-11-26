@@ -56,7 +56,7 @@ export default function MensajeBurbuja({ message, isMe }) {
             className="d-flex align-items-center"
             style={{ fontSize: "0.75rem", opacity: 0.7, marginTop: "2px" }}
           >
-           <p style={{marginTop: "-3px", marginRight: "4px"}}><FaRegClock /></p> <p>{message.timestamp}</p>
+           <span style={{marginTop: "-3px", marginRight: "4px"}}><FaRegClock /></span> <span>{message.timestamp}</span>
           </div>
         </div>
         {/* avatar a la derecha si es mensaje propio */}

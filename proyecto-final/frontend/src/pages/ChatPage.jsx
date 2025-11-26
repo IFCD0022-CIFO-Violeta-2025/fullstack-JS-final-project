@@ -6,7 +6,7 @@ import { eventoMock } from "../data/mockData"
 import Titulo from "../components/Titulo"
 import Boton from "../components/Boton"
 import MensajeBurbuja from "../components/MensajeBurbuja"
-import { BsChatRightFill } from "react-icons/bs";
+import { BsChatRightFill } from "react-icons/bs"
 
 const socket = io("http://localhost:4000")
 
@@ -61,7 +61,7 @@ export default function ChatPage() {
       {/*    <Titulo title="Chat del Evento" /> */}
 
       {/* <div className="mx-auto" style={{ maxWidth: "600px", width: "100%" }}> */}
-      <div >
+      <div>
         <div
           className="card"
           style={{
@@ -83,7 +83,10 @@ export default function ChatPage() {
               borderBottom: `2px solid ${theme.borderColor}`,
             }}
           >
-            <BsChatRightFill /> <p className="mt-3 mx-1">Chat del Evento</p>
+            <span style={{ marginTop: "-3px", marginRight: "8px" }}>
+              <BsChatRightFill />
+            </span>{" "}
+            <span>Chat del Evento</span>
           </div>
 
           <div
@@ -135,7 +138,9 @@ export default function ChatPage() {
                 e.key === "Enter" && !e.shiftKey && (e.preventDefault(), sendMessage())
               }
             />
-            <Boton onClick={sendMessage}>Enviar</Boton>
+            <Boton style={{ marginLeft: "0.5rem" }} onClick={sendMessage}>
+              Enviar
+            </Boton>
           </div>
         </div>
       </div>

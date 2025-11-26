@@ -3,6 +3,7 @@
 import React, { useContext, useState, useEffect, useRef } from "react"
 import { ThemeContext } from "../contexts/ThemeContext"
 import Boton from "./Boton"
+import { BsChatRightFill } from "react-icons/bs"
 
 // Mock DB inicial
 const mockComentariosDB = [
@@ -70,7 +71,7 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
       likes: [], // inicial vacío
     }
 
-    setComentarios((prev) => [...prev, comentario])
+    setComentarios((prev) => [comentario, ...prev])
     setNuevoComentario("")
   }
 
@@ -124,18 +125,21 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
       >
         {/*  Título  */}
         <div
-          className="card-header"
+          className="card-header d-flex align-items-center"
           style={{
             fontWeight: "bold",
             fontSize: "1.3rem",
-            backgroundColor: theme.etiquetaColor,
+            backgroundColor: theme.purple,
             color: theme.white || "#fff",
             padding: "0.75rem 1rem",
             borderBottom: `2px solid ${theme.borderColor}`,
             letterSpacing: "0.5px",
           }}
         >
-          💬 Comentarios
+          <span style={{ marginTop: "-3px", marginRight: "8px" }}>
+            <BsChatRightFill />
+          </span>{" "}
+          <span>Comentarios</span>
         </div>
 
         {/*  Lista de comentarios  */}
