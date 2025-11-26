@@ -6,8 +6,9 @@ import { eventoMock } from "../data/mockData"
 import Titulo from "../components/Titulo"
 import Boton from "../components/Boton"
 import MensajeBurbuja from "../components/MensajeBurbuja"
+import { BsChatRightFill } from "react-icons/bs";
 
-const socket = io("http://localhost:3000")
+const socket = io("http://localhost:4000")
 
 export default function ChatPage() {
   const { theme } = useContext(ThemeContext)
@@ -22,7 +23,7 @@ export default function ChatPage() {
   // Mensajes iniciales con mock
   const [messages, setMessages] = useState([
     {
-      user: "Diego",
+      user: "Diego R",
       content: "¡Hola! Bienvenidos al chat del evento.",
       timestamp: "18:45",
       avatar: eventoMock.usuario.avatar,
@@ -59,7 +60,8 @@ export default function ChatPage() {
     <>
       {/*    <Titulo title="Chat del Evento" /> */}
 
-      <div className="mx-auto" style={{ maxWidth: "600px", width: "100%" }}>
+      {/* <div className="mx-auto" style={{ maxWidth: "600px", width: "100%" }}> */}
+      <div >
         <div
           className="card"
           style={{
@@ -72,16 +74,16 @@ export default function ChatPage() {
           }}
         >
           <div
-            className="card-header"
+            className="card-header d-flex align-items-center"
             style={{
               fontWeight: "bold",
               fontSize: "1.2rem",
-              backgroundColor: theme.etiquetaColor,
+              backgroundColor: theme.purple,
               color: theme.white || "#fff",
               borderBottom: `2px solid ${theme.borderColor}`,
             }}
           >
-            💬 Chat del Evento
+            <BsChatRightFill /> <p className="mt-3 mx-1">Chat del Evento</p>
           </div>
 
           <div

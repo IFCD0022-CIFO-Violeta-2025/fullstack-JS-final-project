@@ -104,7 +104,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="d-flex gap-2">
+          <div className="d-flex gap-4">
             {!user && (
               <>
                 <Boton onClick={() => navigate("/login")}>Iniciar</Boton>

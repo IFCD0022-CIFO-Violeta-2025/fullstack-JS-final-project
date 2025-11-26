@@ -18,7 +18,7 @@ const ThemeProvider = ({ children }) => {
     lightSecondary: "#F0EAFE",
     purpleDark: "#6739E4",
     purpleLight: "#9569FF",
-    orange: "#eb8500ff"
+    orange: "#eb8500ff",
   }
 
   const theme = {
@@ -38,17 +38,12 @@ const ThemeProvider = ({ children }) => {
 
     dejarComentario: isDarkMode ? COLORS.lightSecondary : COLORS.lightSecondary,
 
+    purple: isDarkMode ? COLORS.purpleLight : COLORS.purpleLight,
+
     boton: {
       base: {
         backgroundColor: isDarkMode ? COLORS.purpleLight : COLORS.purpleDark,
         color: COLORS.white,
-        border: "1px solid transparent",
-        padding: "0.5rem 1rem",
-        borderRadius: "4px",
-        cursor: "pointer",
-        fontWeight: "500",
-        transition: "background-color 0.3s ease, color 0.3s ease",
-        margin: "0 8px",
       },
       hover: {
         backgroundColor: COLORS.orange,

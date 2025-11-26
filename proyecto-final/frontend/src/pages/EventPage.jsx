@@ -139,7 +139,7 @@ function EventPage() {
             {/* Botones de acción */}
             <div style={{ marginTop: "2rem", display: "flex", gap: "1rem" }}>
               <Boton>Inscribirse</Boton>
-              <Boton>Chat</Boton>
+           {/*    <Boton>Chat</Boton> */}
             </div>
 
             {/* Etiquetas */}
