@@ -1,56 +1,112 @@
-// index.js
-import { Sequelize } from "sequelize";
-import Users from "./users.model.js";
-import Events from "./events.model.js";
-import Comments from "./comments.model.js";
-import Locations from "./locations.model.js";
-import Tags from "./tags.model.js";
-import Relations from "./relations.model.js";
-import Organizers from "./organizers.model.js";
-import Messages from "./messages.model.js";
-import Notifications from "./notifications.model.js";
-import Permissions from "./permissions.model.js";
-import Profiles from "./profiles.model.js";
-import FAQs from "./faqs.model.js";
-import Posts from "./posts.model.js";
+import { sequelize } from "../dataBase/db.js";
+import User from "./User.js";
+import Organizer from "./Organizer.js";
+import Location from "./Location.js";
+import Event from "./Event.js";
+import Tag from "./Tag.js";
+import EventTag from "./EventTag.js";
+import EventSubscription from "./EventSubscription.js";
+import Post from "./Post.js";
+import Comment from "./Comment.js";
+import Message from "./Message.js";
+import Notification from "./Notification.js";
+import Permission from "./Permission.js";
+import Profile from "./Profile.js";
+import ProfilePermission from "./ProfilePermission.js";
+import UserProfile from "./UserProfile.js";
+import EventHistory from "./EventHistory.js";
+import EventParticipant from "./EventParticipant.js";
+import FAQ from "./faq.js";
 
-//Configuración externa
-import config from '../config/config.js'
+// Events -> Organizer, Location
+Event.belongsTo(Organizer, { foreignKey: "idOrganizer" });
+Event.belongsTo(Location, { foreignKey: "idLocation" });
 
-// ================================
-// Conexión Sequelize parametrizado
-// ================================
-export const sequelize = new Sequelize(
-    config.db_name,
-    config.db_user,
-    config.db_password,
-    {
-        host: config.db_host,
-        dialect: "mysql",
-        logging: false,
-        port: config.db_port
-    }
-);
+// Users <-> Posts
+User.hasMany(Post, { foreignKey: "idUser" });
+Post.belongsTo(User, { foreignKey: "idUser" });
 
-// ================================
-// Inicialización de modelos
-// ================================
-//const models = {
-export const db = {
-    Users: Users(sequelize),
-    Events: Events(sequelize),
-    Comments: Comments(sequelize),
-    Locations: Locations(sequelize),
-    Tags: Tags(sequelize),
-    Relations: Relations(sequelize),
-    Organizers: Organizers(sequelize),
-    Messages: Messages(sequelize),
-    Notifications: Notifications(sequelize),
-    Permissions: Permissions(sequelize),
-    Profiles: Profiles(sequelize),
-    FAQs: FAQs(sequelize),
-    Posts: Posts(sequelize),
-    //Settings: Settings(sequelize)
+// Users <->  Comments
+User.hasMany(Comment, { foreignKey: "idUser" });
+Comment.belongsTo(User, { foreignKey: "idUser" });
+
+// Events <-> Comments
+Event.hasMany(Comment, { foreignKey: "idEvent" });
+Comment.belongsTo(Event, { foreignKey: "idEvent" });
+
+// Posts <->  Comments
+Post.hasMany(Comment, { foreignKey: "idPost" });
+Comment.belongsTo(Post, { foreignKey: "idPost" });
+
+// Users <->  Messages
+User.hasMany(Message, { foreignKey: "idSender", as: "sentMessages" });
+User.hasMany(Message, { foreignKey: "idReceiver", as: "receivedMessages" });
+Message.belongsTo(User, { foreignKey: "idSender", as: "sender" });
+Message.belongsTo(User, { foreignKey: "idReceiver", as: "receiver" });
+
+// Users <->  Notifications
+User.hasMany(Notification, { foreignKey: "user_id" });
+Notification.belongsTo(User, { foreignKey: "user_id" });
+
+// Events <->  Tags (N-M)
+Event.belongsToMany(Tag, { through: EventTag, foreignKey: "idEvent" });
+Tag.belongsToMany(Event, { through: EventTag, foreignKey: "idTag" });
+
+// Events <->  Users (subscriptions)
+Event.belongsToMany(User, {
+  through: EventSubscription,
+  foreignKey: "idEvent",
+});
+User.belongsToMany(Event, { through: EventSubscription, foreignKey: "idUser" });
+
+// Profiles <->  Permissions (N-M)
+Profile.belongsToMany(Permission, {
+  through: ProfilePermission,
+  foreignKey: "idProfile",
+});
+Permission.belongsToMany(Profile, {
+  through: ProfilePermission,
+  foreignKey: "idPermission",
+});
+
+// Users <->  Profiles (N-M)
+User.belongsToMany(Profile, { through: UserProfile, foreignKey: "idUser" });
+Profile.belongsToMany(User, { through: UserProfile, foreignKey: "idProfile" });
+
+// EventHistory -> Event, User
+Event.hasMany(EventHistory, { foreignKey: "eventId" });
+EventHistory.belongsTo(Event, { foreignKey: "eventId" });
+
+User.hasMany(EventHistory, { foreignKey: "userId" });
+EventHistory.belongsTo(User, { foreignKey: "userId" });
+
+// EventParticipant -> Event, User
+
+Event.hasMany(EventParticipant, { foreignKey: "eventId" });
+EventHistory.belongsTo(Event, { foreignKey: "eventId" });
+
+User.hasMany(EventParticipant, { foreignKey: "performedBy" });
+EventParticipant.belongsTo(User, { foreignKey: "performedBy" });
+
+
+export {
+  sequelize,
+  User,
+  Organizer,
+  Location,
+  Event,
+  Tag,
+  EventTag,
+  EventSubscription,
+  Post,
+  Comment,
+  Message,
+  Notification,
+  Permission,
+  Profile,
+  ProfilePermission,
+  UserProfile,
+  EventHistory,
+  EventParticipant,
+  FAQ,
 };
-
-export default db
