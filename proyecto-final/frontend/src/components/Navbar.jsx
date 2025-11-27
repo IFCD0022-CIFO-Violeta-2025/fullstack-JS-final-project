@@ -5,6 +5,7 @@ import { AuthContext } from "../contexts/AuthContext"
 /* import logo from "/logo.png" */
 import logo from "/logo.svg"
 import Boton from "./Boton"
+import BotonTema from "./BotonTema"
 import Sidebar from "./SideBar"
 import BotonNavbar from "./BotonNavbar"
 import UsuarioNavbar from "./UsuarioNavbar"
@@ -113,7 +114,7 @@ const Navbar = () => {
 
             {user && <UsuarioNavbar />}
 
-            <Boton onClick={toggleTheme}>{isDarkMode ? <MdSunny /> : <FaRegMoon />}</Boton>
+            <BotonTema onClick={toggleTheme}>{isDarkMode ? <MdSunny /> : <FaRegMoon />}</BotonTema>
           </div>
         </div>
       </nav>
