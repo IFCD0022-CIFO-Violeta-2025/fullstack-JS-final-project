@@ -12,7 +12,7 @@ body {
   margin-top: 60px; /* altura del navbar */
   margin-left: 300px; /* ancho del sidebar fijo */
   padding: 20px;
-  width: calc(100vw - 300px); /* ocupa todo el espacio libre */
+  width: calc(100% - 300px);
 }
 
 /* wrapper interno centrado (ancho máximo del feed) */
@@ -22,7 +22,8 @@ body {
 }
 
 .logo:hover {
-  filter: brightness(0) saturate(100%) invert(41%) sepia(90%) saturate(399%) hue-rotate(335deg) brightness(92%) contrast(92%);
+  filter: brightness(0) saturate(100%) invert(41%) sepia(90%) saturate(399%) hue-rotate(335deg)
+    brightness(92%) contrast(92%);
 }
 
 .etiquetas-container a {
@@ -82,7 +83,7 @@ body {
 .footer {
   margin-left: 300px; /*  evita que se meta debajo del sidebar */
   padding: 10px;
-  width: calc(100vw - 300px);
+  width: calc(100% - 300px);
 }
 
 .footer__inner {
