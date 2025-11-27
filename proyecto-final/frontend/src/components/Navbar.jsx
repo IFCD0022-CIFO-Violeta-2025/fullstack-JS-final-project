@@ -37,9 +37,9 @@ const Navbar = () => {
             <img
               src={logo}
               alt="logo Armand Events"
-              width="50"
-              height="50"
-              className="d-inline-block align-text-top me-2 logo"
+              width="45"
+              height="45"
+              className="d-inline-block align-text-top logo"
             />
           </a>
 
@@ -114,7 +114,7 @@ const Navbar = () => {
 
             {user && <UsuarioNavbar />}
 
-            <BotonTema onClick={toggleTheme}>{isDarkMode ? <MdSunny /> : <FaRegMoon />}</BotonTema>
+            <BotonTema onClick={toggleTheme}>{isDarkMode ? <FaRegMoon /> : <MdSunny />}</BotonTema>
           </div>
         </div>
       </nav>

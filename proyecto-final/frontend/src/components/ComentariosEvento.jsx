@@ -4,6 +4,10 @@ import React, { useContext, useState, useEffect, useRef } from "react"
 import { ThemeContext } from "../contexts/ThemeContext"
 import Boton from "./Boton"
 import { BsChatRightFill } from "react-icons/bs"
+import { FaRegClock } from "react-icons/fa"
+import { AiFillLike } from "react-icons/ai"
+import { RiDeleteBin6Fill } from "react-icons/ri"
+import { BiSolidPencil } from "react-icons/bi"
 
 // Mock DB inicial
 const mockComentariosDB = [
@@ -164,7 +168,7 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
               >
                 <div>
                   <div>
-                    <strong style={{ color: theme.etiquetaColor }}>{c.usuario}:</strong>{" "}
+                    <strong style={{ color: theme.textColor }}>{c.usuario}:</strong>{" "}
                     {/*  Edición  */}
                     {editIndex === index ? (
                       <>
@@ -180,20 +184,8 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
                             marginTop: "4px",
                           }}
                         />
-                        <button
-                          onClick={aplicarCambios}
-                          style={{
-                            marginTop: "4px",
-                            cursor: "pointer",
-                            backgroundColor: "green",
-                            color: "#fff",
-                            border: "none",
-                            borderRadius: "4px",
-                            padding: "4px 8px",
-                          }}
-                        >
-                          Aplicar cambios
-                        </button>
+
+                        <Boton onClick={aplicarCambios}>Aplicar cambios</Boton>
                       </>
                     ) : (
                       // Mensaje mostrado con auto-wrap
@@ -210,55 +202,56 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
                         {c.mensaje}
                       </div>
                     )}
-                    <div style={{ fontSize: "0.8rem", opacity: 0.7, marginTop: "4px" }}>
-                      🕒 {c.hora || "hora desconocida"}
+                    <div
+                      className="d-flex align-items-center"
+                      style={{ fontSize: "0.75rem", opacity: 0.7, marginTop: "2px" }}
+                    >
+                      <span style={{ marginTop: "-3px", marginRight: "4px" }}>
+                        <FaRegClock />
+                      </span>{" "}
+                      <span>{c.hora || "hora desconocida"}</span>
                     </div>
                   </div>
 
                   {/* Botones de like, borrar y editar */}
                   <div style={{ display: "flex", gap: "4px", marginTop: "6px" }}>
-                    <button
-                      onClick={() => manejarLike(index)}
+                    <Boton
                       style={{
-                        background: "transparent",
-                        border: `1px solid ${theme.borderColor}`,
-                        borderRadius: "4px",
-                        padding: "2px 6px",
-                        cursor: "pointer",
-                        color: c.likes.includes(user) ? "blue" : theme.textColor,
+                        fontSize: "20px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: "2px",
                       }}
+                      onClick={() => manejarLike(index)}
                     >
-                      👍 {c.likes.length}
-                    </button>
+                      <AiFillLike /> {c.likes.length}
+                    </Boton>
 
                     {(admin || c.usuario === user) && editIndex !== index && (
                       <>
-                        <button
-                          onClick={() => manejarBorrar(index)}
+                        <Boton
                           style={{
-                            background: "red",
-                            color: "#fff",
-                            border: "none",
-                            borderRadius: "4px",
-                            padding: "2px 6px",
-                            cursor: "pointer",
+                            fontSize: "20px",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
                           }}
-                        >
-                          🗑️
-                        </button>
-                        <button
                           onClick={() => manejarEditar(index)}
-                          style={{
-                            background: "orange",
-                            color: "#fff",
-                            border: "none",
-                            borderRadius: "4px",
-                            padding: "2px 6px",
-                            cursor: "pointer",
-                          }}
                         >
-                          ✏️
-                        </button>
+                          <BiSolidPencil />
+                        </Boton>
+                        <Boton
+                          style={{
+                            fontSize: "20px",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                          onClick={() => manejarBorrar(index)}
+                        >
+                          <RiDeleteBin6Fill />
+                        </Boton>
                       </>
                     )}
                   </div>
@@ -327,14 +320,3 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
 }
 
 export default ComentariosEvento
-
-/* 
--V al escribir en modo oscuro no se ven las letras
--V arreglar el campo de texto que no se abra hasta el infinito
--V botones abajo
--V limitar numero de letras en comentario
--V la primera letra en comentarios que sea mayuscula
-- ordenar comentarios por fecha
-- colores y componetizar
-- admin en false
-*/

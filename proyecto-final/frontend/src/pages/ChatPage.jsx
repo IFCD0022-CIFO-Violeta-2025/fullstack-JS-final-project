@@ -40,7 +40,12 @@ export default function ChatPage() {
   }, [])
 
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: "smooth",
+      })
+    }
   }, [messages])
 
   const sendMessage = () => {
@@ -55,6 +60,8 @@ export default function ChatPage() {
     socket.emit("chat message", newMsg)
     setMessage("")
   }
+
+  const chatContainerRef = useRef(null)
 
   return (
     <>
@@ -90,6 +97,7 @@ export default function ChatPage() {
           </div>
 
           <div
+            ref={chatContainerRef}
             className="card-body d-flex flex-column"
             style={{
               height: "400px",
@@ -101,7 +109,8 @@ export default function ChatPage() {
               <div style={{ fontStyle: "italic", opacity: 0.7 }}>No hay mensajes aún.</div>
             )}
 
-            <ul className="list-unstyled flex-grow-1 mb-0">
+            <ul className="list-unstyled mb-0">
+              {/*  flex-grow-1 */}
               {messages.map((m, i) => {
                 const isMe = m.user === usuarioActual.nombre
                 return <MensajeBurbuja key={i} message={m} isMe={isMe} />

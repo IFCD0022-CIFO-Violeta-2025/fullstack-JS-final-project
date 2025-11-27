@@ -9,6 +9,12 @@ import { eventoMock } from "../data/mockData"
 import AccionesEvento from "../components/AccionesEvento"
 import Titulo from "../components/Titulo"
 import ChatPage from "./ChatPage"
+import { RiTwitterXFill } from "react-icons/ri"
+import { SiInstagram } from "react-icons/si"
+import { FaFacebook } from "react-icons/fa"
+import { MdPlace } from "react-icons/md"
+import { FaCalendarCheck } from "react-icons/fa"
+import { LuAlarmClockCheck } from "react-icons/lu"
 
 function EventPage() {
   const { theme } = useContext(ThemeContext)
@@ -85,19 +91,78 @@ function EventPage() {
             </div>
 
             {/* Lugar, fechas y horarios */}
-            <div style={{ marginTop: "1rem" }}>
-              <p>
-                <strong>Lugar:</strong> 📍 {evento.ubicacion}
-              </p>
-              <p>
-                <strong>Fecha:</strong> 🗓️ {getFechaTexto(evento.fechas)}
-              </p>
-              <p>
-                <strong>Hora inicio:</strong> ⏰ {evento.horaInicio}
-              </p>
-              <p>
-                <strong>Hora fin:</strong> ⏰ {evento.horaFin}
-              </p>
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  gap: "6px",
+                  marginBottom: "20px",
+                }}
+              >
+                <span>
+                  <strong>Lugar:</strong>
+                </span>
+                <span style={{ marginTop: "-5px",fontSize:"18px"  }}>
+                  <MdPlace />
+                </span>
+                <span>{evento.ubicacion}</span>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  gap: "6px",
+                  marginBottom: "20px",
+                }}
+              >
+                <span>
+                  <strong>Fecha:</strong>
+                </span>
+                <span style={{ marginTop: "-8px", fontSize:"15px" }}>
+                  <FaCalendarCheck />
+                </span>
+                <span>{getFechaTexto(evento.fechas)}</span>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  gap: "6px",
+                  marginBottom: "20px",
+                }}
+              >
+                <span>
+                  <strong>Hora inicio:</strong>
+                </span>
+                <span style={{ marginTop: "-5px" }}>
+                  <LuAlarmClockCheck />
+                </span>
+                <span>{evento.horaInicio}</span>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  gap: "6px",
+                  marginBottom: "20px",
+                }}
+              >
+                <span>
+                  <strong>Hora fin:</strong>
+                </span>
+                <span style={{ marginTop: "-5px" }}>
+                  <LuAlarmClockCheck />
+                </span>
+                <span>{evento.horaFin}</span>
+              </div>
             </div>
 
             {/* Capacidad del evento */}
@@ -131,15 +196,21 @@ function EventPage() {
 
             {/* Redes Sociales */}
             <div className="d-flex gap-3 mt-4">
-              <SocialIcon>+</SocialIcon>
-              <SocialIcon>+</SocialIcon>
-              <SocialIcon>+</SocialIcon>
+              <SocialIcon>
+                <RiTwitterXFill />
+              </SocialIcon>
+              <SocialIcon>
+                <SiInstagram />
+              </SocialIcon>
+              <SocialIcon>
+                <FaFacebook />
+              </SocialIcon>
             </div>
 
             {/* Botones de acción */}
             <div style={{ marginTop: "2rem", display: "flex", gap: "1rem" }}>
               <Boton>Inscribirse</Boton>
-           {/*    <Boton>Chat</Boton> */}
+              {/*    <Boton>Chat</Boton> */}
             </div>
 
             {/* Etiquetas */}
