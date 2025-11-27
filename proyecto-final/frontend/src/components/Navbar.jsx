@@ -104,12 +104,12 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="d-flex gap-4">
+          <div className="d-flex mx-2">
             {!user && (
-              <>
+              <div className="d-flex gap-3 mx-2">
                 <Boton onClick={() => navigate("/login")}>Iniciar</Boton>
                 <Boton onClick={() => navigate("/register")}>Registro</Boton>
-              </>
+              </div>
             )}
 
             {user && <UsuarioNavbar />}
