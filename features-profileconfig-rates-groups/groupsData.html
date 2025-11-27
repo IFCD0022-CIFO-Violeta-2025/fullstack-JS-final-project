@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupos creados</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h1 class="mb-4">Grupos registrados</h1>
+    <div id="groupsContainer"></div>
+    <hr>
+    <button class="btn btn-danger" onclick="localStorage.removeItem('groupsDB'); location.reload();">Borrar todos los grupos</button>
+</div>
+
+<script>
+    const groupsDB = JSON.parse(localStorage.getItem("groupsDB")) || [];
+    const container = document.getElementById("groupsContainer");
+
+    if (groupsDB.length === 0) {
+        container.innerHTML = "<p>No hay grupos creados.</p>";
+    } else {
+        groupsDB.forEach(group => {
+            const card = document.createElement("div");
+            card.className = "card mb-3";
+            card.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">${group.name}</h5>
+                    <p><strong>Código:</strong> ${group.code}</p>
+                    <p><strong>Usuario invitado:</strong> ${group.invitedEmail}</p>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+</script>
+</body>
+</html>
