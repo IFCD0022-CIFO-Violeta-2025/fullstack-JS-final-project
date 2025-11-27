@@ -1,14 +1,12 @@
-import React, { useContext, useState } from "react";
-import { ThemeContext } from "../contexts/ThemeContext";
+import React, { useContext, useState } from "react"
+import { ThemeContext } from "../contexts/ThemeContext"
 
-const Boton = ({ children, onClick = () => {}, type = "button",  style: customStyle = {} }) => {
-  const { theme } = useContext(ThemeContext);
-  const [hovered, setHovered] = useState(false);
+const Boton = ({ children, onClick = () => {}, type = "button", style: customStyle = {} }) => {
+  const { theme } = useContext(ThemeContext)
+  const [hovered, setHovered] = useState(false)
 
   // Los estilos estan en ThemeContext
-  const themeStyle = hovered
-    ? { ...theme.boton.base, ...theme.boton.hover }
-    : theme.boton.base;
+  const themeStyle = hovered ? { ...theme.boton.base, ...theme.boton.hover } : theme.boton.base
 
   // estilos basicos
   const baseStyle = {
@@ -21,11 +19,11 @@ const Boton = ({ children, onClick = () => {}, type = "button",  style: customSt
     display: "inline-block",
   }
 
-   const finalStyle = {
+  const finalStyle = {
     ...baseStyle,
     ...themeStyle,
-    ...customStyle, 
-  };
+    ...customStyle,
+  }
 
   return (
     <button
@@ -37,11 +35,9 @@ const Boton = ({ children, onClick = () => {}, type = "button",  style: customSt
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
-export default Boton; 
+export default Boton
 
-// TODO: cambiar que sea obligatorio el OnClick!
-
-//margin: "0 8px",
+/*  TODO: cambiar que sea obligatorio el OnClick! */

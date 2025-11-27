@@ -55,14 +55,7 @@ const ThemeProvider = ({ children }) => {
 
     botonNavbar: {
       base: {
-        backgroundColor: "transparent",
         color: COLORS.white,
-        border: "none",
-        padding: "0.5rem 1rem",
-        cursor: "pointer",
-        fontWeight: "500",
-        transition: "color 0.3s ease",
-        margin: "0 8px",
       },
       hover: {
         color: COLORS.orange,
