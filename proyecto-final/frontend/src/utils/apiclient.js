@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/'; // Cambia esto por tu endpoint base
+const BASE_URL = 'https://fullstack-js-final-project.onrender.com/'; // Cambia esto por tu endpoint base// Cambia esto por tu endpoint base
 
 const handleResponse = async (response) => {
   if (!response.ok) {

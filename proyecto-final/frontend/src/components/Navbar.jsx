@@ -106,7 +106,7 @@ const Navbar = () => {
             {!user && (
               <>
                 <Boton onClick={() => navigate("/login")}>Login</Boton>
-                <Boton onClick={() => navigate("/register")}>Sign in</Boton>
+                <Boton onClick={() => navigate("/register")}>Sign up</Boton>
               </>
             )}
 
