@@ -65,17 +65,6 @@ const Navbar = () => {
                 Inicio
               </BotonNavbar>
 
-              <BotonNavbar onClick={() => navigate("/faq")} active={location.pathname === "/faq"}>
-                FAQ
-              </BotonNavbar>
-
-              <BotonNavbar
-                onClick={() => navigate("/history")}
-                active={location.pathname === "/history"}
-              >
-                Historia
-              </BotonNavbar>
-
               {/* si hay usuario, mostramos los botones del menú */}
               {user && (
                 <>
@@ -101,6 +90,16 @@ const Navbar = () => {
                   </BotonNavbar>
                 </>
               )}
+              <BotonNavbar onClick={() => navigate("/faq")} active={location.pathname === "/faq"}>
+                FAQ
+              </BotonNavbar>
+
+              <BotonNavbar
+                onClick={() => navigate("/history")}
+                active={location.pathname === "/history"}
+              >
+                Historia
+              </BotonNavbar>
             </div>
           </div>
 
