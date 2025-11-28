@@ -21,6 +21,10 @@ body {
   margin: 0 auto; /* centra el feed dentro del espacio libre */
 }
 
+.navbar .btn-user {
+  margin-right: 2rem;
+}
+
 .logo:hover {
   filter: brightness(0) saturate(100%) invert(41%) sepia(90%) saturate(399%) hue-rotate(335deg)
     brightness(92%) contrast(92%);
@@ -118,6 +122,10 @@ body {
   }
   .main-content__inner {
     max-width: 100%;
+  }
+
+  .navbar .btn-user {
+    margin-right: 4rem;
   }
 
   .eventPage {
