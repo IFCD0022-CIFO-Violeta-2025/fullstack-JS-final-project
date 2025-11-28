@@ -15,6 +15,9 @@ import Footer from "./components/Footer"
 import MyEvents from "./pages/MyEvents"
 import WebHistoryPage from "./pages/WebHistoryPage"
 import RequireAuth from "./components/RequireAuth"
+import NormativaPages from "./pages/NormativaPages"
+import PrivacidadPage from "./pages/PrivacidadPage"
+import CookiesPage from "./pages/CookiesPage"
 
 function App() {
   const { theme } = useContext(ThemeContext)
@@ -34,7 +37,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
-               <Route path="/register" element={<RegisterPage />} />
+              <Route path="/register" element={<RegisterPage />} />
               {/* <Route path="/event/:id" element={<EventPage />} /> */}
               <Route path="/my-events" element={<MyEvents />} />
 
@@ -49,6 +52,11 @@ function App() {
                 <Route path="/event" element={<EventPage />} />
                 {/*      <Route path="/chat" element={<ChatPage />} /> */}
               </Route>
+
+              {/* footer */}
+              <Route path="/normativa" element={<NormativaPages />} />
+              <Route path="/privacidad" element={<PrivacidadPage />} />
+              <Route path="/cookies" element={<CookiesPage />} />
             </Routes>
           </div>
         </div>
