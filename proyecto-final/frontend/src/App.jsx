@@ -15,6 +15,8 @@ import Footer from "./components/Footer"
 import MyEvents from "./pages/MyEvents"
 import WebHistoryPage from "./pages/WebHistoryPage"
 import RequireAuth from "./components/RequireAuth"
+import CookieConsent from "./components/CookiesAceptar";
+
 
 function App() {
   const { theme } = useContext(ThemeContext)
@@ -25,6 +27,9 @@ function App() {
 
   return (
     <>
+      {/* CookieConsent se muestra primero y bloquea si no se acepta */}
+      <CookieConsent />
+
       <Navbar />
       <Sidebar />
 
@@ -46,7 +51,7 @@ function App() {
                 <Route path="/create" element={<CreateEventPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/event" element={<EventPage />} />
-                {/*      <Route path="/chat" element={<ChatPage />} /> */}
+                {/* <Route path="/chat" element={<ChatPage />} /> */}
               </Route>
             </Routes>
           </div>
