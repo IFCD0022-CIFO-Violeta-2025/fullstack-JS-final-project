@@ -18,6 +18,7 @@ import RequireAuth from "./components/RequireAuth"
 import NormativaPages from "./pages/NormativaPages"
 import PrivacidadPage from "./pages/PrivacidadPage"
 import CookiesPage from "./pages/CookiesPage"
+import CookieConsent from "./components/CookieConsent"
 
 function App() {
   const { theme } = useContext(ThemeContext)
@@ -28,6 +29,10 @@ function App() {
 
   return (
     <>
+
+    {/* CookieConsent se muestra primero y bloquea si no se acepta */}
+      <CookieConsent />
+
       <Navbar />
       <Sidebar />
 
