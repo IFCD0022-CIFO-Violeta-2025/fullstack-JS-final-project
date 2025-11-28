@@ -7,7 +7,7 @@ function AccionesEvento({ likes, commentsCount, onShare }) /*  onSave */ {
     <div className="d-flex justify-content-around my-3">
       {/* Me gusta */}
       <div style={{ display: "flex", alignItems: "center", cursor: "pointer", gap: "6px" }}>
-        <span style={{ marginTop: "-3px" }}>
+        <span style={{ marginTop: "-5px", color: "red" }}>
           <FaHeart />
         </span>
         <span>{likes}</span>

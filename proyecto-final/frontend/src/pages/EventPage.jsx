@@ -19,13 +19,13 @@ import { LuAlarmClockCheck } from "react-icons/lu"
 function EventPage() {
   const { theme } = useContext(ThemeContext)
 
-  // Usamos directamente el mock en lugar de definir evento aquí
+  // usamos directamente el mock en lugar de definir evento aquí
   const evento = eventoMock
 
-  // Estado para el checkbox
+  // estado para el checkbox
   const [recordar, setRecordar] = useState(evento.recordatorio2diasAntes)
 
-  // Lógica para mostrar fechas
+  // lógica para mostrar fechas
   const getFechaTexto = (fechas) => {
     if (fechas.length === 1) {
       const f = new Date(fechas[0])
@@ -63,24 +63,24 @@ function EventPage() {
             overflow: "hidden",
           }}
         >
-          {/* Usuario y organizador */}
+          {/* usuario y organizador */}
           <UsuarioInfo usuario={evento.usuario} />
 
-          {/* Imagen del evento */}
+          {/* imagen del evento */}
           <img
             src={evento.img} // usamos la imagen del mock
             alt={evento.titulo}
             style={{ width: "100%", height: "400px", objectFit: "cover" }}
           />
 
-          {/* Contenido del evento */}
+          {/* contenido del evento */}
           <div className="p-4">
             <h1>{evento.titulo}</h1>
             <p style={{ fontSize: "1.1rem", lineHeight: "1.6", marginTop: "2rem" }}>
               {evento.descripcion}
             </p>
 
-            {/* Información del organizador y contacto */}
+            {/* información del organizador y contacto */}
             <div style={{ marginTop: "2rem" }}>
               <p>
                 <strong>Organizador:</strong> {evento.organizador}
@@ -90,21 +90,21 @@ function EventPage() {
               </p>
             </div>
 
-            {/* Lugar, fechas y horarios */}
+            {/* lugar, fechas y horarios */}
             <div>
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
                   cursor: "pointer",
-                  gap: "6px",
-                  marginBottom: "20px",
+                  gap: "1px",
+                  marginBottom: "1rem",
                 }}
               >
                 <span>
                   <strong>Lugar:</strong>
                 </span>
-                <span style={{ marginTop: "-5px",fontSize:"18px"  }}>
+                <span style={{ marginTop: "-8px", fontSize: "18px" }}>
                   <MdPlace />
                 </span>
                 <span>{evento.ubicacion}</span>
@@ -115,14 +115,14 @@ function EventPage() {
                   display: "flex",
                   alignItems: "center",
                   cursor: "pointer",
-                  gap: "6px",
-                  marginBottom: "20px",
+                  gap: "3px",
+                  marginBottom: "1rem",
                 }}
               >
                 <span>
                   <strong>Fecha:</strong>
                 </span>
-                <span style={{ marginTop: "-8px", fontSize:"15px" }}>
+                <span style={{ marginTop: "-6px", fontSize: "15px" }}>
                   <FaCalendarCheck />
                 </span>
                 <span>{getFechaTexto(evento.fechas)}</span>
@@ -133,8 +133,8 @@ function EventPage() {
                   display: "flex",
                   alignItems: "center",
                   cursor: "pointer",
-                  gap: "6px",
-                  marginBottom: "20px",
+                  gap: "3px",
+                  marginBottom: "1rem",
                 }}
               >
                 <span>
@@ -151,8 +151,8 @@ function EventPage() {
                   display: "flex",
                   alignItems: "center",
                   cursor: "pointer",
-                  gap: "6px",
-                  marginBottom: "20px",
+                  gap: "3px",
+                  marginBottom: "1rem",
                 }}
               >
                 <span>

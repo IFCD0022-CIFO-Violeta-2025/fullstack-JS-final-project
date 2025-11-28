@@ -1,5 +1,3 @@
-// ESTA SECCIÓN REQUIERE DE MODIFICACIONES ESTÉTICAS PERO DEBERÍA SER FUNCIONAL.
-
 import React, { useContext, useState, useEffect, useRef } from "react"
 import { ThemeContext } from "../contexts/ThemeContext"
 import Boton from "./Boton"
@@ -9,7 +7,7 @@ import { AiFillLike } from "react-icons/ai"
 import { RiDeleteBin6Fill } from "react-icons/ri"
 import { BiSolidPencil } from "react-icons/bi"
 
-// Mock DB inicial
+// mock DB inicial
 const mockComentariosDB = [
   {
     usuario: "Sandra",
@@ -20,7 +18,7 @@ const mockComentariosDB = [
       day: "2-digit",
       month: "short",
     }),
-    likes: [], // ahora es array de usuarios que dieron like
+    likes: [],
   },
   {
     usuario: "Francisco",
@@ -45,13 +43,13 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
   const [editValue, setEditValue] = useState("")
   const editRef = useRef(null) // para auto-resize
 
-  // Log para ver cambios en comentarios
+  // log para ver cambios en comentarios
   useEffect(() => {
     console.log("Comentarios actualizados:", comentarios)
-    // Se podría guardar en localStorage o backend aquí
+    // se podría guardar en localStorage o backend aquí
   }, [comentarios])
 
-  // Auto-resize del textarea de edición
+  // auto-resize del textarea de edición
   useEffect(() => {
     if (editRef.current) {
       editRef.current.style.height = "auto"
@@ -59,7 +57,7 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
     }
   }, [editValue, editIndex])
 
-  // Función para enviar un nuevo comentario
+  // función para enviar un nuevo comentario
   const manejarEnvio = () => {
     if (nuevoComentario.trim() === "") return
 
@@ -72,14 +70,14 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
         day: "2-digit",
         month: "short",
       }),
-      likes: [], // inicial vacío
+      likes: [],
     }
 
     setComentarios((prev) => [comentario, ...prev])
     setNuevoComentario("")
   }
 
-  // Función para dar like / quitar like
+  // función para dar like / quitar like
   const manejarLike = (index) => {
     setComentarios((prev) =>
       prev.map((c, i) => {
@@ -93,18 +91,18 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
     )
   }
 
-  // Función para borrar comentario
+  // función para borrar comentario
   const manejarBorrar = (index) => {
     setComentarios((prev) => prev.filter((_, i) => i !== index))
   }
 
-  // Función para activar edición
+  // función para activar edición
   const manejarEditar = (index) => {
     setEditIndex(index)
     setEditValue(comentarios[index].mensaje)
   }
 
-  // Función para aplicar cambios en edición
+  // función para aplicar cambios en edición
   const aplicarCambios = () => {
     if (editValue.trim() === "") return
     setComentarios((prev) =>
@@ -127,13 +125,13 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
           border: `2px solid ${theme.borderColor}`,
         }}
       >
-        {/*  Título  */}
+        {/*  título  */}
         <div
           className="card-header d-flex align-items-center"
           style={{
             fontWeight: "bold",
             fontSize: "1.3rem",
-            backgroundColor: theme.purple,
+            backgroundColor: theme.up,
             color: theme.white || "#fff",
             padding: "0.75rem 1rem",
             borderBottom: `2px solid ${theme.borderColor}`,
@@ -146,7 +144,7 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
           <span>Comentarios</span>
         </div>
 
-        {/*  Lista de comentarios  */}
+        {/*  lista de comentarios  */}
         {comentarios.length === 0 ? (
           <div className="card-body" style={{ fontStyle: "italic", opacity: 0.8 }}>
             No hay comentarios aún.
@@ -188,7 +186,7 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
                         <Boton onClick={aplicarCambios}>Aplicar cambios</Boton>
                       </>
                     ) : (
-                      // Mensaje mostrado con auto-wrap
+                      // mensaje mostrado con auto-wrap
                       <div
                         style={{
                           background: "#9569FF",
@@ -213,15 +211,18 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
                     </div>
                   </div>
 
-                  {/* Botones de like, borrar y editar */}
+                  {/* botones de like, borrar y editar */}
                   <div style={{ display: "flex", gap: "4px", marginTop: "6px" }}>
                     <Boton
                       style={{
-                        fontSize: "20px",
+                        fontSize: "16px",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
                         gap: "2px",
+                        padding: "2px",
+                        paddingLeft: "6px",
+                        paddingRight: "6px",
                       }}
                       onClick={() => manejarLike(index)}
                     >
@@ -232,10 +233,11 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
                       <>
                         <Boton
                           style={{
-                            fontSize: "20px",
+                            fontSize: "16px",
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
+                            padding: "6px",
                           }}
                           onClick={() => manejarEditar(index)}
                         >
@@ -243,10 +245,11 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
                         </Boton>
                         <Boton
                           style={{
-                            fontSize: "20px",
+                            fontSize: "16px",
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
+                            padding: "6px",
                           }}
                           onClick={() => manejarBorrar(index)}
                         >
@@ -262,7 +265,7 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
         )}
       </div>
 
-      {/* Formulario para nuevo comentario */}
+      {/* formulario para nuevo comentario */}
       <div
         className="p-3 mt-3"
         style={{

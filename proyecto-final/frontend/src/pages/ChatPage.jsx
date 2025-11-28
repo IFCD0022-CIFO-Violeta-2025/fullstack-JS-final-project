@@ -85,7 +85,7 @@ export default function ChatPage() {
             style={{
               fontWeight: "bold",
               fontSize: "1.2rem",
-              backgroundColor: theme.purple,
+              backgroundColor: theme.up,
               color: theme.white || "#fff",
               borderBottom: `2px solid ${theme.borderColor}`,
             }}
