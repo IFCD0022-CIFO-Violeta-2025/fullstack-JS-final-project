@@ -17,6 +17,8 @@ import Posts from "./posts.model.js";
 //Configuración externa
 import config from '../config/config.js'
 
+console.log(config)
+
 // ================================
 // Conexión Sequelize parametrizado
 // ================================

@@ -13,18 +13,20 @@ CREATE TABLE `Users` (
   `lastName` VARCHAR(50) NOT NULL,  -- Apellido(s) usuario
   `email` VARCHAR(255) NOT NULL UNIQUE,  -- Correo electrónico
   `telefono` VARCHAR(20), -- Telefono usuario
-  `clave` VARCHAR(20) NOT NULL,  -- Contraseña cifrada (hashed)
+  `clave` VARCHAR(100) NOT NULL,  -- Contraseña cifrada (hashed)
   `avatar_url` VARCHAR(255) NULL,  -- Foto de perfil
   `aboutMe` TEXT NULL,  -- Biografía breve
   `address` VARCHAR(255) NULL,  -- Dirección (opcional)
-  `birthday` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Fecha de Nacimiento
-  `documentType` VARCHAR(10) NOT NULL,  -- Tipo de documento de identidad (DNI, NIE, NIF)
-  `documentNumber` VARCHAR(15) NOT NULL,  -- Numero de documento de identidad (ej.: 12345678Z)
+  `birthday` DATETIME,  -- Fecha de Nacimiento
+  `documentType` VARCHAR(10),  -- Tipo de documento de identidad (DNI, NIE, NIF)
+  `documentNumber` VARCHAR(15),  -- Numero de documento de identidad (ej.: 12345678Z)
   `reminders` BOOLEAN NOT NULL DEFAULT FALSE,  -- Recordatorios de eventos dos días antes?
   `news_subscription` BOOLEAN NOT NULL DEFAULT FALSE,  -- Subscripción a noticias relacionadas ((never, daily, weekly, monthly...))
   `banned` BOOLEAN NOT NULL DEFAULT FALSE,  -- El usuario ha sido baneado, prohibido
   `banned_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Fecha de inicio del baneo
-  `bannedUntilDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Fecha final del baneo
+  `bannedUntilDate` DATETIME,  -- Fecha final del baneo
+  'confirmation_token' VARCHAR(50), -- Token de confirmación de alta del usuario
+  `confirmation_ok` BOOLEAN NOT NULL DEFAULT FALSE, -- Indica si el usuario ha confirmado el Token que se le envía para sign up
   `deleted` BOOLEAN NOT NULL DEFAULT FALSE,  -- Registro borrado administrativamente?
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Fecha de registro
   `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  -- Fecha de última modificación

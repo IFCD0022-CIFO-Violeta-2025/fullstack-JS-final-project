@@ -9,7 +9,7 @@ USE db_eventos;
 -- ========================================================
 
 -- 1) INSERT (valores en el orden de las columnas listadas)
-INSERT INTO `Users` (`UUID`, `username`, `name`, `lastName`, `email`, `telefono`,`password`, `avatar_url`, `aboutMe`, `address`, `birthday`, `documentType`, `documentNumber`, `news_subscription`, `reminders`, `banned`, `banned_date`, `bannedUntilDate`, `deleted`, `created_at`, `updated_at`, `deleted_at`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);
+INSERT INTO `Users` (`UUID`, `username`, `name`, `lastName`, `email`, `telefono`,`password`, `avatar_url`, `aboutMe`, `address`, `birthday`, `documentType`, `documentNumber`, `news_subscription`, `reminders`, `banned`, `banned_date`, `bannedUntilDate`, `confirmation_token`, `confirmation_ok`, `deleted`, `created_at`, `updated_at`, `deleted_at`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?);
 
 -- 2) SELECT ALL (filtrando por no eliminados si aplica)
 SELECT * FROM `Users` WHERE `deleted` = FALSE OR `deleted` IS NULL;
@@ -18,7 +18,7 @@ SELECT * FROM `Users` WHERE `deleted` = FALSE OR `deleted` IS NULL;
 SELECT * FROM `Users` WHERE `idUser` = ? AND (`deleted` = FALSE OR `deleted` IS NULL);
 
 -- 4) UPDATE
-UPDATE `Users` SET `UUID` = ?, `username` = ?, `name` = ?, `lastName` = ?, `email` = ?, `telefono` = ?, `password` = ?, `avatar_url` = ?, `aboutMe` = ?, `address` = ?, `birthday` = ?, `documentType` = ?, `documentNumber` = ?, `news_subscription` = ?, reminders` = ?, `banned` = ?, `banned_date` = ?, `bannedUntilDate` = ?, `created_at` = ?, `deleted_at` = ?, `udpated_at` = NOW() WHERE `idUser` = ?;
+UPDATE `Users` SET `UUID` = ?, `username` = ?, `name` = ?, `lastName` = ?, `email` = ?, `telefono` = ?, `password` = ?, `avatar_url` = ?, `aboutMe` = ?, `address` = ?, `birthday` = ?, `documentType` = ?, `documentNumber` = ?, `news_subscription` = ?, reminders` = ?, `banned` = ?, `banned_date` = ?, `bannedUntilDate` = ?, `deleted`= ?, `confirmation_token` = ?, `confirmation_ok`= ?, `created_at` = ?, `deleted_at` = ?, `udpated_at` = NOW() WHERE `idUser` = ?;
 
 -- 5) SOFT DELETE (marca como eliminado y pone deleted_at si existe)
 UPDATE `Users` SET `deleted` = TRUE, `deleted_at` = NOW() WHERE `idUser` = ?;
