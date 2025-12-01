@@ -6,7 +6,9 @@ import {
   createUser,
   updateUser,
   softDeleteUser,
-  hardDeleteUser
+  hardDeleteUser,
+  confirmTokenUser
+
 } from "../controllers/users.controller.js";
 
 const router = Router();
@@ -22,5 +24,9 @@ router.post("/login", loginUser, () => {
 router.put("/:id", updateUser);
 router.delete("/:id", softDeleteUser);
 router.delete("/hardDelete/:id", hardDeleteUser);
+
+router.get("/confirmation",confirmTokenUser,() => {
+  console.log("Confirmation route accessed");
+})
 
 export default router;
