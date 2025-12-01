@@ -5,6 +5,8 @@ import jwt from "jsonwebtoken";
 import db from "../models/index.js";
 import dotenv from "dotenv";
 import { v4 } from "uuid";
+import token from '../common/tokens.controller.js'
+import { sendConfirmationLink} from '../common/email.controller.js'
 
 const Users = db.Users;
 const router = express.Router();
@@ -100,13 +102,22 @@ export const createUser = async (req, res) => {
 
     const hashed = await bcrypt.hash(req.body.password, 10);
 
+    const email_token = token(36);
+
     const usuario = await Users.create({
       UUID: v4(),
       username: req.body.username,
       email: req.body.email,
       clave: hashed,
       role: req.body.role || "user", // por defecto 'user'
+      confirmation_token: email_token,
+      confirmation_ok: false
     });
+
+    sendConfirmationLink({
+      to: req.body.email,
+    },token)
+
     res.status(201).json({
       username: usuario.username,
       email: usuario.email,
@@ -155,6 +166,23 @@ export const softDeleteUser = async (req, res) => {
   }
 };
 
+//Confirm User
+//Link de Confirmacion de que un usuario ha recibido el token
+export const confirmTokenUser  = async (req, res) => {
+  try {
+    const data = await Users.findOne({where: { email: req.query.email } });
+    if (!data) return res.status(404).json({ error: "User not found" });
+
+    if (data.token !== data.confirmation_token) res.status(404).json({ error: "User not valid" });
+
+    await data.update({ confirmation_ok: true, confirmation_token: '' });
+    res.json({ message: "New user confirmed" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// QUE PINTA ESTO AQUI????
 // GET para comprobar si un usuario existe por email
 router.get("/exists/:email", async (req, res) => {
   try {

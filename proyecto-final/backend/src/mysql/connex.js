@@ -7,7 +7,8 @@ const connection = mysql.createPool({
     host: config.db_host,
     user: config.db_user,
     database: config.db_database,
-    port: config.db_port
+    port: config.db_port,
+    password: config.db_password
 });
 
 async function testConnectionMySQL() {

@@ -10,7 +10,7 @@ const api = express();
 // CORS: permitir el origen del frontend (usar FRONT_URL en .env si está definido)
 api.use(
   cors({
-    origin: process.env.FRONT_URL || "http://localhost:5173",
+    //origin: process.env.FRONT_URL || "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
