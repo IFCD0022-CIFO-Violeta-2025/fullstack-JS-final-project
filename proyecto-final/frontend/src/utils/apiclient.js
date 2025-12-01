@@ -32,14 +32,16 @@ const getJSON = async (endpoint) => {
 
 const postJSON = async (endpoint, data) => {
   try {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
     const headers = { 'Content-Type': 'application/json' }
-    if (token) headers['Authorization'] = `Bearer ${token}`
+    const isFormData = typeof FormData !== 'undefined' && data instanceof FormData;
+    if (token) headers['Authorization'] = `Bearer ${token}`;
+
     const response = await fetch(`${BASE_URL}${endpoint}`, {
       method: 'POST',
       headers,
-      body: JSON.stringify(data),
-    })
+      body: isFormData ? data : JSON.stringify(data),
+    });
     return await handleResponse(response);
   } catch (error) {
     console.error('POST error:', error.message);

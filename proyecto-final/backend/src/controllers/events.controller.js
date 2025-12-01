@@ -18,6 +18,7 @@ export const getEventById = async (req, res) => {
 
 export const createEvent = async (req, res) => {
   try {
+    console.log(req.body);
     const data = await Events.create(req.body);
     res.status(201).json(data);
   } catch (e) { res.status(500).json({ error: e.message }); }
