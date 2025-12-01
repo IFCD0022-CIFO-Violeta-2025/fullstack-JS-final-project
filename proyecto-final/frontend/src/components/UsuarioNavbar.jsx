@@ -7,6 +7,8 @@ function UsuarioNavbar() {
   const { theme } = useContext(ThemeContext)
   const { user, logout } = useContext(AuthContext)
   const [open, setOpen] = useState(false)
+  const [hoverName, setHoverName] = useState(false)
+  const [hoverLogout, setHoverLogout] = useState(false)
 
   if (!user) return null // No mostramos nada si no hay usuario
 
@@ -14,6 +16,12 @@ function UsuarioNavbar() {
   const usuario = {
     nombre: user.name || eventoMock.usuario.nombre,
     avatar: eventoMock.usuario.avatar,
+  }
+
+  const nameStyle = {
+    color: hoverName ? theme.botonNavbar.hover.color : theme.botonNavbar.base.color,
+    transition: "color 0.3s ease",
+    fontWeight: "bold",
   }
 
   return (
@@ -32,14 +40,21 @@ function UsuarioNavbar() {
           src={usuario.avatar}
           alt={usuario.nombre}
           style={{
-            width: "30px",
-            height: "30px",
+            width: "40px",
+            height: "40px",
             borderRadius: "50%",
             objectFit: "cover",
             marginRight: "0.5rem",
           }}
         />
-        <span>{usuario.nombre}</span>
+        <span
+          className="fw-bold"
+          style={nameStyle}
+          onMouseEnter={() => setHoverName(true)}
+          onMouseLeave={() => setHoverName(false)}
+        >
+          {usuario.nombre}
+        </span>
       </button>
 
       {open && (
@@ -58,9 +73,15 @@ function UsuarioNavbar() {
           }}
         >
           <button
-            className="dropdown-item"
+            className="dropdown-item fw-bold text-center"
             onClick={logout}
-            style={{ backgroundColor: "transparent", color: theme.textColor }}
+            onMouseEnter={() => setHoverLogout(true)}
+            onMouseLeave={() => setHoverLogout(false)}
+            style={{
+              backgroundColor: "transparent",
+              color: hoverLogout ? theme.botonNavbar.hover.color : theme.textColor,
+              transition: "color 0.3s ease",
+            }}
           >
             Logout
           </button>

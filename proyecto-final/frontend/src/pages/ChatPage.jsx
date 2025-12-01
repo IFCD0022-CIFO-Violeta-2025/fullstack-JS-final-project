@@ -6,8 +6,9 @@ import { eventoMock } from "../data/mockData"
 import Titulo from "../components/Titulo"
 import Boton from "../components/Boton"
 import MensajeBurbuja from "../components/MensajeBurbuja"
+import { BsChatRightFill } from "react-icons/bs"
 
-const socket = io("http://localhost:3000")
+const socket = io("http://localhost:4000")
 
 export default function ChatPage() {
   const { theme } = useContext(ThemeContext)
@@ -22,7 +23,7 @@ export default function ChatPage() {
   // Mensajes iniciales con mock
   const [messages, setMessages] = useState([
     {
-      user: "Diego",
+      user: "Diego R",
       content: "¡Hola! Bienvenidos al chat del evento.",
       timestamp: "18:45",
       avatar: eventoMock.usuario.avatar,
@@ -39,7 +40,12 @@ export default function ChatPage() {
   }, [])
 
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: "smooth",
+      })
+    }
   }, [messages])
 
   const sendMessage = () => {
@@ -55,11 +61,14 @@ export default function ChatPage() {
     setMessage("")
   }
 
+  const chatContainerRef = useRef(null)
+
   return (
     <>
       {/*    <Titulo title="Chat del Evento" /> */}
 
-      <div className="mx-auto" style={{ maxWidth: "600px", width: "100%" }}>
+      {/* <div className="mx-auto" style={{ maxWidth: "600px", width: "100%" }}> */}
+      <div>
         <div
           className="card"
           style={{
@@ -72,19 +81,23 @@ export default function ChatPage() {
           }}
         >
           <div
-            className="card-header"
+            className="card-header d-flex align-items-center"
             style={{
               fontWeight: "bold",
               fontSize: "1.2rem",
-              backgroundColor: theme.etiquetaColor,
+              backgroundColor: theme.up,
               color: theme.white || "#fff",
               borderBottom: `2px solid ${theme.borderColor}`,
             }}
           >
-            💬 Chat del Evento
+            <span style={{ marginTop: "-3px", marginRight: "8px" }}>
+              <BsChatRightFill />
+            </span>{" "}
+            <span>Chat del Evento</span>
           </div>
 
           <div
+            ref={chatContainerRef}
             className="card-body d-flex flex-column"
             style={{
               height: "400px",
@@ -96,7 +109,8 @@ export default function ChatPage() {
               <div style={{ fontStyle: "italic", opacity: 0.7 }}>No hay mensajes aún.</div>
             )}
 
-            <ul className="list-unstyled flex-grow-1 mb-0">
+            <ul className="list-unstyled mb-0">
+              {/*  flex-grow-1 */}
               {messages.map((m, i) => {
                 const isMe = m.user === usuarioActual.nombre
                 return <MensajeBurbuja key={i} message={m} isMe={isMe} />
@@ -133,7 +147,9 @@ export default function ChatPage() {
                 e.key === "Enter" && !e.shiftKey && (e.preventDefault(), sendMessage())
               }
             />
-            <Boton onClick={sendMessage}>Enviar</Boton>
+            <Boton style={{ marginLeft: "0.5rem" }} onClick={sendMessage}>
+              Enviar
+            </Boton>
           </div>
         </div>
       </div>

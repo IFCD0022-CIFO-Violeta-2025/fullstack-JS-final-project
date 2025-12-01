@@ -16,6 +16,10 @@ const BotonNavbar = ({ children, onClick = () => {}, type = "button", active = f
     background: "transparent",
     padding: "0.5rem 1rem",
     cursor: "pointer",
+    backgroundColor: "transparent",
+    fontWeight: "500",
+    transition: "color 0.3s ease",
+    margin: "0 8px",
   }
 
   // Estilos del texto interno
@@ -43,4 +47,4 @@ const BotonNavbar = ({ children, onClick = () => {}, type = "button", active = f
 
 export default BotonNavbar
 
-// TODO: cambiar que sea obligatorio el OnClick!
+/*  TODO: cambiar que sea obligatorio el OnClick! */

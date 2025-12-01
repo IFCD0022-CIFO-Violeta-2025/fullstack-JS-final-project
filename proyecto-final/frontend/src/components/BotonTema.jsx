@@ -1,28 +1,27 @@
 import React, { useContext, useState } from "react"
 import { ThemeContext } from "../contexts/ThemeContext"
 
-const Boton = ({ children, onClick = () => {}, type = "button", style: customStyle = {} }) => {
+const BotonTema = ({ children, onClick = () => {}, type = "button", style: customStyle = {} }) => {
   const { theme } = useContext(ThemeContext)
   const [hovered, setHovered] = useState(false)
 
-  // Los estilos estan en ThemeContext
-  const themeStyle = hovered ? { ...theme.boton.base, ...theme.boton.hover } : theme.boton.base
+  const iconColor = hovered ? theme.botonNavbar.hover.color : theme.botonNavbar.base.color
 
-  // estilos basicos
   const baseStyle = {
+    background: "transparent",
     border: "none",
-    padding: "0.5rem 1rem",
-    borderRadius: "6px",
-    fontWeight: "500",
     cursor: "pointer",
-    transition: "all 0.3s ease",
-    display: "inline-block",
+    transition: "color 0.3s ease",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "25px"
   }
 
   const finalStyle = {
     ...baseStyle,
-    ...themeStyle,
     ...customStyle,
+    color: iconColor,
   }
 
   return (
@@ -38,6 +37,4 @@ const Boton = ({ children, onClick = () => {}, type = "button", style: customSty
   )
 }
 
-export default Boton
-
-/*  TODO: cambiar que sea obligatorio el OnClick! */
+export default BotonTema
