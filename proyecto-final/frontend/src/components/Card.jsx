@@ -6,6 +6,9 @@ import UsuarioInfo from "./UsuarioInfo"
 import { eventoMock } from "../data/mockData"
 import AccionesEvento from "./AccionesEvento"
 import { useNavigate } from "react-router-dom"
+import { MdPlace } from "react-icons/md"
+import { FaCalendarCheck } from "react-icons/fa"
+import { LuAlarmClockCheck } from "react-icons/lu"
 
 const Card = () => {
   const { theme } = useContext(ThemeContext)
@@ -94,19 +97,58 @@ const Card = () => {
             </p>
 
             <div className="mt-2 text-sm">
-              <div className="mb-1 d-flex">
-                <strong className="me-1">Lugar:</strong>
-                <span>📍 {ubicacion}</span>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  gap: "1px",
+                  marginBottom: "1rem",
+                }}
+              >
+                <span>
+                  <strong>Lugar:</strong>
+                </span>
+                <span style={{ marginTop: "-8px", fontSize: "18px" }}>
+                  <MdPlace />
+                </span>
+                <span>{ubicacion}</span>
               </div>
 
-              <div className="mb-1 d-flex">
-                <strong className="me-1">Fecha:</strong>
-                <span>🗓️ {fechaTexto}</span>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  gap: "3px",
+                  marginBottom: "1rem",
+                }}
+              >
+                <span>
+                  <strong>Fecha:</strong>
+                </span>
+                <span style={{ marginTop: "-6px", fontSize: "15px" }}>
+                  <FaCalendarCheck />
+                </span>
+                <span>{fechaTexto}</span>
               </div>
 
-              <div className="mb-1 d-flex">
-                <strong className="me-1">Hora:</strong>
-                <span>⏰ {horaInicio}</span>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  gap: "3px",
+                  marginBottom: "1rem",
+                }}
+              >
+                <span>
+                  <strong>Hora inicio:</strong>
+                </span>
+                <span style={{ marginTop: "-5px" }}>
+                  <LuAlarmClockCheck />
+                </span>
+                <span>{horaInicio}</span>
               </div>
 
               <div className="mb-1 d-flex">
@@ -120,7 +162,7 @@ const Card = () => {
           <div className="mt-3">
             <div className="d-flex gap-2 justify-content-start mb-4">
               {/* Cambio importante: usamos navigate en lugar de window.open */}
-              {/*  <Boton onClick={() => navigate("/event")}>Ver más</Boton> */}
+              <Boton onClick={() => navigate("/event")}>Ver más</Boton>
 
               <Boton onClick={() => navigate("/event")}>Inscribirse</Boton>
             </div>

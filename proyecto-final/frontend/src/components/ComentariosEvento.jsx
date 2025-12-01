@@ -1,8 +1,11 @@
-// ESTA SECCIÓN REQUIERE DE MODIFICACIONES ESTÉTICAS PERO DEBERÍA SER FUNCIONAL.
-
 import React, { useContext, useState, useEffect, useRef } from "react"
 import { ThemeContext } from "../contexts/ThemeContext"
 import Boton from "./Boton"
+import { BsChatRightFill } from "react-icons/bs"
+import { FaRegClock } from "react-icons/fa"
+import { AiFillLike } from "react-icons/ai"
+import { RiDeleteBin6Fill } from "react-icons/ri"
+import { BiSolidPencil } from "react-icons/bi"
 
 // Mock DB inicial con IDs únicos
 const mockComentariosDB = [
@@ -87,16 +90,19 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
 
   const manejarEditar = (id) => {
     const comentario = comentarios.find((c) => c.id === id)
+    if (!comentario) return
     setEditID(id)
     setEditValue(comentario.mensaje)
+    // focus del textarea tras setear editID (opcional)
+    setTimeout(() => {
+      if (editRef.current) editRef.current.focus()
+    }, 0)
   }
 
   const aplicarCambios = () => {
     if (editValue.trim() === "") return
 
-    setComentarios((prev) =>
-      prev.map((c) => (c.id === editID ? { ...c, mensaje: editValue } : c))
-    )
+    setComentarios((prev) => prev.map((c) => (c.id === editID ? { ...c, mensaje: editValue } : c)))
 
     setEditID(null)
     setEditValue("")
@@ -108,8 +114,6 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
 
   return (
     <>
-
-      {/* 🔥 FORMULARIO ARRIBA DEL TODO */}
       <div
         className="p-3 mt-3"
         style={{
@@ -161,7 +165,6 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
         <Boton onClick={manejarEnvio}>Enviar comentario</Boton>
       </div>
 
-      {/* 🔥 COMENTARIOS DEBAJO, EL MÁS NUEVO SIEMPRE ARRIBA */}
       <div
         className="card mt-3"
         style={{
@@ -174,18 +177,21 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
         }}
       >
         <div
-          className="card-header"
+          className="card-header d-flex align-items-center"
           style={{
             fontWeight: "bold",
             fontSize: "1.3rem",
-            backgroundColor: theme.etiquetaColor,
-            color: theme.white,
+            backgroundColor: theme.up,
+            color: theme.white || "#fff",
             padding: "0.75rem 1rem",
             borderBottom: `2px solid ${theme.borderColor}`,
             letterSpacing: "0.5px",
           }}
         >
-          💬 Comentarios
+          <span style={{ marginTop: "-3px", marginRight: "8px" }}>
+            <BsChatRightFill />
+          </span>{" "}
+          <span>Comentarios</span>
         </div>
 
         {comentarios.length === 0 ? (
@@ -207,7 +213,7 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
                 }}
               >
                 <div>
-                  <strong style={{ color: theme.etiquetaColor }}>{c.usuario}:</strong>
+                  <strong style={{ color: theme.textColor }}>{c.usuario}:</strong>
 
                   {editID === c.id ? (
                     <>
@@ -223,20 +229,8 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
                           marginTop: "4px",
                         }}
                       />
-                      <button
-                        onClick={aplicarCambios}
-                        style={{
-                          marginTop: "4px",
-                          cursor: "pointer",
-                          backgroundColor: "green",
-                          color: "#fff",
-                          border: "none",
-                          borderRadius: "4px",
-                          padding: "4px 8px",
-                        }}
-                      >
-                        Aplicar cambios
-                      </button>
+
+                      <Boton onClick={aplicarCambios}>Aplicar cambios</Boton>
                     </>
                   ) : (
                     <div
@@ -247,65 +241,72 @@ const ComentariosEvento = ({ admin = true, user = "EstoEsUnUsuario" }) => {
                         padding: "6px",
                         whiteSpace: "pre-wrap",
                         wordBreak: "break-word",
+                        marginTop: "4px",
                       }}
                     >
                       {c.mensaje}
                     </div>
                   )}
 
-                  <div style={{ fontSize: "0.8rem", opacity: 0.7, marginTop: "4px" }}>
-                    🕒{" "}
-                    {new Date(c.fecha).toLocaleString("es-ES", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      day: "2-digit",
-                      month: "short",
-                    })}
+                  <div
+                    className="d-flex align-items-center"
+                    style={{ fontSize: "0.75rem", opacity: 0.7, marginTop: "6px" }}
+                  >
+                    <span style={{ marginTop: "-3px", marginRight: "4px" }}>
+                      <FaRegClock />
+                    </span>
+                    <span>
+                      {new Date(c.fecha).toLocaleString("es-ES", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        day: "2-digit",
+                        month: "short",
+                      })}
+                    </span>
                   </div>
 
-                  <div style={{ display: "flex", gap: "4px", marginTop: "6px" }}>
-                    <button
-                      onClick={() => manejarLike(c.id)}
+                  <div style={{ display: "flex", gap: "4px", marginTop: "8px" }}>
+                    <Boton
                       style={{
-                        background: "transparent",
-                        border: `1px solid ${theme.borderColor}`,
-                        borderRadius: "4px",
-                        padding: "2px 6px",
-                        cursor: "pointer",
-                        color: c.likes.includes(user) ? "blue" : theme.textColor,
+                        fontSize: "16px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: "4px",
+                        padding: "4px 8px",
                       }}
+                      onClick={() => manejarLike(c.id)}
                     >
-                      👍 {c.likes.length}
-                    </button>
+                      <AiFillLike /> {c.likes.length}
+                    </Boton>
 
                     {(admin || c.usuario === user) && editID !== c.id && (
                       <>
-                        <button
-                          onClick={() => manejarBorrar(c.id)}
+                        <Boton
                           style={{
-                            background: "red",
-                            color: "#fff",
-                            border: "none",
-                            borderRadius: "4px",
-                            padding: "2px 6px",
-                            cursor: "pointer",
+                            fontSize: "16px",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            padding: "6px",
                           }}
-                        >
-                          🗑️
-                        </button>
-                        <button
                           onClick={() => manejarEditar(c.id)}
-                          style={{
-                            background: "orange",
-                            color: "#fff",
-                            border: "none",
-                            borderRadius: "4px",
-                            padding: "2px 6px",
-                            cursor: "pointer",
-                          }}
                         >
-                          ✏️
-                        </button>
+                          <BiSolidPencil />
+                        </Boton>
+
+                        <Boton
+                          style={{
+                            fontSize: "16px",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            padding: "6px",
+                          }}
+                          onClick={() => manejarBorrar(c.id)}
+                        >
+                          <RiDeleteBin6Fill />
+                        </Boton>
                       </>
                     )}
                   </div>

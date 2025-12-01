@@ -1,5 +1,6 @@
 /* import React, { useContext } from "react"
 import { ThemeContext } from "../contexts/ThemeContext" */
+import { FaRegClock } from "react-icons/fa"
 
 export default function MensajeBurbuja({ message, isMe }) {
   /*   const { theme } = useContext(ThemeContext) */
@@ -7,9 +8,8 @@ export default function MensajeBurbuja({ message, isMe }) {
   return (
     <li className={`mb-2 d-flex ${isMe ? "justify-content-end" : "justify-content-start"}`}>
       <div style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", color: "white" }}>
-        {" "}
         {/* cambiar colo con ThemeContext! */}
-        {/* Avatar a la izquierda si no es mensaje propio */}
+        {/* avatar a la izquierda si no es mensaje propio */}
         {!isMe && (
           <img
             src={message.avatar}
@@ -23,7 +23,7 @@ export default function MensajeBurbuja({ message, isMe }) {
             }}
           />
         )}
-        {/* Burbuja del mensaje */}
+        {/* burbuja del mensaje */}
         <div
           style={{
             background: "#9569FF",
@@ -32,9 +32,10 @@ export default function MensajeBurbuja({ message, isMe }) {
             position: "relative",
             maxWidth: "calc(100% - 55px)",
             wordBreak: "break-word",
+            textAlign: isMe ? "right" : "left",
           }}
         >
-          {/* Triángulo */}
+          {/*triángulo de la burbuja*/}
           <div
             style={{
               position: "absolute",
@@ -52,11 +53,17 @@ export default function MensajeBurbuja({ message, isMe }) {
 
           <div style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{message.user}</div>
           <div>{message.content}</div>
-          <div style={{ fontSize: "0.75rem", opacity: 0.7, marginTop: "2px" }}>
-            🕒 {message.timestamp}
+          <div
+            className="d-flex align-items-center"
+            style={{ fontSize: "0.75rem", opacity: 0.7, marginTop: "2px" }}
+          >
+            <span style={{ marginTop: "-3px", marginRight: "4px" }}>
+              <FaRegClock />
+            </span>{" "}
+            <span>{message.timestamp}</span>
           </div>
         </div>
-        {/* Avatar a la derecha si es mensaje propio */}
+        {/* avatar a la derecha si es mensaje propio */}
         {isMe && (
           <img
             src={message.avatar}

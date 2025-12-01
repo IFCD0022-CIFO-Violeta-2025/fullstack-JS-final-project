@@ -1,6 +1,7 @@
 import 'dotenv/config'
 
 const config = {
+
     api_port: process.env.API_PORT,
     db_host: process.env.DB_HOST,
     db_user: process.env.DB_USER,
@@ -17,6 +18,7 @@ const config = {
     email_link_confirm: process.env.EMAIL_LINK_CONFIRM,
     email_from_confirm: process.env.EMAIL_FROM_CONFIRM,
     email_from_mailing: process.env.EMAIL_FROM_MAILING
+
 }
 
-export default config;
+export default config

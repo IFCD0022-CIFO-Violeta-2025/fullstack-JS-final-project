@@ -16,24 +16,22 @@ export default function Footer() {
         borderTop: theme.navbarBorder,
       }}
     >
-     <div className="footer__inner">
+      <div className="footer__inner">
         <BotonNavbar
-          onClick={() => navigate("/contacto")}
-          active={location.pathname === "/contacto"}
+          onClick={() => navigate("/normativa")}
+          active={location.pathname === "/normativa"}
         >
-          Contacto
-        </BotonNavbar>
-        <BotonNavbar
-          onClick={() => navigate("/terminos")}
-          active={location.pathname === "/terminos"}
-        >
-          Términos
+          Normativa
         </BotonNavbar>
         <BotonNavbar
           onClick={() => navigate("/privacidad")}
           active={location.pathname === "/privacidad"}
         >
           Privacidad
+        </BotonNavbar>
+
+        <BotonNavbar onClick={() => navigate("/cookies")} active={location.pathname === "/cookies"}>
+          Cookies
         </BotonNavbar>
       </div>
     </footer>

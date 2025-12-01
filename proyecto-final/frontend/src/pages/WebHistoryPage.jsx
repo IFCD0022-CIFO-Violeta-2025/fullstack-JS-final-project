@@ -1,12 +1,14 @@
 import { useContext } from "react"
 import { ThemeContext } from "../contexts/ThemeContext"
 import Titulo from "../components/Titulo"
+import logo from "/logo.png"
 
 const WebHistoryPage = () => {
   const { theme } = useContext(ThemeContext)
   return (
-    <>
-      <Titulo title="ARMAND EVENTS" />
+    <div className="d-flex flex-column justify-content-center align-items-center">
+      {/*       <Titulo title="ARMAND EVENTS" /> */}
+      <img src={logo} alt="logo Armand Events" width="200" height="200" className="mt-4" />
 
       <div className="mx-auto mt-4" style={{ maxWidth: "600px", width: "100%" }}>
         <div
@@ -20,7 +22,7 @@ const WebHistoryPage = () => {
             overflow: "hidden",
           }}
         >
-          <div className="card-body d-flex flex-column">
+          <div className="card-body d-flex flex-column fs-5">
             <p>
               Todo empezó con un curso de Fullstack con JavaScript. Nuestro profesor, Armand, como
               parte de nuestra formación, nos pidió realizar un proyecto grupal, y decidimos crear
@@ -38,7 +40,7 @@ const WebHistoryPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
