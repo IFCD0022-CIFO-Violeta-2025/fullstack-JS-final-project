@@ -1,0 +1,22 @@
+{
+  "name": "fullstack-monorepo",
+  "private": true,
+  "workspaces": [
+    "proyecto-final/frontend",
+    "proyecto-final/backend"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "lint:frontend": "npm --prefix proyecto-final/frontend run lint",
+    "lint:backend": "npm --prefix proyecto-final/backend run lint",
+    "format:frontend": "npm --prefix proyecto-final/frontend run format",
+    "format:backend": "npm --prefix proyecto-final/backend run format"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql2": "^3.15.3"
+  }
+}

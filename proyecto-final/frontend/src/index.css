@@ -1,0 +1,140 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.main-content {
+  margin-top: 60px; /* altura del navbar */
+  margin-left: 300px; /* ancho del sidebar fijo */
+  padding: 20px;
+  width: calc(100% - 300px);
+}
+
+/* wrapper interno centrado (ancho máximo del feed) */
+.main-content__inner {
+  max-width: 1400px;
+  margin: 0 auto; /* centra el feed dentro del espacio libre */
+}
+
+.navbar .btn-user {
+  margin-right: 2rem;
+}
+
+.logo:hover {
+  filter: brightness(0) saturate(100%) invert(41%) sepia(90%) saturate(399%) hue-rotate(335deg)
+    brightness(92%) contrast(92%);
+}
+
+.etiquetas-container a {
+  font-size: clamp(0.6rem, 1.2vw, 0.85rem); /* se adapta suavemente */
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.etiquetas-container a {
+  font-size: clamp(0.6rem, 1.2vw, 0.85rem);
+  padding: 0.3rem 0.6rem;
+  white-space: nowrap;
+  transition:
+    font-size 0.3s ease,
+    padding 0.3s ease;
+  margin-right: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Scroll del sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #6739e4;
+  border-radius: 4px;
+  border: 2px solid transparent;
+}
+
+/* hover sobre el thumb */
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #9569ff;
+}
+
+/* firefox */
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #6739e4 transparent;
+}
+
+/* flechas de acordeón segun tema */
+.faq-button.light::after {
+  filter: invert(1); /* flecha negra */
+}
+
+.faq-button.dark::after {
+  filter: invert(0); /* flecha blanca */
+}
+
+/* FOOTER alineado con el sidebar */
+.footer {
+  margin-left: 300px; /*  evita que se meta debajo del sidebar */
+  padding: 10px;
+  width: calc(100% - 300px);
+}
+
+.footer__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 0.9rem;
+}
+
+.layout-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* colocar contenido arriba y footer abajo */
+}
+
+.layout-content {
+  flex: 1; /* este espacio crece para empujar el footer al fondo */
+}
+
+.eventPage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 991.98px) {
+  .main-content {
+    margin-left: 0;
+    width: 100vw;
+  }
+  .main-content__inner {
+    max-width: 100%;
+  }
+
+  .navbar .btn-user {
+    margin-right: 4rem;
+  }
+
+  .eventPage {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  /* movil: sidebar desaparece, footer full width */
+  .footer {
+    margin-left: 0;
+    width: 100vw;
+  }
+}
